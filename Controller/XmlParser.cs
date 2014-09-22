@@ -49,6 +49,14 @@ namespace WarGame.Controller
                         Mine mine = new Mine(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mine);
                         break;
+                    case "mud":
+                        Mud mud = new Mud(xaxis, yaxis);
+                        gameEngine.level.obstacleList.Add(mud);
+                        break;
+                    case "finish":
+                        Finish finish = new Finish(xaxis, yaxis);
+                        gameEngine.level.obstacleList.Add(finish);
+                        break;
                     default:
                         break;
                 }
