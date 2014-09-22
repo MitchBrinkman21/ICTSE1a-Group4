@@ -8,8 +8,13 @@ namespace WarGame.Model
 {
     
 
-    class Mud
+    class Mud : Obstacle
     {
         private int slow = 13;
+
+        public Mud(double x, double y)
+            : base(x, y)
+        { 
+        }
     }
 }
