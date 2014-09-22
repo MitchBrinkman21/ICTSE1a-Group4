@@ -24,7 +24,7 @@ namespace WarGame.View
             
             //--
         }
-
+        //dit is door janjaap
         private void buttonStart_Click(object sender, EventArgs e)
         {
             FormStartGame formStartGame = new FormStartGame();
