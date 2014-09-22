@@ -23,6 +23,7 @@ namespace WarGame.View
             this.WindowState = FormWindowState.Maximized;
             this.Show();
 
+            // Create a directory on C: disk.
             CreateDirOnDisk();
         }
 
