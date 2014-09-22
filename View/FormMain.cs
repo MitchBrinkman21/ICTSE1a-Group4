@@ -75,5 +75,7 @@ namespace WarGame.View
         {
 
         }
+
+        // Ignore comment
     }
 }
