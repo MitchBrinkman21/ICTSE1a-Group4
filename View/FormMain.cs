@@ -25,6 +25,7 @@ namespace WarGame.View
             //--
         }
         //dit is door janjaap
+        //dit is door wouter
         private void buttonStart_Click(object sender, EventArgs e)
         {
             FormStartGame formStartGame = new FormStartGame();
@@ -37,6 +38,11 @@ namespace WarGame.View
         }
 
         private void buttonHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
         {
 
         }

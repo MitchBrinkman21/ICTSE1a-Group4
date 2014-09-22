@@ -12,3 +12,6 @@ C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\WarGame\ob
 C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\bin\Debug\WarGame.exe.config
 C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\obj\Debug\WarGame.exe
 C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\obj\Debug\WarGame.pdb
+C:\Users\Wouter\Documents\Visual Studio 2013\Projects\WarGame\bin\Debug\WarGame.exe.config
+C:\Users\Wouter\Documents\Visual Studio 2013\Projects\WarGame\obj\Debug\WarGame.exe
+C:\Users\Wouter\Documents\Visual Studio 2013\Projects\WarGame\obj\Debug\WarGame.pdb
