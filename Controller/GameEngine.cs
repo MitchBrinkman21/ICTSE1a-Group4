@@ -10,7 +10,6 @@ namespace WarGame.Controller
 {
     public class GameEngine
     {
-        //TEST TEST
         private static GameEngine gameEngine;
         public Level level = new Level();
 
