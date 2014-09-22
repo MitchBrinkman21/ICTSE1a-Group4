@@ -17,7 +17,7 @@ namespace WarGame.Controller
         {
             if (gameEngine == null)
                 gameEngine = new GameEngine();
-            //Hallo hallo
+            //Hallo hallo mitch
             return gameEngine;
         }
         
