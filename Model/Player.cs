@@ -9,8 +9,8 @@ namespace WarGame.Model
     public class Player
     {
         int live;
-        double x;
-        double y;
+        int x;
+        int y;
         int speed;
         int width;
         int lenght;

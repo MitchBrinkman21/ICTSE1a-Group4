@@ -8,7 +8,7 @@ namespace WarGame.Model
 {
     class Finish : Obstacle
     {
-        public Finish(double x, double y)
+        public Finish(int x, int y)
             : base(x,y)
         {
 

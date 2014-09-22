@@ -47,6 +47,7 @@
     <Compile Include="Model\Finish.cs" />
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Missile.cs" />
     <Compile Include="View\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

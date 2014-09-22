@@ -31,8 +31,8 @@ namespace WarGame.Controller
             for (int i = 0; i < xmlnode.Count; i++)
             {
                 string name = xmlnode[i].ChildNodes.Item(0).InnerText;
-                double xaxis = Convert.ToDouble(xmlnode[i].ChildNodes.Item(1).InnerText);
-                double yaxis = Convert.ToDouble(xmlnode[i].ChildNodes.Item(2).InnerText);
+                int xaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(1).InnerText);
+                int yaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(2).InnerText);
                 string speed = xmlnode[i].ChildNodes.Item(3).InnerText;
 
                 switch(name)

@@ -9,7 +9,7 @@ namespace WarGame.Model
     class Tree : Obstacle
     {
 
-        public Tree(double x, double y)
+        public Tree(int x, int y)
             : base(x, y)
         { 
         }

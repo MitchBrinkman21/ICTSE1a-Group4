@@ -8,12 +8,12 @@ namespace WarGame.Model
 {
     public abstract class Obstacle
     {
-        public double x;
-        public double y;
+        public int x;
+        public int y;
         public double width;
         public double lenght;
 
-        public Obstacle(double x, double y) 
+        public Obstacle(int x, int y) 
         {
             this.x = x;
             this.y = y;

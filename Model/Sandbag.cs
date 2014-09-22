@@ -9,7 +9,7 @@ namespace WarGame.Model
     class Sandbag : Obstacle
     {
 
-        public Sandbag(double x, double y)
+        public Sandbag(int x, int y)
             : base(x, y)
         { 
         }

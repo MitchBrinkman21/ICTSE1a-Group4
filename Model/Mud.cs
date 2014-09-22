@@ -12,7 +12,7 @@ namespace WarGame.Model
     {
         private int slow = 13;
 
-        public Mud(double x, double y)
+        public Mud(int x, int y)
             : base(x, y)
         { 
         }
