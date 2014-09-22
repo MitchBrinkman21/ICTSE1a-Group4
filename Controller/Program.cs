@@ -15,6 +15,7 @@ namespace WarGame.Controller
         [STAThread]
         static void Main()
         {
+            //aanpassing van Evan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());

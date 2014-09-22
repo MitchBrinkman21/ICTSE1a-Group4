@@ -9,3 +9,6 @@ c:\users\mitch brinkman\documents\visual studio 2013\Projects\WarGame\WarGame\ob
 C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\WarGame\obj\Debug\WarGame.View.FormStartGame.resources
 C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\WarGame\obj\Debug\WarGame.View.ProgressBarDialog.resources
 C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\WarGame\obj\Debug\WarGame.View.FormMain.resources
+C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\bin\Debug\WarGame.exe.config
+C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\obj\Debug\WarGame.exe
+C:\Users\Gebruiker\Documents\GitHub\ICTSE1a-Group4\obj\Debug\WarGame.pdb
