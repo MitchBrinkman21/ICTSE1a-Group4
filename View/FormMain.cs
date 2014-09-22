@@ -21,11 +21,8 @@ namespace WarGame.View
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.Show();
-            
-            //--
         }
-        //dit is door janjaap
-        //dit is door wouter
+
         private void buttonStart_Click(object sender, EventArgs e)
         {
             FormStartGame formStartGame = new FormStartGame();
