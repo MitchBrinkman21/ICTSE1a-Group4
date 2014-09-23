@@ -10,7 +10,7 @@ namespace WarGame.Model
 
     class Mud : Obstacle
     {
-        private int slow = 13;
+        public int slow { get { return slow; } set { slow = 10; } }
 
         public Mud(int x, int y)
             : base(x, y)
