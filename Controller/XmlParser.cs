@@ -38,23 +38,23 @@ namespace WarGame.Controller
                 switch(name)
                 {
                     case "tree":
-                        Tree tree = new Tree(xaxis, yaxis, 10, 10);
+                        Tree tree = new Tree(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(tree);
                         break;
                     case "sandbag":
-                        Sandbag sandbag = new Sandbag(xaxis, yaxis, 10, 10);
+                        Sandbag sandbag = new Sandbag(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(sandbag);
                         break;
                     case "mine":
-                        Mine mine = new Mine(xaxis, yaxis, 10, 10);
+                        Mine mine = new Mine(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mine);
                         break;
                     case "mud":
-                        Mud mud = new Mud(xaxis, yaxis, 10, 10);
+                        Mud mud = new Mud(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mud);
                         break;
                     case "finish":
-                        Finish finish = new Finish(xaxis, yaxis, 10, 10);
+                        Finish finish = new Finish(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(finish);
                         break;
                     default:
