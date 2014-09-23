@@ -10,17 +10,5 @@ namespace WarGame.Model
     {
         public List<Obstacle> obstacleList = new List<Obstacle>();
         public Player player = new Player();
-        private static Level level;
-        public static Level Instance()
-        {
-            if (level == null)
-                level = new Level();
-
-            return level;
-        }
-
-	{
-		 
-	}
     }
 }
