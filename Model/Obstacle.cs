@@ -12,6 +12,7 @@ namespace WarGame.Model
         public int y;
         public int width;
         public int lenght;
+        public String image;
 
         public Obstacle(int x, int y, int width, int length) 
         {
