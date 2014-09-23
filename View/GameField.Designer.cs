@@ -35,7 +35,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
+            this.panel1.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop1;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
