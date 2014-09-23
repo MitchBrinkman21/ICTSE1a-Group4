@@ -58,5 +58,15 @@ namespace WarGame.Controller
             formImportLevel.Dispose();
         }
         
+        public void HitDetect()
+        {
+            int playerX = gameEngine.level.player.x;
+            int playerY = gameEngine.level.player.y;
+
+            foreach(Object obstacle in gameEngine.level.obstacleList)
+            {
+
+            }
+        }
     }
 }

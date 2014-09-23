@@ -8,12 +8,12 @@ namespace WarGame.Model
 {
     public class Player
     {
-        int live;
-        int x;
-        int y;
-        int speed;
-        int width;
-        int lenght;
+        public int live;
+        public int x;
+        public int y;
+        public int speed;
+        public int width;
+        public int lenght;
 
     }
 }
