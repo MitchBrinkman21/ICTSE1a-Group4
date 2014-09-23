@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace WarGame.Model
 {
     class Missile : Obstacle
@@ -16,7 +17,7 @@ namespace WarGame.Model
             speed = 10;
             width = 10;
             length = 10;
-            image = "path to rocket";
+            image = Properties.Settings.Default.ImageMissile;
         }
 
         /* Computes the distance to the player and either moves towards
@@ -50,7 +51,7 @@ namespace WarGame.Model
          */
         public void ShowExplosion()
         {
-            image = "path to explosion image";
+            image = Properties.Settings.Default.ImageExplosion;
         }
     }
 }

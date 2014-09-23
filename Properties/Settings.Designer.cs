@@ -30,5 +30,13 @@ namespace WarGame.Properties
         public string LevelPath { get; set; }
 
         public string ImportPath { get; set; }
+
+        public string ImageMissile { get; set; }
+        public string ImageMud { get; set; }
+        public string ImageTree { get; set; }
+        public string ImageMine { get; set; }
+        public string ImageSandbag { get; set; }
+        public string ImageFinish { get; set; }
+        public string ImageExplosion { get; set; }
     }
 }
