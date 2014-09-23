@@ -10,8 +10,8 @@ namespace WarGame.Model
     {
         int proximity;
 
-        public Mine(int x, int y)
-            : base(y, x)
+        public Mine(int x, int y, int width, int length)
+            : base(y, x, width, length)
         { 
         }
     }

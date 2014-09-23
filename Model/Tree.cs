@@ -9,8 +9,8 @@ namespace WarGame.Model
     class Tree : Obstacle
     {
 
-        public Tree(int x, int y)
-            : base(x, y)
+        public Tree(int x, int y, int width, int length)
+            : base(x, y, width, length)
         { 
         }
     }

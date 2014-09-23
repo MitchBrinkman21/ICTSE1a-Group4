@@ -10,15 +10,15 @@ namespace WarGame.Model
     {
         public int x;
         public int y;
-        public double width;
-        public double lenght;
+        public int width;
+        public int lenght;
 
-        public Obstacle(int x, int y) 
+        public Obstacle(int x, int y, int width, int length) 
         {
             this.x = x;
             this.y = y;
-            this.width = 10;
-            this.lenght = 10;
+            this.width = width;
+            this.lenght = length;
         }
     }
 }

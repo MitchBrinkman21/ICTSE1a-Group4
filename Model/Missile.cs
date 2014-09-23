@@ -10,8 +10,8 @@ namespace WarGame.Model
     {
         private int speed {get; set;}
 
-        public Missile(int x, int y)
-            : base(x, y)
+        public Missile(int x, int y, int width, int length)
+            : base(x, y, width, length)
         {
             speed = 10;
         }
