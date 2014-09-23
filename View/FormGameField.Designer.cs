@@ -35,7 +35,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop1;
+            this.panel1.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop2;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
@@ -44,7 +44,6 @@
             // 
             // panel2
             // 
-
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.ForeColor = System.Drawing.Color.Transparent;

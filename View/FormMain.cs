@@ -34,6 +34,7 @@ namespace WarGame.View
         private void buttonStart_Click(object sender, EventArgs e)
         {
             gameEngine.StartGame();
+
         }
 
         public void CreateDirOnDisk() 

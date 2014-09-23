@@ -20,7 +20,13 @@ namespace WarGame.View
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
             panel2.BackColor = color;
             level = Level.Instance();
-            level.obstacleList = new List<Obstacle>();
+            if (level.obstacleList != null)
+            {
+                foreach (Object obstacle in level.obstacleList)
+	            {
+                    MessageBox.Show(obstacle.ToString());
+	            } 
+            }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
