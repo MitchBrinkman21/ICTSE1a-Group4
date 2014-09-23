@@ -14,7 +14,10 @@ namespace WarGame.Model
 
         public Mud(int x, int y)
             : base(x, y)
-        { 
+        {
+            width = 10;
+            length = 10;
+            image = Properties.Settings.Default.ImageMud;
         }
     }
 }
