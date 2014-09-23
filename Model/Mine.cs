@@ -12,7 +12,18 @@ namespace WarGame.Model
 
         public Mine(int x, int y, int width, int length)
             : base(y, x, width, length)
-        { 
+        {
+            image = "../Resources/transparent.png";
+        }
+
+        public void ShowObject()
+        {
+            image = "../Resources/mine.png";
+        }
+
+        public void ShowExplosion()
+        {
+            image = "../Resources/explosion.png";
         }
     }
 }
