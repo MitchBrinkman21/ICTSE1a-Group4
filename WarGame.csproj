@@ -65,6 +65,12 @@
     <Compile Include="Model\Mine.cs" />
     <Compile Include="Model\Obstacle.cs" />
     <Compile Include="Controller\Program.cs" />
+    <Compile Include="View\GameField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GameField.Designer.cs">
+      <DependentUpon>GameField.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProgressBarDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <EmbeddedResource Include="View\FormStartGame.resx">
       <DependentUpon>FormStartGame.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GameField.resx">
+      <DependentUpon>GameField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ProgressBarDialog.resx">
       <DependentUpon>ProgressBarDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -108,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgrounddrop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
