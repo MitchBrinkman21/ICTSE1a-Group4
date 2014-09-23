@@ -48,28 +48,28 @@
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Missile.cs" />
+    <Compile Include="View\FormImportLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormImportLevel.Designer.cs">
+      <DependentUpon>FormImportLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormStartGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormStartGame.Designer.cs">
-      <DependentUpon>FormStartGame.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controller\GameEngine.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Mine.cs" />
     <Compile Include="Model\Obstacle.cs" />
     <Compile Include="Controller\Program.cs" />
-    <Compile Include="View\GameField.cs">
+    <Compile Include="View\FormGameField.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\GameField.Designer.cs">
-      <DependentUpon>GameField.cs</DependentUpon>
+    <Compile Include="View\FormGameField.Designer.cs">
+      <DependentUpon>FormGameField.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ProgressBarDialog.cs">
       <SubType>Form</SubType>
@@ -81,14 +81,14 @@
     <Compile Include="Model\Sandbag.cs" />
     <Compile Include="Model\Tree.cs" />
     <Compile Include="Controller\XmlParser.cs" />
+    <EmbeddedResource Include="View\FormImportLevel.resx">
+      <DependentUpon>FormImportLevel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormStartGame.resx">
-      <DependentUpon>FormStartGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GameField.resx">
-      <DependentUpon>GameField.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormGameField.resx">
+      <DependentUpon>FormGameField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProgressBarDialog.resx">
       <DependentUpon>ProgressBarDialog.cs</DependentUpon>

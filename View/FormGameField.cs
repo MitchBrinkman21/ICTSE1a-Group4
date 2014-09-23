@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WarGame.View
 {
-    public partial class GameField : Form
+    public partial class FormGameField : Form
     {
-        public GameField()
+        public FormGameField()
         {
             InitializeComponent();
                

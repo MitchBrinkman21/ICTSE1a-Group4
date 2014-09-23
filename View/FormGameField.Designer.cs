@@ -1,6 +1,6 @@
 ﻿namespace WarGame.View
 {
-    partial class GameField
+    partial class FormGameField
     {
         /// <summary>
         /// Required designer variable.

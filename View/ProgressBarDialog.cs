@@ -21,7 +21,7 @@ namespace WarGame.View
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             updateProgressBar += InitProgressBar;
-
+            this.Show();
         }
 
         public void InitProgressBar(int max, int value)

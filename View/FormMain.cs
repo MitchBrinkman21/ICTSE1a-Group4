@@ -15,9 +15,13 @@ namespace WarGame.View
     public partial class FormMain : Form
     {
 
+        GameEngine gameEngine;
+
         public FormMain()
         {
             InitializeComponent();
+
+            gameEngine = GameEngine.Instance();
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
@@ -29,8 +33,7 @@ namespace WarGame.View
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            FormStartGame formStartGame = new FormStartGame();
-            formStartGame.ShowDialog();
+            gameEngine.StartGame();
         }
 
         public void CreateDirOnDisk() 
@@ -71,11 +74,9 @@ namespace WarGame.View
 
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        private void buttonImportLevel_Click(object sender, EventArgs e)
         {
-
+            gameEngine.ImportLevel();
         }
-
-        // Ignore comment
     }
 }
