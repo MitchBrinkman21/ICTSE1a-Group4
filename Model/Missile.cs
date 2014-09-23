@@ -10,10 +10,12 @@ namespace WarGame.Model
     {
         private int speed {get; set;}
 
-        public Missile(int x, int y, int width, int length)
-            : base(x, y, width, length)
+        public Missile(int x, int y)
+            : base(x, y)
         {
             speed = 10;
+            width = 10;
+            length = 10;
             image = "path to rocket";
         }
 
@@ -43,7 +45,9 @@ namespace WarGame.Model
         
 
         }
-
+        
+        /* Changes current image to the explosion image
+         */
         public void ShowExplosion()
         {
             image = "path to explosion image";

@@ -8,18 +8,17 @@ namespace WarGame.Model
 {
     public abstract class Obstacle
     {
-        public int x;
-        public int y;
-        public int width;
-        public int lenght;
-        public String image;
+        public int x { get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int length { get; set; }
+        public String image { get; set; }
 
-        public Obstacle(int x, int y, int width, int length) 
+        public Obstacle(int x, int y) 
         {
             this.x = x;
             this.y = y;
-            this.width = width;
-            this.lenght = length;
+           
         }
     }
 }

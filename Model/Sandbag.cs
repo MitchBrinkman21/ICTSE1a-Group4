@@ -9,8 +9,8 @@ namespace WarGame.Model
     class Sandbag : Obstacle
     {
 
-        public Sandbag(int x, int y, int width, int length)
-            : base(x, y, width, length)
+        public Sandbag(int x, int y)
+            : base(x, y)
         { 
         }
     }
