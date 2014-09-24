@@ -18,6 +18,15 @@ C:\Users\Wouter\Documents\Visual Studio 2013\Projects\WarGame\obj\Debug\WarGame.
 C:\Users\Sander\Documents\Visual Studio 2013\Projects\Project1\trunk\bin\Debug\WarGame.exe.config
 C:\Users\Sander\Documents\Visual Studio 2013\Projects\Project1\trunk\obj\Debug\WarGame.exe
 C:\Users\Sander\Documents\Visual Studio 2013\Projects\Project1\trunk\obj\Debug\WarGame.pdb
-C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\bin\Debug\WarGame.exe.config
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.csprojResolveAssemblyReference.cache
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.View.FormMain.resources
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.View.FormGameField.resources
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.View.ProgressBarDialog.resources
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.Properties.Resources.resources
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.csproj.GenerateResource.Cache
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.View.FormImportLevel.resources
 C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.exe
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\bin\Debug\WarGame.exe.config
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\bin\Debug\WarGame.exe
+C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\bin\Debug\WarGame.pdb
 C:\Users\Mitch Brinkman\Documents\Visual Studio 2013\Projects\WarGame\trunk\obj\Debug\WarGame.pdb
