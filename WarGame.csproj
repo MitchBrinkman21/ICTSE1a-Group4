@@ -44,10 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ViewController.cs" />
     <Compile Include="Model\Finish.cs" />
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Missile.cs" />
+    <Compile Include="View\FormEndGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormEndGame.Designer.cs">
+      <DependentUpon>FormEndGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormImportLevel.cs">
       <SubType>Form</SubType>
     </Compile>
