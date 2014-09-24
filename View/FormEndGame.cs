@@ -12,8 +12,8 @@ namespace WarGame.View
 {
     public partial class FormEndGame : Form
     {
-        public string[] scorePlayer = new string[2];
-        public FormEndGame(double gameTime)
+        public string namePlayer;
+        public FormEndGame(int gameTime)
         {
             InitializeComponent();
         }
