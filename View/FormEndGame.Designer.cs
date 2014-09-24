@@ -93,9 +93,11 @@
             this.buttonHighscores.TabIndex = 5;
             this.buttonHighscores.Text = "Highscores";
             this.buttonHighscores.UseVisualStyleBackColor = true;
+            this.buttonHighscores.Click += new System.EventHandler(this.buttonHighscores_Click);
             // 
             // buttonOK
             // 
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Location = new System.Drawing.Point(346, 252);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(97, 28);

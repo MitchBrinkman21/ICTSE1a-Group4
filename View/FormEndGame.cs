@@ -12,10 +12,15 @@ namespace WarGame.View
 {
     public partial class FormEndGame : Form
     {
-        public int score;
+        public string[] scorePlayer = new string[2];
         public FormEndGame(double gameTime)
         {
             InitializeComponent();
+        }
+
+        private void buttonHighscores_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
