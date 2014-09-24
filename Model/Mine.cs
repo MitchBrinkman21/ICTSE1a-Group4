@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,27 @@ namespace WarGame.Model
 {
     class Mine : Obstacle
     {
-        int proximity;
+        public int proximity;
+
+
 
         public Mine(int x, int y)
             : base(y, x)
         {
-            image = "../Resources/transparent.png";
+            image = Properties.Settings.Default.ImageTransparent;
+            width = 10;
+            length = 10;
+            rect = new Rectangle(x, y, width, length);
         }
 
         public void ShowObject()
         {
-            image = "../Resources/mine.png";
+            image = Properties.Settings.Default.ImageMine;
         }
 
         public void ShowExplosion()
         {
-            image = "../Resources/explosion.png";
+            image = Properties.Settings.Default.ImageExplosion;
         }
     }
 }

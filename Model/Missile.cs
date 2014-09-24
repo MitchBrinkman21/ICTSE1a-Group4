@@ -11,7 +11,7 @@ namespace WarGame.Model
     class Missile : Obstacle
     {
         private int speed {get; set;}
-        public Rectangle missileRect;
+
 
         public Missile(int x, int y)
             : base(x, y)
@@ -20,7 +20,7 @@ namespace WarGame.Model
             width = 10;
             length = 10;
             image = Properties.Settings.Default.ImageMissile;
-            missileRect = new Rectangle(x, y, width, length);
+            rect = new Rectangle(x, y, width, length);
         }
 
         /* Computes the distance to the player and either moves towards

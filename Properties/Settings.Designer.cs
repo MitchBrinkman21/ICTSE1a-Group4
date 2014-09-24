@@ -38,5 +38,6 @@ namespace WarGame.Properties
         public string ImageSandbag { get; set; }
         public string ImageFinish { get; set; }
         public string ImageExplosion { get; set; }
+        public string ImageTransparent { get; set; }
     }
 }

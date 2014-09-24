@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 
 namespace WarGame.Model
@@ -14,6 +15,7 @@ namespace WarGame.Model
         public int width { get; set; }
         public int length { get; set; }
         public String image { get; set; }
+        public Rectangle rect;
 
         public Obstacle(int x, int y) 
         {
