@@ -19,12 +19,8 @@ namespace WarGame.View
         public FormEndGame(int gameTime)
         {
             InitializeComponent();
-        }
 
-        private void buttonHighscores_Click(object sender, EventArgs e)
-        {
-
-        }
- 
+            labelTime.Text = Convert.ToString(gameTime);
+        } 
     }
 }
