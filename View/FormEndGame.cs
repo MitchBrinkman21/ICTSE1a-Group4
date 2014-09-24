@@ -12,7 +12,10 @@ namespace WarGame.View
 {
     public partial class FormEndGame : Form
     {
-        public string namePlayer;
+        public string namePlayer
+        {
+            get { return textBoxName.Text; }
+        }
         public FormEndGame(int gameTime)
         {
             InitializeComponent();
@@ -22,5 +25,6 @@ namespace WarGame.View
         {
 
         }
+ 
     }
 }
