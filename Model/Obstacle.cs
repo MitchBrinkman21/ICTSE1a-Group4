@@ -14,7 +14,7 @@ namespace WarGame.Model
         public int y { get; set; }
         public int width { get; set; }
         public int length { get; set; }
-        public String image { get; set; }
+        public Bitmap image { get; set; }
         public Rectangle rect;
 
         public Obstacle(int x, int y) 

@@ -31,6 +31,7 @@ namespace WarGame.Properties
 
         public string ImportPath { get; set; }
 
+        public string ImagePlayer { get; set; }
         public string ImageMissile { get; set; }
         public string ImageMud { get; set; }
         public string ImageTree { get; set; }

@@ -15,19 +15,19 @@ namespace WarGame.Model
         public Mine(int x, int y)
             : base(y, x)
         {
-            image = Properties.Settings.Default.ImageTransparent;
+            image = new Bitmap(Properties.Settings.Default.ImageTransparent);
             rect = new Rectangle(x, y, 10, 10);
             rectShow = new Rectangle(x, y, 20, 20);
         }
 
         public void ShowObject()
         {
-            image = Properties.Settings.Default.ImageMine;
+            image = new Bitmap(Properties.Settings.Default.ImageMine);
         }
 
         public void ShowExplosion()
         {
-            image = Properties.Settings.Default.ImageExplosion;
+            image = new Bitmap(Properties.Settings.Default.ImageExplosion);
         }
     }
 }

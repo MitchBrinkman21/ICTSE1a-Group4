@@ -17,7 +17,7 @@ namespace WarGame.Model
             width = 10;
             length = 10;
             rect = new Rectangle(x, y, width, length);
-            image = Properties.Settings.Default.ImageTree;
+            image = new Bitmap(Properties.Settings.Default.ImageTree);
         }
     }
 }

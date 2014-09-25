@@ -15,7 +15,7 @@ namespace WarGame.Model
         public int speed { get; set; }
         public int width { get; set; }
         public int length { get; set; }
-        public string image { get; set; }
+        public Bitmap image { get; set; }
         public Rectangle rect { get; set; }
 
         public Player()
@@ -27,6 +27,7 @@ namespace WarGame.Model
             this.width = 10;
             this.length = 10;
             this.rect = new Rectangle(10, 10, 10, 10);
+            image = new Bitmap(Properties.Settings.Default.ImagePlayer);
         }
 
         public void MovePlayer(int x, int y, int speed)
