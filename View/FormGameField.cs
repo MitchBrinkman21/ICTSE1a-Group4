@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace WarGame.View
         GameEngine gameEngine;
         public Boolean gameOver;
         Graphics Visual;
+        Stopwatch stopWatch = new Stopwatch();
         int x = 20, y = 20;
         public FormGameField()
             
@@ -25,15 +27,14 @@ namespace WarGame.View
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
             panel1.BackColor = color;
             gameEngine = GameEngine.Instance();
-            
-            
+            stopWatch.Start();
+            timer1.Start();
 
             
             if (gameEngine.level.obstacleList != null)
             {
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
-
                     switch (obstacle.ToString())
                     {
                         case "WarGame.Model.Tree":
@@ -59,23 +60,30 @@ namespace WarGame.View
                 }
             }
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+
+        private void start_Click(object sender, EventArgs e)
         {
+            stopWatch.Start();
+        }
+
+        private void stop_Click(object sender, EventArgs e)
+        {
+            stopWatch.Stop();
+        }
+        private void reset_Click(object sender, EventArgs e)
+        {
+            stopWatch = Stopwatch.StartNew();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
             
         }
-        protected override void OnPaint(PaintEventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Panel1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down)
-            {
-               
-               
-
-            }
+            label1.Text = null;
         }
 
     }
