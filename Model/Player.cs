@@ -20,6 +20,7 @@ namespace WarGame.Model
 
         public Player()
         {
+            this.lives = 3;
             this.x = 1;
             this.y = 1;
             this.speed = 10;
