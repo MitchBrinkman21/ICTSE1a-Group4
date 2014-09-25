@@ -62,9 +62,9 @@
             this.labelSubTitle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubTitle1.Location = new System.Drawing.Point(34, 108);
             this.labelSubTitle1.Name = "labelSubTitle1";
-            this.labelSubTitle1.Size = new System.Drawing.Size(123, 25);
+            this.labelSubTitle1.Size = new System.Drawing.Size(110, 25);
             this.labelSubTitle1.TabIndex = 1;
-            this.labelSubTitle1.Text = "Your score:";
+            this.labelSubTitle1.Text = "Your time:";
             // 
             // labelTime
             // 
