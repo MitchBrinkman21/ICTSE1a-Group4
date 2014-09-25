@@ -10,16 +10,14 @@ namespace WarGame.Model
     class Mine : Obstacle
     {
         public int proximity;
-
-
+        public Rectangle rectShow;  //use rectShow to check if the mine should show itself, use rect to check if the mine should explode
 
         public Mine(int x, int y)
             : base(y, x)
         {
             image = Properties.Settings.Default.ImageTransparent;
-            width = 10;
-            length = 10;
-            rect = new Rectangle(x, y, width, length);
+            rect = new Rectangle(x, y, 10, 10);
+            rectShow = new Rectangle(x, y, 20, 20);
         }
 
         public void ShowObject()
