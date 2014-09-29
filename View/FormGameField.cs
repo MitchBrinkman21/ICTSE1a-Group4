@@ -21,7 +21,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         Stopwatch stopWatch = new Stopwatch();
-        Player player = new Player();
+       
        
         public FormGameField()
             
@@ -119,25 +119,18 @@ namespace WarGame.View
         {
             Bitmap imageHealthKitON = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
             Bitmap imageHealthKitOFF = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
-            if (player.lives == 3)
+          
+            if (gameEngine.level.player.lives == 2)
             {
-                imageHealthKit1.Image = imageHealthKitON;
-                imageHealthKit2.Image = imageHealthKitON;
-                imageHealthKit3.Image = imageHealthKitON;
-            }
-            else if (player.lives == 2)
-            {
-                imageHealthKit1.Image = imageHealthKitON;
-                imageHealthKit2.Image = imageHealthKitON;
                 imageHealthKit3.Image = imageHealthKitOFF;
             }
-            else if (player.lives == 1)
+            else if (gameEngine.level.player.lives == 1)
             {
-                imageHealthKit1.Image = imageHealthKitON;
+     
                 imageHealthKit2.Image = imageHealthKitOFF;
                 imageHealthKit3.Image = imageHealthKitOFF;
             }
-            if (player.lives == 0)
+            else if (gameEngine.level.player.lives == 0)
             {
                 imageHealthKit1.Image = imageHealthKitOFF;
                 imageHealthKit2.Image = imageHealthKitOFF;
