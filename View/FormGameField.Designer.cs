@@ -155,12 +155,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1351, 729);
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormGameField";
             this.Text = "GameField";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormGameField_Paint);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonStartPause)).EndInit();

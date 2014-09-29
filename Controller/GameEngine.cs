@@ -48,8 +48,8 @@ namespace WarGame.Controller
             formGameField = new FormGameField();
             formGameField.Show();
 
-            Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
-            thread.Start();
+            //Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
+            //thread.Start();
         }
 
         public void ImportLevel()
