@@ -144,5 +144,17 @@ namespace WarGame.View
                 imageHealthKit3.Image = imageHealthKitOFF;
             }
         }
+
+        private void FormGameField_Paint(object sender, PaintEventArgs e)
+        {
+            if (gameEngine.level.obstacleList != null)
+            {
+                foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                {
+                    e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                    e.Graphics.DrawRectangle(Pens.Transparent, obstacle.rect);
+                }
+            }
+        }
     }
 }

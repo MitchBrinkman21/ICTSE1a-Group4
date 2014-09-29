@@ -16,7 +16,7 @@ namespace WarGame.Model
             width = 10;
             length = 10;
             rect = new Rectangle(x, y, width, length);
-            image = new Bitmap(WarGame.Properties.Resources.player);
+            image = new Bitmap(WarGame.Properties.Resources.player, width, length);
 
         }
     }

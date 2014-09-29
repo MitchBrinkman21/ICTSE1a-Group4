@@ -14,10 +14,10 @@ namespace WarGame.Model
             : base(x, y)
         {
             
-            width = 10;
-            length = 10;
+            width = 50;
+            length = 50;
             rect = new Rectangle(x, y, width, length);
-            image = new Bitmap(WarGame.Properties.Resources.tree);
+            image = new Bitmap(WarGame.Properties.Resources.tree, width, length);
         }
     }
 }
