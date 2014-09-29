@@ -46,7 +46,7 @@ namespace WarGame.Controller
         public void StartGame()
         {
             formGameField = new FormGameField();
-            formGameField.Show();
+            formGameField.ShowDialog();
 
             //Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
             //thread.Start();

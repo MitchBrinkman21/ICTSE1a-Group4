@@ -160,6 +160,7 @@
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FormGameField";
             this.Text = "GameField";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormGameField_Paint);
