@@ -66,8 +66,6 @@ namespace WarGame.View
 
         private void start_Click(object sender, EventArgs e)
         {
-            
-                ResourceManager rm = Resources.ResourceManager;
                 Bitmap pauseImage = new Bitmap(WarGame.Properties.Resources.pause1);
                 Bitmap playImage = new Bitmap(WarGame.Properties.Resources.start1);
           

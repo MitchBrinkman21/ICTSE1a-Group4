@@ -27,7 +27,7 @@ namespace WarGame.Model
             this.width = 10;
             this.length = 10;
             this.rect = new Rectangle(10, 10, 10, 10);
-            image = new Bitmap("..\\Resources\\player.png");
+            image = new Bitmap(WarGame.Properties.Resources.player);
         }
 
         public void MovePlayer(int x, int y, int speed)

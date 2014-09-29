@@ -19,7 +19,7 @@ namespace WarGame.Model
             speed = 10;
             width = 10;
             length = 10;
-            image = new Bitmap("..\\Resources\\missile.png");
+            image = new Bitmap(WarGame.Properties.Resources.missile);
             rect = new Rectangle(x, y, width, length);
         }
 
@@ -54,7 +54,7 @@ namespace WarGame.Model
          */
         public void ShowExplosion()
         {
-            image = new Bitmap("");
+            image = new Bitmap(WarGame.Properties.Resources.explosion);
         }
     }
 }
