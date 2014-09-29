@@ -28,12 +28,9 @@ namespace WarGame.View
         {
             InitializeComponent();
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
-            panel1.BackColor = color;
+            panelMenu.BackColor = color;
             gameEngine = GameEngine.Instance();
             stopWatch.Start();
-            
-
-            
             if (gameEngine.level.obstacleList != null)
             {
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
@@ -65,32 +62,30 @@ namespace WarGame.View
         }
 
 
-        private void start_Click(object sender, EventArgs e)
+        private void buttonStartPause_Click(object sender, EventArgs e)
         {
-                Bitmap pauseImage = new Bitmap(WarGame.Properties.Resources.pause1);
-                Bitmap playImage = new Bitmap(WarGame.Properties.Resources.start1);
-          
-            
-            if (pauzeButton.Tag == "pauze" )
+                Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+            if (buttonStartPause.Tag == "pause" )
             {
-                pauzeButton.Image = playImage;
-                pauzeButton.Tag = "play";
+                buttonStartPause.Image = imagePlay;
+                buttonStartPause.Tag = "play";
                 stopWatch.Stop();
                 
             }
-            else if (pauzeButton.Tag == "play")
+            else if (buttonStartPause.Tag == "play")
             {
-                pauzeButton.Image = pauseImage;
-                pauzeButton.Tag = "pauze";
+                buttonStartPause.Image = imagePause;
+                buttonStartPause.Tag = "pause";
                 stopWatch.Start();
             }
         }
 
-        private void stop_Click(object sender, EventArgs e)
+        private void buttonStop_Click(object sender, EventArgs e)
         {
-            Bitmap playImage = new Bitmap(WarGame.Properties.Resources.start1);
+            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
             stopWatch.Stop();
-            pauzeButton.Image = playImage;
+            buttonStartPause.Image = imagePlay;
             DialogResult result = MessageBox.Show("Are you sure you want to stop the game?", "WarGame", MessageBoxButtons.YesNo);
             switch (result)
             {
@@ -104,13 +99,13 @@ namespace WarGame.View
                         break;       
                     }
             }
-            Bitmap pauseImage = new Bitmap(WarGame.Properties.Resources.pause1);
-            pauzeButton.Image = pauseImage;
-            pauzeButton.Tag = "pauze";
+            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+            buttonStartPause.Image = imagePause;
+            buttonStartPause.Tag = "pause";
             stopWatch.Start();
         }
 
-        private void reset_Click(object sender, EventArgs e)
+        private void buttonReset_Click(object sender, EventArgs e)
         {
             stopWatch = Stopwatch.StartNew();
             
@@ -120,33 +115,33 @@ namespace WarGame.View
             label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
         }
 
-        public void draw_healthkits()
+        public void drawHealthKits()
         {
-            Bitmap healthKit_on = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
-            Bitmap healthKit_off = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
+            Bitmap imageHealthKitON = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
+            Bitmap imageHealthKitOFF = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
             if (player.lives == 3)
             {
-                pictureBox1.Image = healthKit_on;
-                pictureBox2.Image = healthKit_on;
-                pictureBox3.Image = healthKit_on;
+                imageHealthKit1.Image = imageHealthKitON;
+                imageHealthKit2.Image = imageHealthKitON;
+                imageHealthKit3.Image = imageHealthKitON;
             }
             else if (player.lives == 2)
             {
-                pictureBox1.Image = healthKit_on;
-                pictureBox2.Image = healthKit_on;
-                pictureBox3.Image = healthKit_off;
+                imageHealthKit1.Image = imageHealthKitON;
+                imageHealthKit2.Image = imageHealthKitON;
+                imageHealthKit3.Image = imageHealthKitOFF;
             }
             else if (player.lives == 1)
             {
-                pictureBox1.Image = healthKit_on;
-                pictureBox2.Image = healthKit_off;
-                pictureBox3.Image = healthKit_off;
+                imageHealthKit1.Image = imageHealthKitON;
+                imageHealthKit2.Image = imageHealthKitOFF;
+                imageHealthKit3.Image = imageHealthKitOFF;
             }
             if (player.lives == 0)
             {
-                pictureBox1.Image = healthKit_off;
-                pictureBox2.Image = healthKit_off;
-                pictureBox3.Image = healthKit_off;
+                imageHealthKit1.Image = imageHealthKitOFF;
+                imageHealthKit2.Image = imageHealthKitOFF;
+                imageHealthKit3.Image = imageHealthKitOFF;
             }
         }
     }

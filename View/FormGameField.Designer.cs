@@ -29,74 +29,74 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pauzeButton = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonStartPause = new System.Windows.Forms.PictureBox();
+            this.buttonStop = new System.Windows.Forms.PictureBox();
+            this.buttonReset = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageHealthKit3 = new System.Windows.Forms.PictureBox();
+            this.imageHealthKit2 = new System.Windows.Forms.PictureBox();
+            this.imageHealthKit1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pauzeButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonStartPause)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonStop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonReset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelMenu
             // 
-            this.panel1.Controls.Add(this.pauzeButton);
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Controls.Add(this.pictureBox4);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(-1, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1352, 27);
-            this.panel1.TabIndex = 0;
+            this.panelMenu.Controls.Add(this.buttonStartPause);
+            this.panelMenu.Controls.Add(this.buttonStop);
+            this.panelMenu.Controls.Add(this.buttonReset);
+            this.panelMenu.Controls.Add(this.label1);
+            this.panelMenu.Controls.Add(this.imageHealthKit3);
+            this.panelMenu.Controls.Add(this.imageHealthKit2);
+            this.panelMenu.Controls.Add(this.imageHealthKit1);
+            this.panelMenu.Location = new System.Drawing.Point(-1, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(1352, 27);
+            this.panelMenu.TabIndex = 0;
             // 
-            // pauzeButton
+            // buttonStartPause
             // 
-            this.pauzeButton.BackColor = System.Drawing.Color.Transparent;
-            this.pauzeButton.Image = global::WarGame.Properties.Resources.pause1;
-            this.pauzeButton.Location = new System.Drawing.Point(1229, 0);
-            this.pauzeButton.Name = "pauzeButton";
-            this.pauzeButton.Size = new System.Drawing.Size(33, 27);
-            this.pauzeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pauzeButton.TabIndex = 9;
-            this.pauzeButton.TabStop = false;
-            this.pauzeButton.Tag = "pauze";
-            this.pauzeButton.Click += new System.EventHandler(this.start_Click);
+            this.buttonStartPause.BackColor = System.Drawing.Color.Transparent;
+            this.buttonStartPause.Image = global::WarGame.Properties.Resources.pause1;
+            this.buttonStartPause.Location = new System.Drawing.Point(1229, 0);
+            this.buttonStartPause.Name = "buttonStartPause";
+            this.buttonStartPause.Size = new System.Drawing.Size(33, 27);
+            this.buttonStartPause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonStartPause.TabIndex = 9;
+            this.buttonStartPause.TabStop = false;
+            this.buttonStartPause.Tag = "pause";
+            this.buttonStartPause.Click += new System.EventHandler(this.buttonStartPause_Click);
             // 
-            // pictureBox5
+            // buttonStop
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::WarGame.Properties.Resources.stop1;
-            this.pictureBox5.Location = new System.Drawing.Point(1268, 0);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(33, 27);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.stop_Click);
+            this.buttonStop.BackColor = System.Drawing.Color.Transparent;
+            this.buttonStop.Image = global::WarGame.Properties.Resources.stop1;
+            this.buttonStop.Location = new System.Drawing.Point(1268, 0);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(33, 27);
+            this.buttonStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonStop.TabIndex = 8;
+            this.buttonStop.TabStop = false;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
-            // pictureBox4
+            // buttonReset
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::WarGame.Properties.Resources.reset1;
-            this.pictureBox4.Location = new System.Drawing.Point(1307, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(33, 27);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.reset_Click);
+            this.buttonReset.BackColor = System.Drawing.Color.Transparent;
+            this.buttonReset.Image = global::WarGame.Properties.Resources.reset1;
+            this.buttonReset.Location = new System.Drawing.Point(1307, 0);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(33, 27);
+            this.buttonReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonReset.TabIndex = 7;
+            this.buttonReset.TabStop = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // label1
             // 
@@ -109,41 +109,41 @@
             this.label1.Text = "0.0\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox3
+            // imageHealthKit3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.pictureBox3.Location = new System.Drawing.Point(81, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(28, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Tag = "3";
+            this.imageHealthKit3.BackColor = System.Drawing.Color.Transparent;
+            this.imageHealthKit3.Image = global::WarGame.Properties.Resources.first_aid_kit;
+            this.imageHealthKit3.Location = new System.Drawing.Point(81, 0);
+            this.imageHealthKit3.Name = "imageHealthKit3";
+            this.imageHealthKit3.Size = new System.Drawing.Size(28, 23);
+            this.imageHealthKit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageHealthKit3.TabIndex = 3;
+            this.imageHealthKit3.TabStop = false;
+            this.imageHealthKit3.Tag = "3";
             // 
-            // pictureBox2
+            // imageHealthKit2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.pictureBox2.Location = new System.Drawing.Point(47, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 23);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "2";
+            this.imageHealthKit2.BackColor = System.Drawing.Color.Transparent;
+            this.imageHealthKit2.Image = global::WarGame.Properties.Resources.first_aid_kit;
+            this.imageHealthKit2.Location = new System.Drawing.Point(47, 0);
+            this.imageHealthKit2.Name = "imageHealthKit2";
+            this.imageHealthKit2.Size = new System.Drawing.Size(28, 23);
+            this.imageHealthKit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageHealthKit2.TabIndex = 2;
+            this.imageHealthKit2.TabStop = false;
+            this.imageHealthKit2.Tag = "2";
             // 
-            // pictureBox1
+            // imageHealthKit1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "1";
+            this.imageHealthKit1.BackColor = System.Drawing.Color.Transparent;
+            this.imageHealthKit1.Image = global::WarGame.Properties.Resources.first_aid_kit;
+            this.imageHealthKit1.Location = new System.Drawing.Point(13, 0);
+            this.imageHealthKit1.Name = "imageHealthKit1";
+            this.imageHealthKit1.Size = new System.Drawing.Size(28, 23);
+            this.imageHealthKit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageHealthKit1.TabIndex = 1;
+            this.imageHealthKit1.TabStop = false;
+            this.imageHealthKit1.Tag = "1";
             // 
             // timer1
             // 
@@ -157,34 +157,33 @@
             this.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1351, 729);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
             this.Name = "FormGameField";
             this.Text = "GameField";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.healthkit_view);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pauzeButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonStartPause)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonStop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonReset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHealthKit1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.PictureBox imageHealthKit1;
+        private System.Windows.Forms.PictureBox imageHealthKit2;
+        private System.Windows.Forms.PictureBox imageHealthKit3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox pauzeButton;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox buttonStartPause;
+        private System.Windows.Forms.PictureBox buttonStop;
+        private System.Windows.Forms.PictureBox buttonReset;
 
 
 
