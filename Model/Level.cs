@@ -10,6 +10,11 @@ namespace WarGame.Model
     public class Level
     {
         public List<Obstacle> obstacleList = new List<Obstacle>();
-        public Player player = new Player();
+        public Player player;
+
+        public Level()
+        {
+            player = new Player();
+        }
     }
 }

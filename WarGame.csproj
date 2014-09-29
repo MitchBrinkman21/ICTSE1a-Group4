@@ -132,6 +132,31 @@
   <ItemGroup>
     <None Include="Resources\first-aid_kit1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\explosion.png" />
+    <Content Include="Resources\first-aid_kit blacked_out.png" />
+    <Content Include="Resources\first-aid_kit.png" />
+    <Content Include="Resources\mine.png" />
+    <Content Include="Resources\missile.png" />
+    <Content Include="Resources\missilelauncher.png" />
+    <Content Include="Resources\mud.png" />
+    <Content Include="Resources\pause.png" />
+    <Content Include="Resources\pause1.png" />
+    <Content Include="Resources\pauseold.png" />
+    <Content Include="Resources\player.png" />
+    <Content Include="Resources\reset.png" />
+    <Content Include="Resources\reset1.png" />
+    <Content Include="Resources\resetold.png" />
+    <Content Include="Resources\sandbag.png" />
+    <Content Include="Resources\start.png" />
+    <Content Include="Resources\start1.png" />
+    <Content Include="Resources\startold.png" />
+    <Content Include="Resources\stop.png" />
+    <Content Include="Resources\stop1.png" />
+    <Content Include="Resources\stopold.png" />
+    <Content Include="Resources\transparent.png" />
+    <Content Include="Resources\tree.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
