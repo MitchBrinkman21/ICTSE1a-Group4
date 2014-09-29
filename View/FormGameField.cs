@@ -115,7 +115,7 @@ namespace WarGame.View
             label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
         }
 
-        public void drawHealthKits()
+        public void DrawHealthKits()
         {
             Bitmap imageHealthKitON = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
             Bitmap imageHealthKitOFF = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
