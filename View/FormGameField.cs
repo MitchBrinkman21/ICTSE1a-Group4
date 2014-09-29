@@ -5,11 +5,13 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarGame.Controller;
 using WarGame.Model;
+using WarGame.Properties;
 
 namespace WarGame.View
 {
@@ -19,7 +21,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         Stopwatch stopWatch = new Stopwatch();
-        int x = 20, y = 20;
+       
         public FormGameField()
             
         {
@@ -64,27 +66,57 @@ namespace WarGame.View
 
         private void start_Click(object sender, EventArgs e)
         {
-            stopWatch.Start();
+            
+                ResourceManager rm = Resources.ResourceManager;
+                Bitmap pauseImage = new Bitmap(WarGame.Properties.Resources.pause1);
+                Bitmap playImage = new Bitmap(WarGame.Properties.Resources.start1);
+          
+            
+            if (pauzeButton.Tag == "pauze" )
+            {
+                pauzeButton.Image = playImage;
+                pauzeButton.Tag = "play";
+                stopWatch.Stop();
+                
+            }
+            else if (pauzeButton.Tag == "play")
+            {
+                pauzeButton.Image = pauseImage;
+                pauzeButton.Tag = "pauze";
+                stopWatch.Start();
+            }
         }
 
         private void stop_Click(object sender, EventArgs e)
         {
+            Bitmap playImage = new Bitmap(WarGame.Properties.Resources.start1);
             stopWatch.Stop();
+            pauzeButton.Image = playImage;
+            DialogResult result = MessageBox.Show("Are you sure you want to stop the game?", "WarGame", MessageBoxButtons.YesNo);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    {
+                        this.Text = "[YES]";
+                        this.Close();
+                        break;
+                    }
+                case DialogResult.No:
+                    {
+                        this.Text = "[NO]";
+                        
+                        break;
+                    }
+            }
         }
+
         private void reset_Click(object sender, EventArgs e)
         {
             stopWatch = Stopwatch.StartNew();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
-            
+            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString() + ":" + stopWatch.Elapsed.Milliseconds.ToString();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = null;
-        }
-
     }
 }
