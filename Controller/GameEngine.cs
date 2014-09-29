@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -26,6 +27,7 @@ namespace WarGame.Controller
         private String namePlayer;
 
         public bool LevelImported = false;
+        FormGameField formGameField;
 
         public static GameEngine Instance()
         {
@@ -43,8 +45,11 @@ namespace WarGame.Controller
 
         public void StartGame()
         {
-            FormGameField formGameField = new FormGameField();
+            formGameField = new FormGameField();
             formGameField.Show();
+
+            Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
+            thread.Start();
         }
 
         public void ImportLevel()
@@ -66,6 +71,24 @@ namespace WarGame.Controller
             
             formImportLevel.Dispose();
         }
+
+        public void GameLoopThreadFunction()
+        {
+            try
+            {
+                while (true)
+                {
+                    
+
+                    Thread.Sleep(39);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error in execute thread.");
+            }
+
+        }
         
         public void HitDetect()
         {
@@ -73,10 +96,36 @@ namespace WarGame.Controller
             Rectangle playerRect = player.rect;
             int playerX = player.x;
             int playerY = player.y;
-            int lives = player.lives;
 
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
             {
+                if (missile.rect.IntersectsWith(obstacle.rect))
+                {
+                    switch (obstacle.ToString())
+                    {
+                        case "WarGame.Model.Mine":
+                            Console.WriteLine("Missile flies over mine...");
+                            break;
+                        case "WarGame.Model.Finish":
+                            Console.WriteLine("Missile flies over finish...");
+                            break;
+                        case "WarGame.Model.Mud":
+                            Console.WriteLine("Missile flies over mud ...");
+                            break;
+                        default:
+                            Console.WriteLine("missile hit object");
+                            playerRect.Location = new Point(player.x, player.y); // Location after hit...
+                            missile.ShowExplosion();
+                            missileCounter--;
+
+                            if (player.lives == 0)
+                                EndGame();
+                            else
+                                player.DecreaseLive();
+                            break;
+                    }                   
+                }
+
                 if (obstacle.rect.IntersectsWith(playerRect))
                 {
                     switch (obstacle.ToString())
@@ -87,19 +136,45 @@ namespace WarGame.Controller
                         case "WarGame.Model.Sandbag":
                             Console.WriteLine("Player hit tree...");
                             break;
-                        case "WarGame.Model.Finish": 
-                            Console.WriteLine("Player at finish..."); 
-                            EndGame(); 
+                        case "WarGame.Model.Finish":
+                            Console.WriteLine("Player at finish...");
+                            EndGame();
                             break;
                         case "WarGame.Model.Missile":
                             Console.WriteLine("Player hit missile");
                             playerRect.Location = new Point(player.x, player.y); // Location after hit...
                             missile.ShowExplosion();
                             missileCounter--;
+
+                            if (player.lives == 0)
+                                EndGame();
+                            else
+                            {
+                                player.DecreaseLive();
+                                formGameField.DrawHealthKits();
+                            }
+                                
                             break;
                         case "WarGame.Model.Mine":
+                            Console.WriteLine("Player hit missile");
+                            playerRect.Location = new Point(player.x, player.y);
 
+                            Mine mine = obstacle as Mine;
+                            mine.ShowExplosion();
+
+                            if (player.lives == 0)
+                            {
+                                EndGame();
+                            }                          
+                            else
+                            {
+                                player.DecreaseLive();
+                                formGameField.DrawHealthKits();
+                            }
+                                
                             break;
+
+                            gameEngine.level.obstacleList.Remove(obstacle);
                         default:
                             break;
                     }
