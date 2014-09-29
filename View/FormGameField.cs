@@ -21,6 +21,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         Stopwatch stopWatch = new Stopwatch();
+        Player player = new Player();
        
         public FormGameField()
             
@@ -30,35 +31,35 @@ namespace WarGame.View
             panel1.BackColor = color;
             gameEngine = GameEngine.Instance();
             stopWatch.Start();
-            timer1.Start();
+            
 
             
             if (gameEngine.level.obstacleList != null)
             {
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
-                    switch (obstacle.ToString())
-                    {
-                        case "WarGame.Model.Tree":
-                            //Bitmap Tree = new Bitmap(obstacle.image);
-                            //add.rectangleList();
-                            break;
-                        case "WarGame.Model.Mine":
-                            MessageBox.Show("Mine");
-                            break;
-                        case "WarGame.Model.Missile":
-                            MessageBox.Show("Missile");
-                            break;
-                        case "WarGame.Model.Mud":
-                            MessageBox.Show("Mud");
-                            break;
-                        case "WarGame.Model.Finish":
-                            MessageBox.Show("Finish");
-                            break;
-                        case "WarGame.Model.Sandbag":
-                            MessageBox.Show("Sandbag");
-                            break;
-                    }
+                    //switch (obstacle.ToString())
+                    //{
+                    //    case "WarGame.Model.Tree":
+                    //        //Bitmap Tree = new Bitmap(obstacle.image);
+                    //        //add.rectangleList();
+                    //        break;
+                    //    case "WarGame.Model.Mine":
+                    //        MessageBox.Show("Mine");
+                    //        break;
+                    //    case "WarGame.Model.Missile":
+                    //        MessageBox.Show("Missile");
+                    //        break;
+                    //    case "WarGame.Model.Mud":
+                    //        MessageBox.Show("Mud");
+                    //        break;
+                    //    case "WarGame.Model.Finish":
+                    //        MessageBox.Show("Finish");
+                    //        break;
+                    //    case "WarGame.Model.Sandbag":
+                    //        MessageBox.Show("Sandbag");
+                    //        break;
+                    //}
                 }
             }
         }
@@ -95,26 +96,34 @@ namespace WarGame.View
             {
                 case DialogResult.Yes:
                     {
-                        this.Text = "[YES]";
                         this.Close();
                         break;
                     }
                 case DialogResult.No:
-                    {
-                        this.Text = "[NO]";
-                        
-                        break;
+                    {  
+                        break;       
                     }
             }
+            Bitmap pauseImage = new Bitmap(WarGame.Properties.Resources.pause1);
+            pauzeButton.Image = pauseImage;
+            pauzeButton.Tag = "pauze";
+            stopWatch.Start();
         }
 
         private void reset_Click(object sender, EventArgs e)
         {
             stopWatch = Stopwatch.StartNew();
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString() + ":" + stopWatch.Elapsed.Milliseconds.ToString();
+            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
+        }
+     
+
+        private void healthkit_view(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }
