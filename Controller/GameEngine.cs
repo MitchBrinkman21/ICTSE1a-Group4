@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,6 +42,8 @@ namespace WarGame.Controller
         {
             formMainEvents += StartGame;
             formMainEvents += ImportLevel;
+            SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
+            sound.PlayLooping();
         }
 
         public void StartGame()
