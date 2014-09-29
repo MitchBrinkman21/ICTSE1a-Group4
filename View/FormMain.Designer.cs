@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button buttonStart;
-            System.Windows.Forms.Button buttonImportLevel;
+            this.components = new System.ComponentModel.Container();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonImportLevel = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
-            buttonStart = new System.Windows.Forms.Button();
-            buttonImportLevel = new System.Windows.Forms.Button();
+            this.timerImportState = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // buttonStart
-            // 
-            buttonStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonStart.Location = new System.Drawing.Point(49, 41);
-            buttonStart.Name = "buttonStart";
-            buttonStart.Size = new System.Drawing.Size(653, 119);
-            buttonStart.TabIndex = 0;
-            buttonStart.Text = "Start Game";
-            buttonStart.UseVisualStyleBackColor = true;
-            buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // buttonExit
             // 
@@ -74,17 +62,34 @@
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
+            // buttonStart
+            // 
+            this.buttonStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStart.Location = new System.Drawing.Point(49, 41);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(653, 119);
+            this.buttonStart.TabIndex = 0;
+            this.buttonStart.Text = "Start Game";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
             // buttonImportLevel
             // 
-            buttonImportLevel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            buttonImportLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonImportLevel.Location = new System.Drawing.Point(49, 189);
-            buttonImportLevel.Name = "buttonImportLevel";
-            buttonImportLevel.Size = new System.Drawing.Size(653, 119);
-            buttonImportLevel.TabIndex = 3;
-            buttonImportLevel.Text = "Import Level";
-            buttonImportLevel.UseVisualStyleBackColor = true;
-            buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
+            this.buttonImportLevel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonImportLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImportLevel.Location = new System.Drawing.Point(49, 189);
+            this.buttonImportLevel.Name = "buttonImportLevel";
+            this.buttonImportLevel.Size = new System.Drawing.Size(653, 119);
+            this.buttonImportLevel.TabIndex = 3;
+            this.buttonImportLevel.Text = "Import Level";
+            this.buttonImportLevel.UseVisualStyleBackColor = true;
+            this.buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
+            // 
+            // timerImportState
+            // 
+            this.timerImportState.Interval = 600;
+            this.timerImportState.Tick += new System.EventHandler(this.timerImportState_Tick);
             // 
             // FormMain
             // 
@@ -98,13 +103,17 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormMain";
             this.Text = "WarGame";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.Button buttonImportLevel;
+        private System.Windows.Forms.Timer timerImportState;
     }
 }

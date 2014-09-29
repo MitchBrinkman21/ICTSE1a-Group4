@@ -27,6 +27,8 @@ namespace WarGame.View
             this.WindowState = FormWindowState.Maximized;
             this.Show();
 
+            timerImportState.Enabled = true;
+
             // Create a directory on C: disk.
             CreateDirOnDisk();
         }
@@ -34,7 +36,6 @@ namespace WarGame.View
         private void buttonStart_Click(object sender, EventArgs e)
         {
             gameEngine.StartGame();
-
         }
 
         public void CreateDirOnDisk() 
@@ -78,6 +79,19 @@ namespace WarGame.View
         private void buttonImportLevel_Click(object sender, EventArgs e)
         {
             gameEngine.ImportLevel();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            buttonStart.Enabled = !buttonStart.Enabled;
+        }
+
+        private void timerImportState_Tick(object sender, EventArgs e)
+        {
+            if(gameEngine.LevelImported == true)
+            {
+                buttonStart.Enabled = !buttonStart.Enabled;
+            }
         }
     }
 }

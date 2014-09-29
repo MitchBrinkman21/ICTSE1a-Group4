@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WarGame.Model
 {
-    class Missile : Obstacle
+    public class Missile : Obstacle
     {
         private int speed {get; set;}
 
@@ -19,7 +19,7 @@ namespace WarGame.Model
             speed = 10;
             width = 10;
             length = 10;
-            image = new Bitmap(Properties.Settings.Default.ImageMissile);
+            image = new Bitmap("..\\Resources\\missile.png");
             rect = new Rectangle(x, y, width, length);
         }
 
@@ -54,7 +54,7 @@ namespace WarGame.Model
          */
         public void ShowExplosion()
         {
-            image = new Bitmap(Properties.Settings.Default.ImageExplosion);
+            image = new Bitmap("");
         }
     }
 }

@@ -40,22 +40,27 @@ namespace WarGame.Controller
                     case "tree":
                         Tree tree = new Tree(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(tree);
+                        Console.WriteLine("Tree added to list.");
                         break;
                     case "sandbag":
                         Sandbag sandbag = new Sandbag(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(sandbag);
+                        Console.WriteLine("Tree added to list.");
                         break;
                     case "mine":
                         Mine mine = new Mine(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mine);
+                        Console.WriteLine("Tree added to list.");
                         break;
                     case "mud":
                         Mud mud = new Mud(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mud);
+                        Console.WriteLine("Tree added to list.");
                         break;
                     case "finish":
                         Finish finish = new Finish(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(finish);
+                        Console.WriteLine("Tree added to list.");
                         break;
                     default:
                         break;
@@ -63,6 +68,8 @@ namespace WarGame.Controller
                 progressBarDialog.updateProgressBar(xmlnode.Count, i+1);
             }
             progressBarDialog.Close();
+
+            gameEngine.LevelImported = true;
         }
 
         public void ParseScore(XmlDocument doc) 
