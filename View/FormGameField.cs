@@ -119,11 +119,35 @@ namespace WarGame.View
         {
             label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
         }
-     
 
-        private void healthkit_view(object sender, KeyEventArgs e)
+        public void draw_healthkits()
         {
-
+            Bitmap healthKit_on = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
+            Bitmap healthKit_off = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
+            if (player.lives == 3)
+            {
+                pictureBox1.Image = healthKit_on;
+                pictureBox2.Image = healthKit_on;
+                pictureBox3.Image = healthKit_on;
+            }
+            else if (player.lives == 2)
+            {
+                pictureBox1.Image = healthKit_on;
+                pictureBox2.Image = healthKit_on;
+                pictureBox3.Image = healthKit_off;
+            }
+            else if (player.lives == 1)
+            {
+                pictureBox1.Image = healthKit_on;
+                pictureBox2.Image = healthKit_off;
+                pictureBox3.Image = healthKit_off;
+            }
+            if (player.lives == 0)
+            {
+                pictureBox1.Image = healthKit_off;
+                pictureBox2.Image = healthKit_off;
+                pictureBox3.Image = healthKit_off;
+            }
         }
     }
 }

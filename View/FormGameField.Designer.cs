@@ -161,6 +161,7 @@
             this.DoubleBuffered = true;
             this.Name = "FormGameField";
             this.Text = "GameField";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.healthkit_view);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pauzeButton)).EndInit();
