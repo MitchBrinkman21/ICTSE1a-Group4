@@ -30,9 +30,9 @@ namespace WarGame.View
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
             panelMenu.BackColor = color;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
+            this.StartPosition = FormStartPosition.CenterScreen;
             gameEngine = GameEngine.Instance();
             stopWatch.Start();
         }
