@@ -34,6 +34,8 @@
             this.timerImportState = new System.Windows.Forms.Timer(this.components);
             this.buttonHighscores = new System.Windows.Forms.Button();
             this.checkboxDevMode = new System.Windows.Forms.CheckBox();
+            this.labelGameName = new System.Windows.Forms.Label();
+            this.labelGameVersion = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonImportLevel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,7 +46,7 @@
             this.buttonExit.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold);
             this.buttonExit.Location = new System.Drawing.Point(280, 346);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(135, 40);
+            this.buttonExit.Size = new System.Drawing.Size(145, 40);
             this.buttonExit.TabIndex = 1;
             this.buttonExit.Text = "Quit";
             this.buttonExit.UseMnemonic = false;
@@ -57,7 +59,7 @@
             this.buttonHelp.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold);
             this.buttonHelp.Location = new System.Drawing.Point(280, 283);
             this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(135, 40);
+            this.buttonHelp.Size = new System.Drawing.Size(145, 40);
             this.buttonHelp.TabIndex = 2;
             this.buttonHelp.Text = "Help";
             this.buttonHelp.UseMnemonic = false;
@@ -75,7 +77,7 @@
             this.buttonHighscores.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold);
             this.buttonHighscores.Location = new System.Drawing.Point(280, 220);
             this.buttonHighscores.Name = "buttonHighscores";
-            this.buttonHighscores.Size = new System.Drawing.Size(135, 40);
+            this.buttonHighscores.Size = new System.Drawing.Size(145, 40);
             this.buttonHighscores.TabIndex = 4;
             this.buttonHighscores.Text = "Highscores";
             this.buttonHighscores.UseVisualStyleBackColor = false;
@@ -92,13 +94,26 @@
             this.checkboxDevMode.Text = "Developer mode";
             this.checkboxDevMode.UseVisualStyleBackColor = false;
             // 
+            // labelGameName
+            // 
+            this.labelGameName.AutoSize = true;
+            this.labelGameName.BackColor = System.Drawing.Color.Transparent;
+            this.labelGameName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelGameName.Font = new System.Drawing.Font("Stencil", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelGameName.Location = new System.Drawing.Point(529, 9);
+            this.labelGameName.Name = "labelGameName";
+            this.labelGameName.Size = new System.Drawing.Size(155, 36);
+            this.labelGameName.TabIndex = 6;
+            this.labelGameName.Text = "WarGame";
+            // 
             // buttonStart
             // 
             this.buttonStart.BackColor = System.Drawing.Color.Transparent;
             this.buttonStart.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold);
             this.buttonStart.Location = new System.Drawing.Point(280, 94);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(135, 40);
+            this.buttonStart.Size = new System.Drawing.Size(145, 40);
             this.buttonStart.TabIndex = 0;
             this.buttonStart.Text = "Start Game";
             this.buttonStart.UseVisualStyleBackColor = false;
@@ -110,11 +125,23 @@
             this.buttonImportLevel.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold);
             this.buttonImportLevel.Location = new System.Drawing.Point(280, 157);
             this.buttonImportLevel.Name = "buttonImportLevel";
-            this.buttonImportLevel.Size = new System.Drawing.Size(135, 40);
+            this.buttonImportLevel.Size = new System.Drawing.Size(145, 40);
             this.buttonImportLevel.TabIndex = 3;
-            this.buttonImportLevel.Text = "Import Level";
+            this.buttonImportLevel.Text = "Import level";
             this.buttonImportLevel.UseVisualStyleBackColor = false;
             this.buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
+            // 
+            // labelGameVersion
+            // 
+            this.labelGameVersion.AutoSize = true;
+            this.labelGameVersion.BackColor = System.Drawing.Color.Transparent;
+            this.labelGameVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold);
+            this.labelGameVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelGameVersion.Location = new System.Drawing.Point(606, 406);
+            this.labelGameVersion.Name = "labelGameVersion";
+            this.labelGameVersion.Size = new System.Drawing.Size(76, 12);
+            this.labelGameVersion.TabIndex = 7;
+            this.labelGameVersion.Text = "Ver. 1.0.1-RC";
             // 
             // FormMain
             // 
@@ -123,6 +150,8 @@
             this.BackgroundImage = global::WarGame.Properties.Resources.Mainbackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(694, 431);
+            this.Controls.Add(this.labelGameVersion);
+            this.Controls.Add(this.labelGameName);
             this.Controls.Add(this.checkboxDevMode);
             this.Controls.Add(this.buttonHighscores);
             this.Controls.Add(buttonImportLevel);
@@ -151,5 +180,7 @@
         private System.Windows.Forms.Timer timerImportState;
         private System.Windows.Forms.Button buttonHighscores;
         private System.Windows.Forms.CheckBox checkboxDevMode;
+        private System.Windows.Forms.Label labelGameName;
+        private System.Windows.Forms.Label labelGameVersion;
     }
 }
