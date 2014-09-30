@@ -32,6 +32,10 @@ namespace WarGame.View
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
+            buttonStop.Location = new Point(1268, 0);
+            buttonStartPause.Location = new Point(1229, 0);
+            buttonReset.Location = new Point(1307, 0);
+            label1.Location = new Point(672, 9);
             this.StartPosition = FormStartPosition.CenterScreen;
             gameEngine = GameEngine.Instance();
             stopWatch.Start();
