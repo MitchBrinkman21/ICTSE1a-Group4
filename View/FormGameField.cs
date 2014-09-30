@@ -21,7 +21,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         Stopwatch stopWatch = new Stopwatch();
-       
+        Pen p = new Pen(System.Drawing.Color.Red, 3);
        
         public FormGameField()
             
@@ -148,6 +148,17 @@ namespace WarGame.View
                     e.Graphics.DrawRectangle(Pens.Transparent, obstacle.rect);
                 }
             }
+            e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);
+        }
+
+        private void FormGameField_KeyDown(object sender, KeyEventArgs e)
+        {
+            gameEngine.PressKey(e);
+        }
+
+        private void FormGameField_KeyUp(object sender, KeyEventArgs e)
+        {
+            gameEngine.ReleaseKey(e);
         }
     }
 }
