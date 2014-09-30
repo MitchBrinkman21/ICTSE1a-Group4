@@ -13,7 +13,7 @@ namespace WarGame.Model
         public Rectangle rectShow;  //use rectShow to check if the mine should show itself, use rect to check if the mine should explode
 
         public Mine(int x, int y)
-            : base(y, x)
+            : base(x, y)
         {
             width = 25;
             length = 25;

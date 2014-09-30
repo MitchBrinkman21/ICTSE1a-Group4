@@ -14,7 +14,7 @@ namespace WarGame.Model
         public double y { get; set; }
         public int speed { get; set; }
         public int width { get; set; }
-        public int length { get; set; }
+        public int height { get; set; }
         public Bitmap image { get; set; }
         public Rectangle rect;
 
@@ -23,10 +23,10 @@ namespace WarGame.Model
             this.lives = 3;
             this.x = 100;
             this.y = 100;
-            this.speed = 3;
+            this.speed = 10;
             this.width = 10;
-            this.length = 10;
-            this.rect = new Rectangle((int)x, (int)y, width, length);
+            this.height = 10;
+            this.rect = new Rectangle((int)x, (int)y, width, height);
             image = new Bitmap(WarGame.Properties.Resources.player);
         }
 

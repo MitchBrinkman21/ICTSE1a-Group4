@@ -30,6 +30,8 @@ namespace WarGame.Controller
         public bool LevelImported = false;
         FormGameField formGameField;
 
+        private bool up, down, left, right;
+
         public static GameEngine Instance()
         {
             if (gameEngine == null)
@@ -44,15 +46,19 @@ namespace WarGame.Controller
             formMainEvents += ImportLevel;
             SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
             sound.PlayLooping();
+            up = false;
+            down = false;
+            left = false;
+            right = false;
         }
 
         public void StartGame()
         {
             formGameField = new FormGameField();
-            formGameField.ShowDialog();
+            formGameField.Show();
 
-            //Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
-            //thread.Start();
+            Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
+            thread.Start();
         }
 
         public void ImportLevel()
@@ -81,9 +87,16 @@ namespace WarGame.Controller
             {
                 while (true)
                 {
-                    
-
-                    Thread.Sleep(39);
+                    if (up || down || right || left)
+                    {
+                        move();
+                        formGameField.Invoke((MethodInvoker)delegate
+                        {
+                            formGameField.Refresh();
+                        });
+                    }
+                    HitDetect();
+                    Thread.Sleep(5);
                 }
             }
             catch (Exception ex)
@@ -97,37 +110,37 @@ namespace WarGame.Controller
         {
             Player player = level.player;
             Rectangle playerRect = player.rect;
-            int playerX = player.x;
-            int playerY = player.y;
+            int playerX = (int)player.x;
+            int playerY = (int)player.y;
 
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
             {
-                if (missile.rect.IntersectsWith(obstacle.rect))
-                {
-                    switch (obstacle.ToString())
-                    {
-                        case "WarGame.Model.Mine":
-                            Console.WriteLine("Missile flies over mine...");
-                            break;
-                        case "WarGame.Model.Finish":
-                            Console.WriteLine("Missile flies over finish...");
-                            break;
-                        case "WarGame.Model.Mud":
-                            Console.WriteLine("Missile flies over mud ...");
-                            break;
-                        default:
-                            Console.WriteLine("missile hit object");
-                            playerRect.Location = new Point(player.x, player.y); // Location after hit...
-                            missile.ShowExplosion();
-                            missileCounter--;
+                //if (missile.rect.IntersectsWith(obstacle.rect))
+                //{
+                //    switch (obstacle.ToString())
+                //    {
+                //        case "WarGame.Model.Mine":
+                //            Console.WriteLine("Missile flies over mine...");
+                //            break;
+                //        case "WarGame.Model.Finish":
+                //            Console.WriteLine("Missile flies over finish...");
+                //            break;
+                //        case "WarGame.Model.Mud":
+                //            Console.WriteLine("Missile flies over mud ...");
+                //            break;
+                //        default:
+                //            Console.WriteLine("missile hit object");
+                //            playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
+                //            missile.ShowExplosion();
+                //            missileCounter--;
 
-                            if (player.lives == 0)
-                                EndGame();
-                            else
-                                player.DecreaseLive();
-                            break;
-                    }                   
-                }
+                //            if (player.lives == 0)
+                //                EndGame();
+                //            else
+                //                player.DecreaseLive();
+                //            break;
+                //    }                   
+                //}
 
                 if (obstacle.rect.IntersectsWith(playerRect))
                 {
@@ -137,7 +150,7 @@ namespace WarGame.Controller
                             Console.WriteLine("Player hit tree...");
                             break;
                         case "WarGame.Model.Sandbag":
-                            Console.WriteLine("Player hit tree...");
+                            Console.WriteLine("Player hit sandbag...");
                             break;
                         case "WarGame.Model.Finish":
                             Console.WriteLine("Player at finish...");
@@ -145,7 +158,7 @@ namespace WarGame.Controller
                             break;
                         case "WarGame.Model.Missile":
                             Console.WriteLine("Player hit missile");
-                            playerRect.Location = new Point(player.x, player.y); // Location after hit...
+                            playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
                             missile.ShowExplosion();
                             missileCounter--;
 
@@ -159,25 +172,23 @@ namespace WarGame.Controller
                                 
                             break;
                         case "WarGame.Model.Mine":
-                            Console.WriteLine("Player hit missile");
-                            playerRect.Location = new Point(player.x, player.y);
+                            Console.WriteLine("Player hit mine");
+                            
 
                             Mine mine = obstacle as Mine;
                             mine.ShowExplosion();
 
+                            player.DecreaseLive();
+                            formGameField.DrawHealthKits();
+
                             if (player.lives == 0)
                             {
                                 EndGame();
-                            }                          
-                            else
-                            {
-                                player.DecreaseLive();
-                                formGameField.DrawHealthKits();
                             }
-                                
-                            break;
-
-                            gameEngine.level.obstacleList.Remove(obstacle);
+                            mine = null;
+                            player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
+                            //gameEngine.level.obstacleList.Remove(obstacle); 
+                            break;                           
                         default:
                             break;
                     }
@@ -204,6 +215,125 @@ namespace WarGame.Controller
             }
              
             // ToDo: Create class XmlBuilder. Build a xml file and store on disk.
+        }
+
+        public void PressKey(KeyEventArgs kea)
+        {
+            switch (kea.KeyData)
+            {
+                case Keys.Up:
+                    up = true;
+                    break;
+                case Keys.Down:
+                    down = true;
+                    break;
+                case Keys.Left:
+                    left = true;
+                    break;
+                case Keys.Right:
+                    right = true;
+                    break;
+
+            }
+        }
+
+        public void ReleaseKey(KeyEventArgs kea)
+        {
+            switch (kea.KeyData)
+            {
+                case Keys.Up:
+                    up = false;
+                    break;
+                case Keys.Down:
+                    down = false;
+                    break;
+                case Keys.Left:
+                    left = false;
+                    break;
+                case Keys.Right:
+                    right = false;
+                    break;
+            }
+        }
+
+        public void move()
+        {
+            double x = gameEngine.level.player.x;
+            double y = gameEngine.level.player.y;
+            int speed = gameEngine.level.player.speed;
+            int formwidth = formGameField.Width;
+            int formheight = formGameField.Height;
+            int width = gameEngine.level.player.width;
+            int height = gameEngine.level.player.height;
+            if (up || down || left || right)
+            {
+                if (up)
+                {
+                    if (left || right)
+                    {
+                        y -= speed * (1 / Math.Sqrt(2));
+                    }
+                    else
+                    {
+                        y -= speed;
+                    }
+                }
+                if (down)
+                {
+
+                    if (left || right)
+                    {
+                        y += speed * (1 / Math.Sqrt(2));
+                    }
+                    else
+                    {
+                        y += speed;
+                    }
+                }
+                if (left)
+                {
+                    if (up || down)
+                    {
+                        x -= speed * (1 / Math.Sqrt(2));
+                    }
+                    else
+                    {
+                        x -= speed;
+                    }
+                }
+                if (right)
+                {
+                    if (up || down)
+                    {
+                        x += speed * (1 / Math.Sqrt(2));
+                    }
+                    else
+                    {
+                        x += speed;
+                    }
+                }
+                if (x + width > formwidth)
+                {
+                    x = formwidth - width;
+                }
+                if (x < 0)
+                {
+                    x = 0;
+                }
+                if (y > formheight - height)
+                {
+                    y = formheight - height;
+                }
+                if (y < 0)
+                {
+                    y = 0;
+                }
+
+
+                gameEngine.level.player.MovePlayer(x, y, speed);
+
+
+            }
         }
     }
 }
