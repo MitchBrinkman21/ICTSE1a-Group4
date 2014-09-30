@@ -10,7 +10,7 @@ namespace WarGame.Model
 {
     public class Missile : Obstacle
     {
-        private int speed {get; set;}
+        public int speed {get; set;}
 
 
         public Missile(int x, int y)

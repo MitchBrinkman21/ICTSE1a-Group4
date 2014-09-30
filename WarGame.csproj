@@ -49,6 +49,12 @@
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Missile.cs" />
+    <Compile Include="View\FormDevMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDevMode.Designer.cs">
+      <DependentUpon>FormDevMode.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormEndGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Model\Sandbag.cs" />
     <Compile Include="Model\Tree.cs" />
     <Compile Include="Controller\XmlParser.cs" />
+    <EmbeddedResource Include="View\FormDevMode.resx">
+      <DependentUpon>FormDevMode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormImportLevel.resx">
       <DependentUpon>FormImportLevel.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,7 +139,29 @@
     <None Include="Resources\backgrounddrop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\first-aid_kit1.png" />
+    <Content Include="Resources\explosion.png" />
+    <Content Include="Resources\first-aid_kit blacked_out.png" />
+    <Content Include="Resources\first-aid_kit.png" />
+    <Content Include="Resources\mine.png" />
+    <Content Include="Resources\missile.png" />
+    <Content Include="Resources\missilelauncher.png" />
+    <Content Include="Resources\mud.png" />
+    <Content Include="Resources\pause.png" />
+    <Content Include="Resources\pause1.png" />
+    <Content Include="Resources\pauseold.png" />
+    <Content Include="Resources\player.png" />
+    <Content Include="Resources\reset.png" />
+    <Content Include="Resources\reset1.png" />
+    <Content Include="Resources\resetold.png" />
+    <Content Include="Resources\sandbag.png" />
+    <Content Include="Resources\start.png" />
+    <Content Include="Resources\start1.png" />
+    <Content Include="Resources\startold.png" />
+    <Content Include="Resources\stop.png" />
+    <Content Include="Resources\stop1.png" />
+    <Content Include="Resources\stopold.png" />
+    <Content Include="Resources\transparent.png" />
+    <Content Include="Resources\tree.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\explosion.png" />
