@@ -29,36 +29,12 @@ namespace WarGame.View
             InitializeComponent();
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
             panelMenu.BackColor = color;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1366, 768);
+            this.MinimumSize = new Size(1366, 768);
             gameEngine = GameEngine.Instance();
             stopWatch.Start();
-            if (gameEngine.level.obstacleList != null)
-            {
-                foreach (Obstacle obstacle in gameEngine.level.obstacleList)
-                {
-                    //switch (obstacle.ToString())
-                    //{
-                    //    case "WarGame.Model.Tree":
-                    //        //Bitmap Tree = new Bitmap(obstacle.image);
-                    //        //add.rectangleList();
-                    //        break;
-                    //    case "WarGame.Model.Mine":
-                    //        MessageBox.Show("Mine");
-                    //        break;
-                    //    case "WarGame.Model.Missile":
-                    //        MessageBox.Show("Missile");
-                    //        break;
-                    //    case "WarGame.Model.Mud":
-                    //        MessageBox.Show("Mud");
-                    //        break;
-                    //    case "WarGame.Model.Finish":
-                    //        MessageBox.Show("Finish");
-                    //        break;
-                    //    case "WarGame.Model.Sandbag":
-                    //        MessageBox.Show("Sandbag");
-                    //        break;
-                    //}
-                }
-            }
         }
 
 
@@ -81,6 +57,15 @@ namespace WarGame.View
             }
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        } 
         private void buttonStop_Click(object sender, EventArgs e)
         {
             Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);

@@ -24,7 +24,7 @@ namespace WarGame.View
             gameEngine = GameEngine.Instance();
 
             this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
             this.Show();
 
             timerImportState.Enabled = true;
