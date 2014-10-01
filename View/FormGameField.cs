@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -21,7 +22,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         public Stopwatch stopWatch = new Stopwatch();
-        Pen p = new Pen(System.Drawing.Color.Red, 3);
+        Pen p = new Pen(System.Drawing.Color.Transparent, 1);
        
         public FormGameField()
             
@@ -137,7 +138,21 @@ namespace WarGame.View
                     e.Graphics.DrawRectangle(Pens.Transparent, obstacle.rect);
                 }
             }
-            e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);
+            e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
+            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image,gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
+
+            
+        }
+
+        public static Bitmap Rotate(Bitmap img, float angle)
+        {
+            Bitmap rotated = new Bitmap(img.Width, img.Height);            
+            Graphics gfx = Graphics.FromImage(rotated);
+            gfx.TranslateTransform((float)img.Width / 2, (float)img.Height / 2);
+            gfx.RotateTransform(angle);
+            gfx.TranslateTransform(-(float)img.Width / 2, -(float)img.Height / 2);
+            gfx.DrawImage(img, new Point(0, 0));
+            return rotated;
         }
 
         private void FormGameField_KeyDown(object sender, KeyEventArgs e)

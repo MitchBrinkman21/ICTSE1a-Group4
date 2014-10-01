@@ -32,6 +32,7 @@ namespace WarGame.Controller
         FormDevMode formDevMode;
 
         private bool up, down, left, right;
+        public float angle { get; set; }
 
         public bool DevMode;
 
@@ -51,11 +52,12 @@ namespace WarGame.Controller
             formMainEvents += StartGame;
             formMainEvents += ImportLevel;
             SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
-            sound.PlayLooping();
+            //sound.PlayLooping();
             up = false;
             down = false;
             left = false;
             right = false;
+            angle = 90;
         }
 
         public void StartGame()
@@ -108,7 +110,7 @@ namespace WarGame.Controller
                         });
                     }
                     HitDetect();
-                    Thread.Sleep(5);
+                    Thread.Sleep(1);
                 }
             }
             catch (Exception ex)
@@ -203,9 +205,8 @@ namespace WarGame.Controller
                             {
                                 EndGame();
                             }
-                            mine = null;
-                            player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
-                            
+                            //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
+                             
                             break;                           
                         default:
                             break;
@@ -292,7 +293,7 @@ namespace WarGame.Controller
             {
                 if (up)
                 {
-                    if (left || right)
+                    if (left ^ right)
                     {
                         y -= speed * (1 / Math.Sqrt(2));
                     }
@@ -304,7 +305,7 @@ namespace WarGame.Controller
                 if (down)
                 {
 
-                    if (left || right)
+                    if (left ^ right)
                     {
                         y += speed * (1 / Math.Sqrt(2));
                     }
@@ -315,7 +316,7 @@ namespace WarGame.Controller
                 }
                 if (left)
                 {
-                    if (up || down)
+                    if (up ^ down)
                     {
                         x -= speed * (1 / Math.Sqrt(2));
                     }
@@ -326,7 +327,7 @@ namespace WarGame.Controller
                 }
                 if (right)
                 {
-                    if (up || down)
+                    if (up ^ down)
                     {
                         x += speed * (1 / Math.Sqrt(2));
                     }
@@ -354,9 +355,78 @@ namespace WarGame.Controller
 
 
                 gameEngine.level.player.MovePlayer(x, y, speed);
-
+                DetermineAngle();
 
             }
+        }
+
+        public void DetermineAngle()
+        {
+            if (up)
+            {
+                angle = 360;
+            }
+            if (down)
+            {
+                angle = 180;
+            }
+            if (left)
+            {
+                angle = 270;
+            }
+            if (right)
+            {
+                angle = 90;
+            }
+            if (up && left)
+            {
+                angle = 315;
+                if (right)
+                {
+                    angle = 360;
+                }
+                if (down)
+                {
+                    angle = 270;
+                }
+            }
+            if (up && right)
+            {
+                angle = 45;
+                if (left)
+                {
+                    angle = 360;
+                }
+                if (down)
+                {
+                    angle = 90;
+                }
+            }
+            if (down && left)
+            {
+                angle = 225;
+                if (up)
+                {
+                    angle = 270;
+                }
+                if (right)
+                {
+                    angle = 180;
+                }
+            }
+            if (down && right)
+            {
+                angle = 135;
+                if (up)
+                {
+                    angle = 90;
+                }
+                if (left)
+                {
+                    angle = 180;
+                }
+            }
+            
         }
     }
 }
