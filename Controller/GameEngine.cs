@@ -29,8 +29,11 @@ namespace WarGame.Controller
 
         public bool LevelImported = false;
         FormGameField formGameField;
+        FormDevMode formDevMode;
 
         private bool up, down, left, right;
+
+        public bool DevMode;
 
         Obstacle tempObstacle = null;
         int settime = -1;
@@ -59,6 +62,12 @@ namespace WarGame.Controller
         {
             formGameField = new FormGameField();
             formGameField.Show();
+
+            if (DevMode)
+            {
+                formDevMode = new FormDevMode();
+                formDevMode.Show();
+            }
 
             Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
             thread.Start();

@@ -94,5 +94,10 @@ namespace WarGame.View
                 timerImportState.Enabled = false;
             }
         }
+
+        private void checkboxDevMode_CheckStateChanged(object sender, EventArgs e)
+        {
+            gameEngine.DevMode = checkboxDevMode.Checked;
+        }
     }
 }

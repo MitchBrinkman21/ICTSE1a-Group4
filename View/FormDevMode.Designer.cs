@@ -119,6 +119,7 @@
             // 
             // updateTimer
             // 
+            this.updateTimer.Enabled = true;
             this.updateTimer.Interval = 1000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimerTick);
             // 
