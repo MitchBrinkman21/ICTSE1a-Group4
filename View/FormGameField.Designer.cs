@@ -58,19 +58,17 @@
             this.panelMenu.Controls.Add(this.imageHealthKit2);
             this.panelMenu.Controls.Add(this.imageHealthKit1);
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1823, 37);
+            this.panelMenu.Size = new System.Drawing.Size(1367, 30);
             this.panelMenu.TabIndex = 0;
             // 
             // buttonStartPause
             // 
             this.buttonStartPause.BackColor = System.Drawing.Color.Transparent;
             this.buttonStartPause.Image = global::WarGame.Properties.Resources.pause1;
-            this.buttonStartPause.Location = new System.Drawing.Point(1639, 0);
-            this.buttonStartPause.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStartPause.Location = new System.Drawing.Point(1229, 0);
             this.buttonStartPause.Name = "buttonStartPause";
-            this.buttonStartPause.Size = new System.Drawing.Size(44, 33);
+            this.buttonStartPause.Size = new System.Drawing.Size(33, 27);
             this.buttonStartPause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonStartPause.TabIndex = 9;
             this.buttonStartPause.TabStop = false;
@@ -81,10 +79,9 @@
             // 
             this.buttonStop.BackColor = System.Drawing.Color.Transparent;
             this.buttonStop.Image = global::WarGame.Properties.Resources.stop1;
-            this.buttonStop.Location = new System.Drawing.Point(1691, 0);
-            this.buttonStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStop.Location = new System.Drawing.Point(1268, 0);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(44, 33);
+            this.buttonStop.Size = new System.Drawing.Size(33, 27);
             this.buttonStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonStop.TabIndex = 8;
             this.buttonStop.TabStop = false;
@@ -94,10 +91,9 @@
             // 
             this.buttonReset.BackColor = System.Drawing.Color.Transparent;
             this.buttonReset.Image = global::WarGame.Properties.Resources.reset1;
-            this.buttonReset.Location = new System.Drawing.Point(1743, 0);
-            this.buttonReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonReset.Location = new System.Drawing.Point(1307, 0);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(44, 33);
+            this.buttonReset.Size = new System.Drawing.Size(33, 27);
             this.buttonReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonReset.TabIndex = 7;
             this.buttonReset.TabStop = false;
@@ -107,10 +103,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(812, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(672, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 17);
+            this.label1.Size = new System.Drawing.Size(22, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "0.0\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,10 +114,9 @@
             // 
             this.imageHealthKit3.BackColor = System.Drawing.Color.Transparent;
             this.imageHealthKit3.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.imageHealthKit3.Location = new System.Drawing.Point(108, 0);
-            this.imageHealthKit3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageHealthKit3.Location = new System.Drawing.Point(81, 0);
             this.imageHealthKit3.Name = "imageHealthKit3";
-            this.imageHealthKit3.Size = new System.Drawing.Size(37, 28);
+            this.imageHealthKit3.Size = new System.Drawing.Size(28, 23);
             this.imageHealthKit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageHealthKit3.TabIndex = 3;
             this.imageHealthKit3.TabStop = false;
@@ -132,10 +126,9 @@
             // 
             this.imageHealthKit2.BackColor = System.Drawing.Color.Transparent;
             this.imageHealthKit2.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.imageHealthKit2.Location = new System.Drawing.Point(63, 0);
-            this.imageHealthKit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageHealthKit2.Location = new System.Drawing.Point(47, 0);
             this.imageHealthKit2.Name = "imageHealthKit2";
-            this.imageHealthKit2.Size = new System.Drawing.Size(37, 28);
+            this.imageHealthKit2.Size = new System.Drawing.Size(28, 23);
             this.imageHealthKit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageHealthKit2.TabIndex = 2;
             this.imageHealthKit2.TabStop = false;
@@ -145,10 +138,9 @@
             // 
             this.imageHealthKit1.BackColor = System.Drawing.Color.Transparent;
             this.imageHealthKit1.Image = global::WarGame.Properties.Resources.first_aid_kit;
-            this.imageHealthKit1.Location = new System.Drawing.Point(17, 0);
-            this.imageHealthKit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageHealthKit1.Location = new System.Drawing.Point(13, 0);
             this.imageHealthKit1.Name = "imageHealthKit1";
-            this.imageHealthKit1.Size = new System.Drawing.Size(37, 28);
+            this.imageHealthKit1.Size = new System.Drawing.Size(28, 23);
             this.imageHealthKit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageHealthKit1.TabIndex = 1;
             this.imageHealthKit1.TabStop = false;
@@ -161,16 +153,15 @@
             // 
             // FormGameField
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1363, 741);
+            this.ClientSize = new System.Drawing.Size(1022, 602);
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FormGameField";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
