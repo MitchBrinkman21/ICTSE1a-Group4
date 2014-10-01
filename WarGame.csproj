@@ -67,6 +67,12 @@
     <Compile Include="View\FormImportLevel.Designer.cs">
       <DependentUpon>FormImportLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormImportLevelStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormImportLevelStatus.Designer.cs">
+      <DependentUpon>FormImportLevelStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormImportLevel.resx">
       <DependentUpon>FormImportLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormImportLevelStatus.resx">
+      <DependentUpon>FormImportLevelStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -167,6 +176,7 @@
     <Content Include="Resources\explosion.png" />
     <Content Include="Resources\first-aid_kit blacked_out.png" />
     <Content Include="Resources\first-aid_kit.png" />
+    <None Include="Resources\Mainbackground.jpg" />
     <Content Include="Resources\mine.png" />
     <Content Include="Resources\missile.png" />
     <Content Include="Resources\missilelauncher.png" />

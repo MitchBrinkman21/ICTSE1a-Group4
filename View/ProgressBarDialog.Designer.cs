@@ -35,27 +35,32 @@
             // labelGenerateLevel
             // 
             this.labelGenerateLevel.AutoSize = true;
-            this.labelGenerateLevel.Location = new System.Drawing.Point(12, 63);
+            this.labelGenerateLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelGenerateLevel.Location = new System.Drawing.Point(6, 33);
+            this.labelGenerateLevel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGenerateLevel.Name = "labelGenerateLevel";
-            this.labelGenerateLevel.Size = new System.Drawing.Size(170, 25);
+            this.labelGenerateLevel.Size = new System.Drawing.Size(93, 13);
             this.labelGenerateLevel.TabIndex = 8;
-            this.labelGenerateLevel.Text = "Generate level...";
+            this.labelGenerateLevel.Text = "Generating level...";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 12);
+            this.progressBar.Location = new System.Drawing.Point(6, 6);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(993, 48);
+            this.progressBar.Size = new System.Drawing.Size(496, 25);
             this.progressBar.TabIndex = 7;
             // 
             // ProgressBarDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 99);
+            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.ClientSize = new System.Drawing.Size(508, 51);
             this.Controls.Add(this.labelGenerateLevel);
             this.Controls.Add(this.progressBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ProgressBarDialog";
             this.Text = "Please wait a moment...";
             this.ResumeLayout(false);

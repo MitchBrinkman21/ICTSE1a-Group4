@@ -18,7 +18,7 @@ namespace WarGame.View
         public FormImportLevel()
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
 
         }
@@ -49,7 +49,7 @@ namespace WarGame.View
                 {
                     textBoxXMLFile.Text = targetPath + newFile;
                     System.IO.File.Copy(sourcePath, destFile, true);
-                    MessageBox.Show("Level have successfully been imported.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
 
                     doc = new XmlDocument();
                     try
