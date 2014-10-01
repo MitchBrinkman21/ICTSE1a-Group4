@@ -22,7 +22,7 @@ namespace WarGame.View
         public Boolean gameOver;
         Graphics Visual;
         public Stopwatch stopWatch = new Stopwatch();
-        Pen p = new Pen(System.Drawing.Color.Transparent, 1);
+        Pen p = new Pen(System.Drawing.Color.Blue, 1);
        
         public FormGameField()
             
@@ -135,11 +135,11 @@ namespace WarGame.View
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
                     e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
-                    e.Graphics.DrawRectangle(Pens.Transparent, obstacle.rect);
+                    e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
                 }
             }
             e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
-            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image,gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
+            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
 
             
         }

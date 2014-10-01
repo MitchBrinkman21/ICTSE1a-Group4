@@ -11,6 +11,7 @@ using System.Xml;
 using WarGame.Model;
 using WarGame.View;
 
+
 namespace WarGame.Controller
 {
     public class GameEngine
@@ -39,6 +40,8 @@ namespace WarGame.Controller
         Obstacle tempObstacle = null;
         int settime = -1;
 
+       
+
         public static GameEngine Instance()
         {
             if (gameEngine == null)
@@ -58,6 +61,7 @@ namespace WarGame.Controller
             left = false;
             right = false;
             angle = 90;
+
         }
 
         public void StartGame()
@@ -73,6 +77,8 @@ namespace WarGame.Controller
 
             Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
             thread.Start();
+
+
         }
 
         public void ImportLevel()
@@ -93,6 +99,13 @@ namespace WarGame.Controller
             }
             
             formImportLevel.Dispose();
+
+        }
+
+        public void OpenHighscores()
+        {
+            FormHighscores hs = new FormHighscores();
+            hs.ShowDialog();
         }
 
         public void GameLoopThreadFunction()
@@ -101,16 +114,15 @@ namespace WarGame.Controller
             {
                 while (true)
                 {
-                    if (up || down || right || left)
-                    {
-                        move();
-                        formGameField.Invoke((MethodInvoker)delegate
-                        {
-                            formGameField.Refresh();
-                        });
-                    }
                     HitDetect();
-                    Thread.Sleep(1);
+                    
+                    move();
+                    formGameField.Invoke((MethodInvoker)delegate
+                    {
+                        formGameField.Refresh();
+                    });
+
+                    Thread.Sleep(20);
                 }
             }
             catch (Exception ex)
@@ -165,6 +177,51 @@ namespace WarGame.Controller
                     {
                         case "WarGame.Model.Tree":
                             Console.WriteLine("Player hit tree...");
+                            //if (right) { 
+                            //    if (Math.Abs(playerRect.X - obstacle.x) < Math.Abs(playerRect.X - (obstacle.x + obstacle.width)))
+                            //    {
+                            //        right = false;
+                            //        player.MovePlayer((int)player.x - (player.speed + 1), (int)player.y, player.speed);
+                            //    }
+                            //    else
+                            //    {
+                            //        left = false;
+                            //        player.MovePlayer((int)player.x + (player.speed + 1), (int)player.y, player.speed);
+                            //    }
+                            //}
+                            //if (up || down)
+                            //{
+                            //    if (Math.Abs(playerRect.Y - obstacle.y) < Math.Abs(playerRect.Y - (obstacle.y + obstacle.length)))
+                            //    {
+                            //        down = false;
+                            //        player.MovePlayer((int)player.x, (int)player.y - (player.speed + 1), player.speed);
+                            //    }
+                            //    else
+                            //    {
+                            //        up = false;
+                            //        player.MovePlayer((int)player.x, (int)player.y + (player.speed + 1), player.speed);
+                            //    }
+                            //}
+                            //if (right)
+                            //{                                
+                            //    right = false;
+                            //    //player.MovePlayer((int)player.x - (player.speed + 1), (int)player.y, player.speed);
+                            //}
+                            //if (left)
+                            //{
+                            //    left = false;
+                            //    //player.MovePlayer((int)player.x + (player.speed + 1), (int)player.y, player.speed);
+                            //}
+                            //if (up)
+                            //{
+                            //    up = false;
+                            //    //player.MovePlayer((int)player.x, (int)player.y + (player.speed + 1), player.speed);
+                            //}
+                            //if (down)
+                            //{
+                            //    down = false;
+                            //    //player.MovePlayer((int)player.x, (int)player.y - (player.speed + 1), player.speed);
+                            //}                            
                             break;
                         case "WarGame.Model.Sandbag":
                             Console.WriteLine("Player hit sandbag...");

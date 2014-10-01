@@ -24,7 +24,7 @@ namespace WarGame.Model
             this.lives = 3;
             this.x = 100;
             this.y = 100;
-            this.speed = 6;
+            this.speed = 8;
             this.width = 40;
             this.height = 40;
             this.rect = new Rectangle((int)(x + ((scaler / 2) * width)), (int)(y + ((scaler / 2) * height)), (int)(width * (1 - scaler)), (int)(height * (1 - scaler)));
