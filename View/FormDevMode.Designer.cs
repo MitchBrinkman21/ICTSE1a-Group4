@@ -135,6 +135,7 @@
             this.Controls.Add(this.devButtonUp);
             this.Name = "FormDevMode";
             this.Text = "Debug window";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
