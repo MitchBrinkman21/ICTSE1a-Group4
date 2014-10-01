@@ -44,7 +44,7 @@
             this.Button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Button.Location = new System.Drawing.Point(6, 67);
-            this.Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Button.Margin = new System.Windows.Forms.Padding(2);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(89, 34);
             this.Button.TabIndex = 9;
@@ -61,7 +61,7 @@
             this.buttonStart.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonStart.Location = new System.Drawing.Point(291, 67);
-            this.buttonStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(89, 34);
             this.buttonStart.TabIndex = 8;
@@ -71,7 +71,7 @@
             // textBoxXMLFile
             // 
             this.textBoxXMLFile.Location = new System.Drawing.Point(12, 34);
-            this.textBoxXMLFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxXMLFile.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxXMLFile.Name = "textBoxXMLFile";
             this.textBoxXMLFile.Size = new System.Drawing.Size(298, 20);
             this.textBoxXMLFile.TabIndex = 7;
@@ -89,14 +89,14 @@
             // 
             // buttonBrowseXML
             // 
-            this.buttonBrowseXML.BackColor = System.Drawing.SystemColors.Desktop;
+            this.buttonBrowseXML.BackColor = System.Drawing.Color.Black;
             this.buttonBrowseXML.FlatAppearance.BorderSize = 0;
             this.buttonBrowseXML.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonBrowseXML.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonBrowseXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowseXML.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonBrowseXML.Location = new System.Drawing.Point(314, 29);
-            this.buttonBrowseXML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonBrowseXML.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBrowseXML.Name = "buttonBrowseXML";
             this.buttonBrowseXML.Size = new System.Drawing.Size(52, 29);
             this.buttonBrowseXML.TabIndex = 5;
@@ -108,14 +108,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(386, 107);
             this.Controls.Add(this.Button);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.textBoxXMLFile);
             this.Controls.Add(this.labelImportHelp);
             this.Controls.Add(this.buttonBrowseXML);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormImportLevel";
             this.Text = "Import level";
             this.ResumeLayout(false);
