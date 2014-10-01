@@ -20,7 +20,7 @@ namespace WarGame.View
         GameEngine gameEngine;
         public Boolean gameOver;
         Graphics Visual;
-        Stopwatch stopWatch = new Stopwatch();
+        public Stopwatch stopWatch = new Stopwatch();
         Pen p = new Pen(System.Drawing.Color.Red, 3);
        
         public FormGameField()
