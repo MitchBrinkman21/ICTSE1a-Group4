@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,8 +74,26 @@ namespace WarGame.Controller
         }
 
         public void ParseScore(XmlDocument doc) 
-        { 
-        
+        {
+            XmlNodeList xmlnode;
+            xmlnode = doc.GetElementsByTagName("player");
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("id", typeof(int));
+            dt.Columns.Add("name", typeof(string));
+            dt.Columns.Add("score", typeof(int));
+            dt.Columns.Add("level", typeof(string));
+
+            for (int i = 0; i < xmlnode.Count; i++)
+            {
+                int id = Convert.ToInt32(xmlnode[i].ChildNodes.Item(0).InnerText);
+                string name = xmlnode[i].ChildNodes.Item(1).InnerText;
+                int score = Convert.ToInt32(xmlnode[i].ChildNodes.Item(2).InnerText);
+                string level = xmlnode[i].ChildNodes.Item(3).InnerText;
+
+                dt.Rows.Add(new object[] { id, name, score, level });
+            }
         }
     }
 }

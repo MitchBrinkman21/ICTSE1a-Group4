@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ViewController.cs" />
+    <Compile Include="Controller\XmlBuilder.cs" />
     <Compile Include="Model\Finish.cs" />
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
@@ -90,6 +91,12 @@
     <Compile Include="View\FormGameField.Designer.cs">
       <DependentUpon>FormGameField.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HighScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HighScores.Designer.cs">
+      <DependentUpon>HighScores.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProgressBarDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormGameField.resx">
       <DependentUpon>FormGameField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HighScores.resx">
+      <DependentUpon>HighScores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProgressBarDialog.resx">
       <DependentUpon>ProgressBarDialog.cs</DependentUpon>
