@@ -104,7 +104,7 @@ namespace WarGame.Controller
 
         public void OpenHighscores()
         {
-            FormHighscores hs = new FormHighscores();
+            FormHighScores hs = new FormHighScores();
             hs.ShowDialog();
         }
 

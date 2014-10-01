@@ -93,6 +93,7 @@
             this.buttonHighscores.TabIndex = 4;
             this.buttonHighscores.Text = "Highscores";
             this.buttonHighscores.UseVisualStyleBackColor = false;
+            this.buttonHighscores.Click += new System.EventHandler(this.buttonHighscores_Click);
             // 
             // checkboxDevMode
             // 
@@ -101,7 +102,7 @@
             this.checkboxDevMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkboxDevMode.Location = new System.Drawing.Point(13, 402);
             this.checkboxDevMode.Name = "checkboxDevMode";
-            this.checkboxDevMode.Size = new System.Drawing.Size(106, 16);
+            this.checkboxDevMode.Size = new System.Drawing.Size(134, 19);
             this.checkboxDevMode.TabIndex = 5;
             this.checkboxDevMode.Text = "Developer mode";
             this.checkboxDevMode.UseVisualStyleBackColor = false;
@@ -116,7 +117,7 @@
             this.labelGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameName.Location = new System.Drawing.Point(529, 9);
             this.labelGameName.Name = "labelGameName";
-            this.labelGameName.Size = new System.Drawing.Size(155, 36);
+            this.labelGameName.Size = new System.Drawing.Size(198, 46);
             this.labelGameName.TabIndex = 6;
             this.labelGameName.Text = "WarGame";
             // 
@@ -128,7 +129,7 @@
             this.labelGameVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameVersion.Location = new System.Drawing.Point(606, 406);
             this.labelGameVersion.Name = "labelGameVersion";
-            this.labelGameVersion.Size = new System.Drawing.Size(76, 12);
+            this.labelGameVersion.Size = new System.Drawing.Size(92, 15);
             this.labelGameVersion.TabIndex = 7;
             this.labelGameVersion.Text = "Ver. 1.0.1-RC";
             // 

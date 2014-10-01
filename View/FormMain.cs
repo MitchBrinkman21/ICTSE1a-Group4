@@ -55,6 +55,7 @@ namespace WarGame.View
 
                 // Try to create the directory.
                 DirectoryInfo di = Directory.CreateDirectory(path + "\\levels\\");
+                DirectoryInfo di2 = Directory.CreateDirectory(path + "\\stats\\");
                 Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
 
                 Properties.Settings.Default.ImportPath = path;
@@ -79,6 +80,11 @@ namespace WarGame.View
         private void buttonImportLevel_Click(object sender, EventArgs e)
         {
             gameEngine.ImportLevel();
+        }
+
+        private void buttonHighscores_Click(object sender, EventArgs e)
+        {
+            gameEngine.OpenHighscores();
         }
 
         private void FormMain_Load(object sender, EventArgs e)

@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace WarGame.View
 {
-    public partial class HighScores : Form
+    public partial class FormHighScores : Form
     {
-        public HighScores()
+        public FormHighScores()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
