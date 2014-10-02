@@ -23,7 +23,9 @@ namespace WarGame.Controller
         public Level level = new Level();
 
         public Missile missile;
-        private int missileCounter;
+        public Missile missile2;
+
+        private int missileCounter = 0;
 
         private int gameTime; // The time you spend in the game
         private String namePlayer;
@@ -39,6 +41,8 @@ namespace WarGame.Controller
 
         Obstacle tempObstacle = null;
         int settime = -1;
+        int settime2 = -1;
+      
 
        
 
@@ -55,7 +59,7 @@ namespace WarGame.Controller
             formMainEvents += StartGame;
             formMainEvents += ImportLevel;
             SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
-            //sound.PlayLooping();
+            sound.PlayLooping();
             up = false;
             down = false;
             left = false;
@@ -117,12 +121,20 @@ namespace WarGame.Controller
                     HitDetect();
                     
                     move();
+                    
+           
+                    LaunchMissile();
+                    if (missile != null)
+                    {
+                            missile.FindPlayer((int)level.player.x, (int)level.player.y);
+                    }
+                    HitDetect();
                     formGameField.Invoke((MethodInvoker)delegate
                     {
                         formGameField.Refresh();
                     });
-
-                    Thread.Sleep(5);
+                    Thread.Sleep(20);
+                    
                 }
             }
             catch (Exception ex)
@@ -143,34 +155,42 @@ namespace WarGame.Controller
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
             {
                 if(missile != null) {
-                    if (missile.rect.IntersectsWith(obstacle.rect))
+                    if (!missile.exploded)
                     {
-                        switch (obstacle.ToString())
+                        if (missile.rect.IntersectsWith(obstacle.rect))
                         {
-                            case "WarGame.Model.Mine":
-                                Console.WriteLine("Missile flies over mine...");
-                                break;
-                            case "WarGame.Model.Finish":
-                                Console.WriteLine("Missile flies over finish...");
-                                break;
-                            case "WarGame.Model.Mud":
-                                Console.WriteLine("Missile flies over mud ...");
-                                break;
-                            default:
-                                Console.WriteLine("missile hit object");
-                                playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
-                                missile.ShowExplosion();
-                                missileCounter--;
+                            switch (obstacle.ToString())
+                            {
+                                case "WarGame.Model.Mine":
+                                    Console.WriteLine("Missile flies over mine...");
+                                    break;
+                                case "WarGame.Model.Finish":
+                                    Console.WriteLine("Missile flies over finish...");
+                                    break;
+                                case "WarGame.Model.Mud":
+                                    Console.WriteLine("Missile flies over mud ...");
+                                    break;
+                                default:
+                                    Console.WriteLine("missile hit object");
+                                    //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
+                                    missile.ShowExplosion();
+                                    settime2 = (int)formGameField.stopWatch.Elapsed.TotalSeconds + 1;
+                                    missile.exploded = true;
 
-                                if (player.lives == 0)
-                                    EndGame();
-                                else
-                                    player.DecreaseLive();
-                                break;
-                        }                   
+
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (settime2 == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
+                           
+                            missile = null;
+
                     }
                 }
-
+                
                 if (obstacle.rect.IntersectsWith(playerRect))
                 {
                     switch (obstacle.ToString())
@@ -279,8 +299,13 @@ namespace WarGame.Controller
 
         public void LaunchMissile()
         {
-            Missile missile = new Missile(10, 10); // Launch from the center of the map...
-            missileCounter++;
+  
+                if (missile == null)
+                {
+                    missile = new Missile(683, 384); // Launch from the center of the map...
+                }
+         
+
         }
 
         public void EndGame()

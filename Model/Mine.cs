@@ -17,9 +17,9 @@ namespace WarGame.Model
         {
             width = 25;
             length = 25;
-            image = new Bitmap(WarGame.Properties.Resources.mine, width, length);
+            image = new Bitmap(WarGame.Properties.Resources.transparent, width, length);
             rect = new Rectangle(x, y, width, length);
-            rectShow = new Rectangle(x, y, 20, 20);
+            rectShow = new Rectangle(x, y, width * 2, length * 2);
         }
 
         public void ShowObject()
@@ -29,7 +29,7 @@ namespace WarGame.Model
 
         public void ShowExplosion()
         {
-            image = new Bitmap(WarGame.Properties.Resources.explosion, 20, 20);
+            image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
         }
     }
 }
