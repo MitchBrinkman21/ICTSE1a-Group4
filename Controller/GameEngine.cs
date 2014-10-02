@@ -141,8 +141,9 @@ namespace WarGame.Controller
                         {
                             formGameField.Refresh();
                         });
-                        Thread.Sleep(10);
+                        
                     }
+                    Thread.Sleep(10);
                 }
             }
             catch (Exception ex)
