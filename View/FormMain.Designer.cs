@@ -38,8 +38,8 @@
             this.labelGameVersion = new System.Windows.Forms.Label();
             this.buttonLevelEditor = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            buttonStart = new System.Windows.Forms.Button();
-            buttonImportLevel = new System.Windows.Forms.Button();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonImportLevel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -154,7 +154,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // buttonStart
@@ -219,8 +219,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonStart;
-        private System.Windows.Forms.Button buttonImportLevel;
+
+        System.Windows.Forms.Button buttonStart;
+        System.Windows.Forms.Button buttonImportLevel;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer timerImportState;

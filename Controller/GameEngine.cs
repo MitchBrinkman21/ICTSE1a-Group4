@@ -35,7 +35,7 @@ namespace WarGame.Controller
         FormGameField formGameField;
         FormDevMode formDevMode;
 
-        private bool up, down, left, right;
+        private bool up, down, left, right, mud;
         public float angle { get; set; }
 
         public bool DevMode;
@@ -65,6 +65,7 @@ namespace WarGame.Controller
             down = false;
             left = false;
             right = false;
+            mud = false;
             angle = 90;
 
         }
@@ -149,6 +150,7 @@ namespace WarGame.Controller
             Rectangle playerRect = player.rect;
             int playerX = (int)player.x;
             int playerY = (int)player.y;
+            bool checkmud = false;
             
 
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
@@ -194,52 +196,7 @@ namespace WarGame.Controller
                     switch (obstacle.ToString())
                     {
                         case "WarGame.Model.Tree":
-                            Console.WriteLine("Player hit tree...");
-                            //if (right) { 
-                            //    if (Math.Abs(playerRect.X - obstacle.x) < Math.Abs(playerRect.X - (obstacle.x + obstacle.width)))
-                            //    {
-                            //        right = false;
-                            //        player.MovePlayer((int)player.x - (player.speed + 1), (int)player.y, player.speed);
-                            //    }
-                            //    else
-                            //    {
-                            //        left = false;
-                            //        player.MovePlayer((int)player.x + (player.speed + 1), (int)player.y, player.speed);
-                            //    }
-                            //}
-                            //if (up || down)
-                            //{
-                            //    if (Math.Abs(playerRect.Y - obstacle.y) < Math.Abs(playerRect.Y - (obstacle.y + obstacle.length)))
-                            //    {
-                            //        down = false;
-                            //        player.MovePlayer((int)player.x, (int)player.y - (player.speed + 1), player.speed);
-                            //    }
-                            //    else
-                            //    {
-                            //        up = false;
-                            //        player.MovePlayer((int)player.x, (int)player.y + (player.speed + 1), player.speed);
-                            //    }
-                            //}
-                            //if (right)
-                            //{                                
-                            //    right = false;
-                            //    //player.MovePlayer((int)player.x - (player.speed + 1), (int)player.y, player.speed);
-                            //}
-                            //if (left)
-                            //{
-                            //    left = false;
-                            //    //player.MovePlayer((int)player.x + (player.speed + 1), (int)player.y, player.speed);
-                            //}
-                            //if (up)
-                            //{
-                            //    up = false;
-                            //    //player.MovePlayer((int)player.x, (int)player.y + (player.speed + 1), player.speed);
-                            //}
-                            //if (down)
-                            //{
-                            //    down = false;
-                            //    //player.MovePlayer((int)player.x, (int)player.y - (player.speed + 1), player.speed);
-                            //}                            
+                            Console.WriteLine("Player hit tree...");                        
                             break;
                         case "WarGame.Model.Sandbag":
                             Console.WriteLine("Player hit sandbag...");
@@ -282,7 +239,12 @@ namespace WarGame.Controller
                             }
                             //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
                              
-                            break;                           
+                            break;     
+                        case "WarGame.Model.Mud":
+                            Console.WriteLine("Player walks in mud");
+                            checkmud = true;
+                            break;
+
                         default:
                             break;
                     }
@@ -293,6 +255,7 @@ namespace WarGame.Controller
                 level.obstacleList.Remove(tempObstacle);
                 tempObstacle = null;
             }
+            mud = checkmud;
         }
 
         public void GameOver()
@@ -394,7 +357,6 @@ namespace WarGame.Controller
             int formheight = formGameField.Height;
             int width = gameEngine.level.player.width;
             int height = gameEngine.level.player.height;
-            bool mud = false;
             if (up || down || left || right)
             {
                 if (up)
@@ -459,49 +421,64 @@ namespace WarGame.Controller
                     y = 0;
                 }
 
-
-                gameEngine.level.player.rect.Location = new Point((int)x, (int)y);
-                foreach (Obstacle obstacle in gameEngine.level.obstacleList)
-                {
-                    if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                int xsteps = 0;
+                bool xintersect = false;
+                while (xsteps < speed && !xintersect) {
+                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed * (xsteps + 1))), (int)gameEngine.level.player.y);
+                    foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                     {
-                        int steps = 0;
-                        switch (obstacle.ToString())
+                        if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
                         {
-                            case "WarGame.Model.Tree":
-                                while (!obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
-                                {
-                                    steps++;
-                                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed)), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed)));
-                                }
-                                x -= ((x - gameEngine.level.player.x) / speed) * (speed - steps);
-                                y -= ((y - gameEngine.level.player.y) / speed) * (speed - steps);
-                                break;
-                            case "WarGame.Model.Sandbag":
-                                while (!obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
-                                {
-                                    steps++;
-                                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed)), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed)));
-                                }
-                                x -= ((x - gameEngine.level.player.x) / speed) * (speed - steps);
-                                y -= ((y - gameEngine.level.player.y) / speed) * (speed - steps);
-                                break;
-                            case "WarGame.Model.Mud":
-                                mud = true;
-                                break;
+                            switch (obstacle.ToString())
+                            {
+                                case "WarGame.Model.Tree":
+                                    xintersect = true;
+                                    break;
+                                case "WarGame.Model.Sandbag":
+                                    xintersect = true;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-
+                    }
+                    if (!xintersect) { 
+                        xsteps++;
                     }
                 }
-                if (mud)
+
+                int ysteps = 0;
+                bool yintersect = false;
+                while (ysteps < speed && !yintersect)
                 {
-                    speed = 4;
+                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed * (ysteps + 1))));
+                    foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                    {
+                        if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                        {
+                            switch (obstacle.ToString())
+                            {
+                                case "WarGame.Model.Tree":
+                                    yintersect = true;
+                                    break;
+                                case "WarGame.Model.Sandbag":
+                                    yintersect = true;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    if (!yintersect)
+                    {
+                        ysteps++;
+                    }
                 }
-                else
-                {
-                    speed = 8;
-                }
-                gameEngine.level.player.MovePlayer(x, y, speed);
+
+                x -= (x - gameEngine.level.player.x) / speed * (speed - xsteps);
+                y -= (y - gameEngine.level.player.y) / speed * (speed - ysteps);
+
+                gameEngine.level.player.MovePlayer(x, y, mud);
                 DetermineAngle();
 
             }

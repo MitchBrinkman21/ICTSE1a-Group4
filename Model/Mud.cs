@@ -18,8 +18,8 @@ namespace WarGame.Model
             : base(x, y)
         {
             
-            width = 40;
-            length = 40;
+            width = 100;
+            length = 100;
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.mud, width, length);
         }

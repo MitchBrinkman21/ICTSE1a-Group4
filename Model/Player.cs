@@ -17,26 +17,35 @@ namespace WarGame.Model
         public int height { get; set; }
         public Bitmap image { get; set; }
         public Rectangle rect;
-        private double scaler = 0.025;
+        private int runspeed, mudspeed;
 
         public Player()
         {
             this.lives = 3;
             this.x = 100;
             this.y = 100;
-            this.speed = 8;
+            this.runspeed = 3;
+            this.mudspeed = 1;
+            this.speed = runspeed;
             this.width = 25;
             this.height = 25;
-            this.rect = new Rectangle((int)(x + ((scaler / 2) * width)), (int)(y + ((scaler / 2) * height)), (int)(width * (1 - scaler)), (int)(height * (1 - scaler)));
+            this.rect = new Rectangle((int)x, (int)y, width, height);
             image = new Bitmap(WarGame.Properties.Resources.player, width, height);
         }
 
-        public void MovePlayer(double x, double y, int speed)
+        public void MovePlayer(double x, double y, bool mud)
         {
             this.x = x;
             this.y = y;
-            this.speed = speed;
-            rect.Location = new Point((int)(this.x + ((scaler / 2) * width)), (int)(this.y + ((scaler / 2) * height)));
+            if (mud)
+            {
+                speed = mudspeed;
+            }
+            else
+            {
+                speed = runspeed;
+            }
+            rect.Location = new Point((int)(this.x), (int)(this.y));
         }
 
         public void DecreaseLive()
