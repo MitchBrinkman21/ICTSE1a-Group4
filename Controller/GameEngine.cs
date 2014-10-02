@@ -70,6 +70,7 @@ namespace WarGame.Controller
 
         public void StartGame()
         {
+
             formGameField = new FormGameField();
             formGameField.Show();
 
@@ -81,8 +82,6 @@ namespace WarGame.Controller
 
             Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
             thread.Start();
-
-
         }
 
         public void ImportLevel()
@@ -133,7 +132,7 @@ namespace WarGame.Controller
                     {
                         formGameField.Refresh();
                     });
-                    Thread.Sleep(20);
+                    Thread.Sleep(5);
                     
                 }
             }
@@ -257,7 +256,7 @@ namespace WarGame.Controller
                             missileCounter--;
 
                             if (player.lives == 0)
-                                EndGame();
+                                GameOver();
                             else
                             {
                                 player.DecreaseLive();
@@ -280,7 +279,7 @@ namespace WarGame.Controller
 
                             if (player.lives == 0)
                             {
-                                EndGame();
+                                GameOver();
                             }
                             //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
                              
@@ -297,15 +296,18 @@ namespace WarGame.Controller
             }
         }
 
+        public void GameOver()
+        {
+            FormGameOver formGameOver = new FormGameOver();
+            formGameOver.ShowDialog();
+            //nog stopzetten timer
+        }
         public void LaunchMissile()
         {
-  
                 if (missile == null)
                 {
                     missile = new Missile(683, 384); // Launch from the center of the map...
                 }
-         
-
         }
 
         public void EndGame()
@@ -318,6 +320,8 @@ namespace WarGame.Controller
                 {
                     namePlayer = "Anonymous";
                 }
+                formGameField.Close();
+
             }
              
             // ToDo: Create class XmlBuilder. Build a xml file and store on disk.

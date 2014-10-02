@@ -50,6 +50,12 @@
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Missile.cs" />
+    <Compile Include="View\FormGameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormGameOver.Designer.cs">
+      <DependentUpon>FormGameOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDevMode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     <EmbeddedResource Include="View\FormDevMode.resx">
       <DependentUpon>FormDevMode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEndGame.resx">
+      <DependentUpon>FormEndGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormGameOver.resx">
+      <DependentUpon>FormGameOver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormImportLevel.resx">
       <DependentUpon>FormImportLevel.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +170,8 @@
     <None Include="Resources\backgrounddrop.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\backgrounddrop1.png" />
+    <None Include="Resources\backgrounddrop2.png" />
     <Content Include="Resources\explosion.png" />
     <Content Include="Resources\first-aid_kit blacked_out.png" />
     <Content Include="Resources\first-aid_kit.png" />
@@ -194,7 +208,6 @@
     <Content Include="Resources\pause.png" />
     <Content Include="Resources\pause1.png" />
     <Content Include="Resources\pauseold.png" />
-    <Content Include="Resources\player.png" />
     <Content Include="Resources\reset.png" />
     <Content Include="Resources\reset1.png" />
     <Content Include="Resources\resetold.png" />

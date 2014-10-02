@@ -39,73 +39,84 @@
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(89, 21);
+            this.labelTitle.Font = new System.Drawing.Font("Stencil", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTitle.Location = new System.Drawing.Point(35, 9);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(301, 46);
+            this.labelTitle.Size = new System.Drawing.Size(271, 38);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Reached base!";
             // 
             // labelSubTitle2
             // 
             this.labelSubTitle2.AutoSize = true;
-            this.labelSubTitle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSubTitle2.Location = new System.Drawing.Point(34, 155);
+            this.labelSubTitle2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubTitle2.Location = new System.Drawing.Point(26, 126);
+            this.labelSubTitle2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubTitle2.Name = "labelSubTitle2";
-            this.labelSubTitle2.Size = new System.Drawing.Size(123, 25);
+            this.labelSubTitle2.Size = new System.Drawing.Size(103, 19);
             this.labelSubTitle2.TabIndex = 2;
             this.labelSubTitle2.Text = "Your name:";
             // 
             // labelSubTitle1
             // 
             this.labelSubTitle1.AutoSize = true;
-            this.labelSubTitle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSubTitle1.Location = new System.Drawing.Point(34, 108);
+            this.labelSubTitle1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubTitle1.Location = new System.Drawing.Point(26, 88);
+            this.labelSubTitle1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubTitle1.Name = "labelSubTitle1";
-            this.labelSubTitle1.Size = new System.Drawing.Size(110, 25);
+            this.labelSubTitle1.Size = new System.Drawing.Size(98, 19);
             this.labelSubTitle1.TabIndex = 1;
             this.labelSubTitle1.Text = "Your time:";
             // 
             // labelTime
             // 
             this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTime.Location = new System.Drawing.Point(175, 108);
+            this.labelTime.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.Location = new System.Drawing.Point(131, 88);
+            this.labelTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(96, 25);
+            this.labelTime.Size = new System.Drawing.Size(0, 19);
             this.labelTime.TabIndex = 3;
-            this.labelTime.Text = "00.00.00";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(180, 157);
+            this.textBoxName.Location = new System.Drawing.Point(133, 125);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(130, 22);
+            this.textBoxName.Size = new System.Drawing.Size(98, 20);
             this.textBoxName.TabIndex = 4;
             // 
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(180, 235);
+            this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOK.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOK.Location = new System.Drawing.Point(257, 191);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(97, 28);
+            this.buttonOK.Size = new System.Drawing.Size(73, 35);
             this.buttonOK.TabIndex = 6;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             // 
             // FormEndGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 292);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(341, 237);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.labelSubTitle2);
             this.Controls.Add(this.labelSubTitle1);
             this.Controls.Add(this.labelTitle);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormEndGame";
-            this.Text = "FormEndGame";
+            this.Text = "End of the operation";
             this.ResumeLayout(false);
             this.PerformLayout();
 

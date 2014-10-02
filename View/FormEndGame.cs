@@ -19,7 +19,8 @@ namespace WarGame.View
         public FormEndGame(int gameTime)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
             TimeSpan t = TimeSpan.FromMilliseconds(gameTime);
 
             string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
