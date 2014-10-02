@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Button buttonStart;
-            System.Windows.Forms.Button buttonImportLevel;
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.timerImportState = new System.Windows.Forms.Timer(this.components);
@@ -222,6 +220,8 @@
 
         #endregion
 
+        private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button buttonImportLevel;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer timerImportState;
