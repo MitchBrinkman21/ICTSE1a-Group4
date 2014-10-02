@@ -397,6 +397,7 @@ namespace WarGame.Controller
             int formheight = formGameField.Height;
             int width = gameEngine.level.player.width;
             int height = gameEngine.level.player.height;
+            bool mud = false;
             if (up || down || left || right)
             {
                 if (up)
@@ -462,6 +463,47 @@ namespace WarGame.Controller
                 }
 
 
+                gameEngine.level.player.rect.Location = new Point((int)x, (int)y);
+                foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                {
+                    if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                    {
+                        int steps = 0;
+                        switch (obstacle.ToString())
+                        {
+                            case "WarGame.Model.Tree":
+                                while (!obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                                {
+                                    steps++;
+                                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed)), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed)));
+                                }
+                                x -= ((x - gameEngine.level.player.x) / speed) * (speed - steps);
+                                y -= ((y - gameEngine.level.player.y) / speed) * (speed - steps);
+                                break;
+                            case "WarGame.Model.Sandbag":
+                                while (!obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                                {
+                                    steps++;
+                                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed)), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed)));
+                                }
+                                x -= ((x - gameEngine.level.player.x) / speed) * (speed - steps);
+                                y -= ((y - gameEngine.level.player.y) / speed) * (speed - steps);
+                                break;
+                            case "WarGame.Model.Mud":
+                                mud = true;
+                                break;
+                        }
+
+                    }
+                }
+                if (mud)
+                {
+                    speed = 4;
+                }
+                else
+                {
+                    speed = 8;
+                }
                 gameEngine.level.player.MovePlayer(x, y, speed);
                 DetermineAngle();
 
