@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarGame.Model;
+using WarGame.Controller;
 
 namespace WarGame.View
 {
@@ -26,41 +27,115 @@ namespace WarGame.View
 
             this.updateViewList();
 
-            listView1.TopItem = listView1.Items[index]; 
+            listView1.TopItem = listView1.Items[index];
         }
 
         private void updateViewList()
         {
             listView1.Items.Clear();
-
-            List<Obstacle> obstacleList = Controller.GameEngine.Instance().level.obstacleList;
             int i = 0;
+
+            //Player ListViewItem
+            ListViewItem plvi = new ListViewItem(i++.ToString());
+            plvi.SubItems.Add("Player");
+            plvi.SubItems.Add(GameEngine.Instance().level.player.x.ToString());
+            plvi.SubItems.Add(GameEngine.Instance().level.player.y.ToString());
+            plvi.SubItems.Add(GameEngine.Instance().level.player.speed.ToString());
+            listView1.Items.Add(plvi);
+
+            //Missile ListViewItem
+            if (GameEngine.Instance().missile != null)
+            {
+                ListViewItem mlvi = new ListViewItem(i++.ToString());
+                mlvi.SubItems.Add("Missile");
+                mlvi.SubItems.Add(GameEngine.Instance().missile.x.ToString());
+                mlvi.SubItems.Add(GameEngine.Instance().missile.y.ToString());
+                mlvi.SubItems.Add(GameEngine.Instance().missile.speed.ToString());
+                listView1.Items.Add(mlvi);
+            }
+
+            //Print obstacles from obstacleList
+            List<Obstacle> obstacleList = new List<Obstacle>();
+
+            foreach (Obstacle obstacle in Controller.GameEngine.Instance().level.obstacleList)
+            {
+                obstacleList.Add(obstacle);
+            }
 
             foreach (Obstacle obj in obstacleList)
             {
                 ListViewItem lvi = new ListViewItem(i++.ToString());
 
-                lvi.SubItems.Add(obj.ToString());
-                lvi.SubItems.Add(obj.x.ToString());
-                lvi.SubItems.Add(obj.y.ToString());
-
-                if (obj.ToString().Equals("WarGame.Model.Missile"))
+                switch (obj.ToString())
                 {
-                    Missile m = obj as Missile;
-                    lvi.SubItems.Add(m.speed.ToString());
+                    case "WarGame.Model.Finish":
+                        lvi = fillLvi(lvi, obj, "Finish");
+                        break;
+                    case "WarGame.Model.Mine":
+                        lvi = fillLvi(lvi, obj, "Mine");
+                        break;
+                    case "WarGame.Model.Mud":
+                        lvi = fillLvi(lvi, obj, "Mud");
+                        break;
+                    case "WarGame.Model.Sandbag":
+                        lvi = fillLvi(lvi, obj, "Sandbag");
+                        break;
+                    case "WarGame.Model.Tree":
+                        lvi = fillLvi(lvi, obj, "Tree");
+                        break;
                 }
 
                 listView1.Items.Add(lvi);
             }
+        }
 
-            ListViewItem plvi = new ListViewItem(i++.ToString());
+        private static ListViewItem fillLvi(ListViewItem lvi, Obstacle obj, string naam)
+        {
+            lvi.SubItems.Add(naam);
+            lvi.SubItems.Add(obj.x.ToString());
+            lvi.SubItems.Add(obj.y.ToString());
 
-            plvi.SubItems.Add("WarGame.Model.Player");
-            plvi.SubItems.Add(Controller.GameEngine.Instance().level.player.x.ToString());
-            plvi.SubItems.Add(Controller.GameEngine.Instance().level.player.y.ToString());
-            plvi.SubItems.Add(Controller.GameEngine.Instance().level.player.speed.ToString());
+            return lvi;
+        }
 
-            listView1.Items.Add(plvi);
+        private void devButtonUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().PressKey(new KeyEventArgs(Keys.Up));
+        }
+
+        private void devButtonUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().ReleaseKey(new KeyEventArgs(Keys.Up));
+        }
+
+        private void devButtonLeft_MouseDown(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().PressKey(new KeyEventArgs(Keys.Left));
+        }
+
+        private void devButtonLeft_MouseUp(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().ReleaseKey(new KeyEventArgs(Keys.Left));
+        }
+
+        private void devButtonDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().PressKey(new KeyEventArgs(Keys.Down));
+        }
+
+        private void devButtonDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().ReleaseKey(new KeyEventArgs(Keys.Down));
+        }
+
+        private void devButtonRight_MouseDown(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().PressKey(new KeyEventArgs(Keys.Right));
+        }
+
+        private void devButtonRight_MouseUp(object sender, MouseEventArgs e)
+        {
+            GameEngine.Instance().ReleaseKey(new KeyEventArgs(Keys.Right));
         }
     }
 }

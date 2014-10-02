@@ -50,6 +50,8 @@
             this.devButtonUp.TabIndex = 1;
             this.devButtonUp.Text = "^";
             this.devButtonUp.UseVisualStyleBackColor = true;
+            this.devButtonUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonUp_MouseDown);
+            this.devButtonUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonUp_MouseUp);
             // 
             // devButtonDown
             // 
@@ -59,6 +61,8 @@
             this.devButtonDown.TabIndex = 2;
             this.devButtonDown.Text = "v";
             this.devButtonDown.UseVisualStyleBackColor = true;
+            this.devButtonDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonDown_MouseDown);
+            this.devButtonDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonDown_MouseUp);
             // 
             // devButtonRight
             // 
@@ -68,6 +72,8 @@
             this.devButtonRight.TabIndex = 3;
             this.devButtonRight.Text = ">";
             this.devButtonRight.UseVisualStyleBackColor = true;
+            this.devButtonRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonRight_MouseDown);
+            this.devButtonRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonRight_MouseUp);
             // 
             // devButtonLeft
             // 
@@ -77,6 +83,8 @@
             this.devButtonLeft.TabIndex = 4;
             this.devButtonLeft.Text = "<";
             this.devButtonLeft.UseVisualStyleBackColor = true;
+            this.devButtonLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonLeft_MouseDown);
+            this.devButtonLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonLeft_MouseUp);
             // 
             // listView1
             // 
