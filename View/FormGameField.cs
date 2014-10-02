@@ -46,8 +46,8 @@ namespace WarGame.View
 
         private void buttonStartPause_Click(object sender, EventArgs e)
         {
-                Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
-                Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
             if (buttonStartPause.Tag == "pause" )
             {
                 buttonStartPause.Image = imagePlay;
