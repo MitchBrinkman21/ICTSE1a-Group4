@@ -36,6 +36,7 @@
             this.checkboxDevMode = new System.Windows.Forms.CheckBox();
             this.labelGameName = new System.Windows.Forms.Label();
             this.labelGameVersion = new System.Windows.Forms.Label();
+            this.buttonLevelEditor = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonImportLevel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Stencil", 14.25F);
             this.buttonExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonExit.Location = new System.Drawing.Point(280, 346);
+            this.buttonExit.Location = new System.Drawing.Point(280, 345);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(160, 40);
             this.buttonExit.TabIndex = 1;
@@ -65,7 +66,7 @@
             this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Font = new System.Drawing.Font("Stencil", 14.25F);
             this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHelp.Location = new System.Drawing.Point(280, 283);
+            this.buttonHelp.Location = new System.Drawing.Point(280, 231);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(160, 40);
             this.buttonHelp.TabIndex = 2;
@@ -87,7 +88,7 @@
             this.buttonHighscores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHighscores.Font = new System.Drawing.Font("Stencil", 14.25F);
             this.buttonHighscores.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHighscores.Location = new System.Drawing.Point(280, 220);
+            this.buttonHighscores.Location = new System.Drawing.Point(280, 174);
             this.buttonHighscores.Name = "buttonHighscores";
             this.buttonHighscores.Size = new System.Drawing.Size(160, 40);
             this.buttonHighscores.TabIndex = 4;
@@ -102,7 +103,7 @@
             this.checkboxDevMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkboxDevMode.Location = new System.Drawing.Point(13, 402);
             this.checkboxDevMode.Name = "checkboxDevMode";
-            this.checkboxDevMode.Size = new System.Drawing.Size(134, 19);
+            this.checkboxDevMode.Size = new System.Drawing.Size(106, 16);
             this.checkboxDevMode.TabIndex = 5;
             this.checkboxDevMode.Text = "Developer mode";
             this.checkboxDevMode.UseVisualStyleBackColor = false;
@@ -117,7 +118,7 @@
             this.labelGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameName.Location = new System.Drawing.Point(529, 9);
             this.labelGameName.Name = "labelGameName";
-            this.labelGameName.Size = new System.Drawing.Size(198, 46);
+            this.labelGameName.Size = new System.Drawing.Size(155, 36);
             this.labelGameName.TabIndex = 6;
             this.labelGameName.Text = "WarGame";
             // 
@@ -129,7 +130,7 @@
             this.labelGameVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameVersion.Location = new System.Drawing.Point(606, 406);
             this.labelGameVersion.Name = "labelGameVersion";
-            this.labelGameVersion.Size = new System.Drawing.Size(92, 15);
+            this.labelGameVersion.Size = new System.Drawing.Size(76, 12);
             this.labelGameVersion.TabIndex = 7;
             this.labelGameVersion.Text = "Ver. 1.0.1-RC";
             // 
@@ -141,7 +142,7 @@
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Font = new System.Drawing.Font("Stencil", 14.25F);
             this.buttonStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonStart.Location = new System.Drawing.Point(280, 94);
+            this.buttonStart.Location = new System.Drawing.Point(280, 60);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(160, 40);
             this.buttonStart.TabIndex = 0;
@@ -157,13 +158,30 @@
             this.buttonImportLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonImportLevel.Font = new System.Drawing.Font("Stencil", 14.25F);
             this.buttonImportLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonImportLevel.Location = new System.Drawing.Point(280, 157);
+            this.buttonImportLevel.Location = new System.Drawing.Point(280, 117);
             this.buttonImportLevel.Name = "buttonImportLevel";
             this.buttonImportLevel.Size = new System.Drawing.Size(160, 40);
             this.buttonImportLevel.TabIndex = 3;
             this.buttonImportLevel.Text = "Import level";
             this.buttonImportLevel.UseVisualStyleBackColor = false;
             this.buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
+            // 
+            // buttonLevelEditor
+            // 
+            this.buttonLevelEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.buttonLevelEditor.FlatAppearance.BorderSize = 0;
+            this.buttonLevelEditor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.buttonLevelEditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLevelEditor.Font = new System.Drawing.Font("Stencil", 14.25F);
+            this.buttonLevelEditor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonLevelEditor.Location = new System.Drawing.Point(280, 288);
+            this.buttonLevelEditor.Name = "buttonLevelEditor";
+            this.buttonLevelEditor.Size = new System.Drawing.Size(160, 40);
+            this.buttonLevelEditor.TabIndex = 8;
+            this.buttonLevelEditor.Text = "Level Editor";
+            this.buttonLevelEditor.UseMnemonic = false;
+            this.buttonLevelEditor.UseVisualStyleBackColor = false;
+            this.buttonLevelEditor.Click += new System.EventHandler(this.buttonLevelEditor_Click);
             // 
             // FormMain
             // 
@@ -172,6 +190,7 @@
             this.BackgroundImage = global::WarGame.Properties.Resources.Mainbackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(694, 431);
+            this.Controls.Add(this.buttonLevelEditor);
             this.Controls.Add(this.labelGameVersion);
             this.Controls.Add(this.labelGameName);
             this.Controls.Add(this.checkboxDevMode);
@@ -204,5 +223,6 @@
         private System.Windows.Forms.CheckBox checkboxDevMode;
         private System.Windows.Forms.Label labelGameName;
         private System.Windows.Forms.Label labelGameVersion;
+        private System.Windows.Forms.Button buttonLevelEditor;
     }
 }

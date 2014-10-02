@@ -105,5 +105,11 @@ namespace WarGame.View
         {
             gameEngine.DevMode = checkboxDevMode.Checked;
         }
+
+        private void buttonLevelEditor_Click(object sender, EventArgs e)
+        {
+            FormLevelEditor editor = new FormLevelEditor();
+            editor.Show();
+        }
     }
 }

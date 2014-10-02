@@ -86,6 +86,12 @@
     <Compile Include="View\FormImportLevelStatus.Designer.cs">
       <DependentUpon>FormImportLevelStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormLevelEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormLevelEditor.Designer.cs">
+      <DependentUpon>FormLevelEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormImportLevelStatus.resx">
       <DependentUpon>FormImportLevelStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormLevelEditor.resx">
+      <DependentUpon>FormLevelEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
