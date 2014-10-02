@@ -81,8 +81,6 @@ namespace WarGame.Controller
                 formDevMode.Show();
             }
 
-            Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
-            thread.Start();
             FormGameField.gameState = true;
         }
 
@@ -122,28 +120,20 @@ namespace WarGame.Controller
         {
             try
             {
-                while (true)
+                if(FormGameField.gameState == true)
                 {
-                    if(FormGameField.gameState == true)
+                    HitDetect();
+
+                    move();
+
+                    LaunchMissile();
+                    if (missile != null)
                     {
-                        HitDetect();
-
-                        move();
-
-
-                        LaunchMissile();
-                        if (missile != null)
-                        {
-                            missile.FindPlayer((int)level.player.x, (int)level.player.y);
-                        }
-                        HitDetect();
-                        formGameField.Invoke((MethodInvoker)delegate
-                        {
-                            formGameField.Refresh();
-                        });
-                        
+                        missile.FindPlayer((int)level.player.x, (int)level.player.y);
                     }
-                    Thread.Sleep(10);
+                    HitDetect();
+   
+                    formGameField.Invalidate();          
                 }
             }
             catch (Exception ex)
@@ -196,7 +186,6 @@ namespace WarGame.Controller
                         if (settime2 == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
                            
                             missile = null;
-
                     }
                 }
                 

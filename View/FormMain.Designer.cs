@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Button buttonStart;
+            System.Windows.Forms.Button buttonImportLevel;
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.timerImportState = new System.Windows.Forms.Timer(this.components);
@@ -37,8 +39,9 @@
             this.labelGameName = new System.Windows.Forms.Label();
             this.labelGameVersion = new System.Windows.Forms.Label();
             this.buttonLevelEditor = new System.Windows.Forms.Button();
-            this.buttonStart = new System.Windows.Forms.Button();
-            this.buttonImportLevel = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            buttonStart = new System.Windows.Forms.Button();
+            buttonImportLevel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -103,7 +106,7 @@
             this.checkboxDevMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkboxDevMode.Location = new System.Drawing.Point(13, 402);
             this.checkboxDevMode.Name = "checkboxDevMode";
-            this.checkboxDevMode.Size = new System.Drawing.Size(106, 16);
+            this.checkboxDevMode.Size = new System.Drawing.Size(187, 27);
             this.checkboxDevMode.TabIndex = 5;
             this.checkboxDevMode.Text = "Developer mode";
             this.checkboxDevMode.UseVisualStyleBackColor = false;
@@ -118,7 +121,7 @@
             this.labelGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameName.Location = new System.Drawing.Point(529, 9);
             this.labelGameName.Name = "labelGameName";
-            this.labelGameName.Size = new System.Drawing.Size(155, 36);
+            this.labelGameName.Size = new System.Drawing.Size(308, 71);
             this.labelGameName.TabIndex = 6;
             this.labelGameName.Text = "WarGame";
             // 
@@ -130,41 +133,9 @@
             this.labelGameVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameVersion.Location = new System.Drawing.Point(606, 406);
             this.labelGameVersion.Name = "labelGameVersion";
-            this.labelGameVersion.Size = new System.Drawing.Size(76, 12);
+            this.labelGameVersion.Size = new System.Drawing.Size(133, 22);
             this.labelGameVersion.TabIndex = 7;
             this.labelGameVersion.Text = "Ver. 1.0.1-RC";
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.buttonStart.FlatAppearance.BorderSize = 0;
-            this.buttonStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStart.Font = new System.Drawing.Font("Stencil", 14.25F);
-            this.buttonStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonStart.Location = new System.Drawing.Point(280, 60);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(160, 40);
-            this.buttonStart.TabIndex = 0;
-            this.buttonStart.Text = "Start Game";
-            this.buttonStart.UseVisualStyleBackColor = false;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
-            // buttonImportLevel
-            // 
-            this.buttonImportLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.buttonImportLevel.FlatAppearance.BorderSize = 0;
-            this.buttonImportLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.buttonImportLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonImportLevel.Font = new System.Drawing.Font("Stencil", 14.25F);
-            this.buttonImportLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonImportLevel.Location = new System.Drawing.Point(280, 117);
-            this.buttonImportLevel.Name = "buttonImportLevel";
-            this.buttonImportLevel.Size = new System.Drawing.Size(160, 40);
-            this.buttonImportLevel.TabIndex = 3;
-            this.buttonImportLevel.Text = "Import level";
-            this.buttonImportLevel.UseVisualStyleBackColor = false;
-            this.buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
             // 
             // buttonLevelEditor
             // 
@@ -182,6 +153,43 @@
             this.buttonLevelEditor.UseMnemonic = false;
             this.buttonLevelEditor.UseVisualStyleBackColor = false;
             this.buttonLevelEditor.Click += new System.EventHandler(this.buttonLevelEditor_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // buttonStart
+            // 
+            buttonStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            buttonStart.FlatAppearance.BorderSize = 0;
+            buttonStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonStart.Font = new System.Drawing.Font("Stencil", 14.25F);
+            buttonStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            buttonStart.Location = new System.Drawing.Point(280, 60);
+            buttonStart.Name = "buttonStart";
+            buttonStart.Size = new System.Drawing.Size(160, 40);
+            buttonStart.TabIndex = 0;
+            buttonStart.Text = "Start Game";
+            buttonStart.UseVisualStyleBackColor = false;
+            buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // buttonImportLevel
+            // 
+            buttonImportLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            buttonImportLevel.FlatAppearance.BorderSize = 0;
+            buttonImportLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            buttonImportLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonImportLevel.Font = new System.Drawing.Font("Stencil", 14.25F);
+            buttonImportLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            buttonImportLevel.Location = new System.Drawing.Point(280, 117);
+            buttonImportLevel.Name = "buttonImportLevel";
+            buttonImportLevel.Size = new System.Drawing.Size(160, 40);
+            buttonImportLevel.TabIndex = 3;
+            buttonImportLevel.Text = "Import level";
+            buttonImportLevel.UseVisualStyleBackColor = false;
+            buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
             // 
             // FormMain
             // 
@@ -214,8 +222,6 @@
 
         #endregion
 
-        System.Windows.Forms.Button buttonStart;
-        System.Windows.Forms.Button buttonImportLevel;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer timerImportState;
@@ -224,5 +230,6 @@
         private System.Windows.Forms.Label labelGameName;
         private System.Windows.Forms.Label labelGameVersion;
         private System.Windows.Forms.Button buttonLevelEditor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

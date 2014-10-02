@@ -31,6 +31,7 @@ namespace WarGame.View
 
             // Create a directory on C: disk.
             CreateDirOnDisk();
+            timer1.Enabled = true;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -110,6 +111,11 @@ namespace WarGame.View
         {
             FormLevelEditor editor = new FormLevelEditor();
             editor.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            gameEngine.GameLoopThreadFunction();
         }
     }
 }
