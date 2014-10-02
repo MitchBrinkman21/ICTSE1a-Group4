@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace WarGame.Controller
 {
     public class GameEngine
     {
+        bool isLaunched = false;
+        Stopwatch stopwatch = new Stopwatch();
+
         public delegate void FormMainEvents();
         public FormMainEvents formMainEvents;
 
@@ -69,6 +73,7 @@ namespace WarGame.Controller
             angle = 90;
 
         }
+
 
         public void StartGame()
         {
@@ -123,17 +128,21 @@ namespace WarGame.Controller
             {
                 if(FormGameField.gameState == true)
                 {
-                    HitDetect();
-
                     move();
-
-                    LaunchMissile();
+                    if (isLaunched == false)
+                    {
+                        LaunchMissile();
+                    }
+                    if(missile == null)
+                    {
+                        isLaunched = false;
+                    }
+                   
                     if (missile != null)
                     {
-                        missile.FindPlayer((int)level.player.x, (int)level.player.y);
+                       missile.FindPlayer((int)level.player.x, (int)level.player.y);
                     }
                     HitDetect();
-   
                     formGameField.Invalidate();          
                 }
             }
@@ -151,8 +160,6 @@ namespace WarGame.Controller
             int playerX = (int)player.x;
             int playerY = (int)player.y;
             bool checkmud = false;
-            
-
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
             {
                 if(missile != null) {
@@ -177,8 +184,6 @@ namespace WarGame.Controller
                                     missile.ShowExplosion();
                                     settime2 = (int)formGameField.stopWatch.Elapsed.TotalSeconds + 1;
                                     missile.exploded = true;
-
-
                                     break;
                             }
                         }
@@ -186,7 +191,6 @@ namespace WarGame.Controller
                     else
                     {
                         if (settime2 == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
-                           
                             missile = null;
                     }
                 }
@@ -210,7 +214,6 @@ namespace WarGame.Controller
                             playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
                             missile.ShowExplosion();
                             missileCounter--;
-
                             if (player.lives == 0)
                                 GameOver();
                             else
@@ -218,33 +221,26 @@ namespace WarGame.Controller
                                 player.DecreaseLive();
                                 formGameField.DrawHealthKits();
                             }
-                                
                             break;
                         case "WarGame.Model.Mine":
                             Console.WriteLine("Player hit mine");
-                            
-
                             Mine mine = obstacle as Mine;
                             tempObstacle = mine;
                             mine.ShowExplosion();
                             settime = (int) formGameField.stopWatch.Elapsed.TotalSeconds+1;
                             mine.rect = new Rectangle(-10, -10, 1, 1);
-
                             player.DecreaseLive();
                             formGameField.DrawHealthKits();
-
                             if (player.lives == 0)
                             {
                                 GameOver();
                             }
                             //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
-                             
                             break;     
                         case "WarGame.Model.Mud":
                             Console.WriteLine("Player walks in mud");
                             checkmud = true;
                             break;
-
                         default:
                             break;
                     }
@@ -268,11 +264,20 @@ namespace WarGame.Controller
             }
         }
         public void LaunchMissile()
-        {
-                if (missile == null)
+        {   
+            if (missile == null)
+            {
+                if (stopwatch.IsRunning == false)
+                {
+                    stopwatch.Start();
+                }
+                if (stopwatch.ElapsedMilliseconds >= 3000) //3 sec
                 {
                     missile = new Missile(683, 384); // Launch from the center of the map...
+                    stopwatch.Restart();
+                    isLaunched = true;
                 }
+            }
         }
 
         public void EndGame()
