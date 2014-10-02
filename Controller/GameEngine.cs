@@ -331,7 +331,6 @@ namespace WarGame.Controller
                 {
                     namePlayer = "Anonymous";
                 }
-                formGameField.Close();
 
                 XmlBuilder xml = new XmlBuilder();
                 string filename = @"c:\WarGame\stats\Statistics.xml";
