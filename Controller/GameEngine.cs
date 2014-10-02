@@ -297,9 +297,12 @@ namespace WarGame.Controller
 
         public void GameOver()
         {
-            FormGameOver formGameOver = new FormGameOver();
-            formGameOver.ShowDialog();
             FormGameField.gameState = false;
+            FormGameOver formGameOver = new FormGameOver();
+            if (formGameOver.ShowDialog() == DialogResult.Abort)
+            {
+                formGameField.Close();
+            }
         }
         public void LaunchMissile()
         {
@@ -311,6 +314,7 @@ namespace WarGame.Controller
 
         public void EndGame()
         {
+            FormGameField.gameState = false;
             formGameField.stopWatch.Stop();
             gameTime = formGameField.stopWatch.Elapsed.TotalMilliseconds;
             FormEndGame formEndGame = new FormEndGame(gameTime);
@@ -334,7 +338,10 @@ namespace WarGame.Controller
                 {
                     xml.CreateFile(namePlayer, gameTime);
                 }
-                finally { }
+                finally 
+                {
+                    formGameField.Close();
+                }
             }
             // ToDo: Create class XmlBuilder. Build a xml file and store on disk.
         }

@@ -104,7 +104,7 @@
             this.checkboxDevMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkboxDevMode.Location = new System.Drawing.Point(13, 402);
             this.checkboxDevMode.Name = "checkboxDevMode";
-            this.checkboxDevMode.Size = new System.Drawing.Size(187, 27);
+            this.checkboxDevMode.Size = new System.Drawing.Size(134, 19);
             this.checkboxDevMode.TabIndex = 5;
             this.checkboxDevMode.Text = "Developer mode";
             this.checkboxDevMode.UseVisualStyleBackColor = false;
@@ -119,7 +119,7 @@
             this.labelGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameName.Location = new System.Drawing.Point(529, 9);
             this.labelGameName.Name = "labelGameName";
-            this.labelGameName.Size = new System.Drawing.Size(308, 71);
+            this.labelGameName.Size = new System.Drawing.Size(198, 46);
             this.labelGameName.TabIndex = 6;
             this.labelGameName.Text = "WarGame";
             // 
@@ -131,7 +131,7 @@
             this.labelGameVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGameVersion.Location = new System.Drawing.Point(606, 406);
             this.labelGameVersion.Name = "labelGameVersion";
-            this.labelGameVersion.Size = new System.Drawing.Size(133, 22);
+            this.labelGameVersion.Size = new System.Drawing.Size(92, 15);
             this.labelGameVersion.TabIndex = 7;
             this.labelGameVersion.Text = "Ver. 1.0.1-RC";
             // 
@@ -154,7 +154,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // buttonStart
@@ -219,7 +219,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonImportLevel;
         private System.Windows.Forms.Button buttonExit;
