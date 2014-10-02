@@ -105,6 +105,11 @@ namespace WarGame.Controller
 
         }
 
+        public void OpenHelp()
+        {
+            FormHelp h = new FormHelp();
+            h.Show();
+        }
         public void OpenHighscores()
         {
             FormHighScores hs = new FormHighScores();
@@ -132,7 +137,7 @@ namespace WarGame.Controller
                     {
                         formGameField.Refresh();
                     });
-                    Thread.Sleep(5);
+                    Thread.Sleep(10);
                     
                 }
             }

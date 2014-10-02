@@ -74,7 +74,7 @@ namespace WarGame.View
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
-
+            gameEngine.OpenHelp();
         }
 
         private void buttonImportLevel_Click(object sender, EventArgs e)
