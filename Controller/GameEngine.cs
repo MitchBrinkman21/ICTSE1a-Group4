@@ -122,7 +122,7 @@ namespace WarGame.Controller
                         formGameField.Refresh();
                     });
 
-                    Thread.Sleep(20);
+                    Thread.Sleep(5);
                 }
             }
             catch (Exception ex)

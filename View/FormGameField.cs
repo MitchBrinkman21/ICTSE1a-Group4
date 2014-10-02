@@ -23,6 +23,7 @@ namespace WarGame.View
         Graphics Visual;
         public Stopwatch stopWatch = new Stopwatch();
         Pen p = new Pen(System.Drawing.Color.Blue, 1);
+        public static Boolean gameState;
        
         public FormGameField()
             
@@ -52,6 +53,7 @@ namespace WarGame.View
                 buttonStartPause.Image = imagePlay;
                 buttonStartPause.Tag = "play";
                 stopWatch.Stop();
+                gameState = false;
                 
             }
             else if (buttonStartPause.Tag == "play")
@@ -59,6 +61,7 @@ namespace WarGame.View
                 buttonStartPause.Image = imagePause;
                 buttonStartPause.Tag = "pause";
                 stopWatch.Start();
+                gameState = true;
             }
         }
 
@@ -75,6 +78,7 @@ namespace WarGame.View
         {
             Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
             stopWatch.Stop();
+            gameState = false;
             buttonStartPause.Image = imagePlay;
             DialogResult result = MessageBox.Show("Are you sure you want to stop the game?", "WarGame", MessageBoxButtons.YesNo);
             switch (result)
@@ -85,7 +89,8 @@ namespace WarGame.View
                         break;
                     }
                 case DialogResult.No:
-                    {  
+                    {
+                        gameState = true;
                         break;       
                     }
             }
@@ -93,6 +98,8 @@ namespace WarGame.View
             buttonStartPause.Image = imagePause;
             buttonStartPause.Tag = "pause";
             stopWatch.Start();
+
+
         }
 
         private void buttonReset_Click(object sender, EventArgs e)

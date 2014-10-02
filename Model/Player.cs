@@ -17,7 +17,7 @@ namespace WarGame.Model
         public int height { get; set; }
         public Bitmap image { get; set; }
         public Rectangle rect;
-        private double scaler = 0.2;
+        private double scaler = 0.025;
 
         public Player()
         {
@@ -25,8 +25,8 @@ namespace WarGame.Model
             this.x = 100;
             this.y = 100;
             this.speed = 8;
-            this.width = 40;
-            this.height = 40;
+            this.width = 25;
+            this.height = 25;
             this.rect = new Rectangle((int)(x + ((scaler / 2) * width)), (int)(y + ((scaler / 2) * height)), (int)(width * (1 - scaler)), (int)(height * (1 - scaler)));
             image = new Bitmap(WarGame.Properties.Resources.player, width, height);
         }
