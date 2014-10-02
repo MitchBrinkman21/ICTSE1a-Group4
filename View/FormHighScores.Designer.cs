@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.labelLevel = new System.Windows.Forms.Label();
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.listViewHighscores = new System.Windows.Forms.ListView();
+            this.columnHeaderPlace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // labelLevel
@@ -38,7 +43,7 @@
             this.labelLevel.AutoSize = true;
             this.labelLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelLevel.Location = new System.Drawing.Point(54, 24);
+            this.labelLevel.Location = new System.Drawing.Point(25, 24);
             this.labelLevel.Name = "labelLevel";
             this.labelLevel.Size = new System.Drawing.Size(52, 17);
             this.labelLevel.TabIndex = 0;
@@ -47,10 +52,12 @@
             // comboBoxLevel
             // 
             this.comboBoxLevel.FormattingEnabled = true;
-            this.comboBoxLevel.Location = new System.Drawing.Point(134, 21);
+            this.comboBoxLevel.Location = new System.Drawing.Point(83, 24);
             this.comboBoxLevel.Name = "comboBoxLevel";
             this.comboBoxLevel.Size = new System.Drawing.Size(121, 24);
             this.comboBoxLevel.TabIndex = 1;
+            this.comboBoxLevel.Text = "Select a level";
+            this.comboBoxLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxLevel_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -59,7 +66,7 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonOK.Location = new System.Drawing.Point(264, 374);
+            this.buttonOK.Location = new System.Drawing.Point(325, 374);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(61, 36);
             this.buttonOK.TabIndex = 3;
@@ -67,17 +74,49 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
+            // listViewHighscores
+            // 
+            this.listViewHighscores.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderPlace,
+            this.columnHeaderName,
+            this.columnHeaderTime});
+            this.listViewHighscores.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listViewHighscores.Location = new System.Drawing.Point(29, 77);
+            this.listViewHighscores.Name = "listViewHighscores";
+            this.listViewHighscores.Size = new System.Drawing.Size(358, 268);
+            this.listViewHighscores.TabIndex = 4;
+            this.listViewHighscores.UseCompatibleStateImageBehavior = false;
+            this.listViewHighscores.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderPlace
+            // 
+            this.columnHeaderPlace.Text = "Place";
+            this.columnHeaderPlace.Width = 59;
+            // 
+            // columnHeaderName
+            // 
+            this.columnHeaderName.Text = "Name";
+            this.columnHeaderName.Width = 107;
+            // 
+            // columnHeaderTime
+            // 
+            this.columnHeaderTime.Text = "Time";
+            this.columnHeaderTime.Width = 100;
+            // 
             // FormHighScores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(337, 422);
+            this.ClientSize = new System.Drawing.Size(417, 422);
+            this.Controls.Add(this.listViewHighscores);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBoxLevel);
             this.Controls.Add(this.labelLevel);
             this.Name = "FormHighScores";
             this.Text = "HighScores";
+            this.Load += new System.EventHandler(this.FormHighScores_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,5 +127,9 @@
         private System.Windows.Forms.Label labelLevel;
         private System.Windows.Forms.ComboBox comboBoxLevel;
         private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.ListView listViewHighscores;
+        private System.Windows.Forms.ColumnHeader columnHeaderPlace;
+        private System.Windows.Forms.ColumnHeader columnHeaderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderTime;
     }
 }

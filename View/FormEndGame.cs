@@ -16,7 +16,7 @@ namespace WarGame.View
         {
             get { return textBoxName.Text; }
         }
-        public FormEndGame(int gameTime)
+        public FormEndGame(double gameTime)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;

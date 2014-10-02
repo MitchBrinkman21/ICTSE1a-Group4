@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -27,7 +28,7 @@ namespace WarGame.Controller
 
         private int missileCounter = 0;
 
-        private int gameTime; // The time you spend in the game
+        private double gameTime; // The time you spend in the game
         private String namePlayer;
 
         public bool LevelImported = false;
@@ -317,6 +318,8 @@ namespace WarGame.Controller
 
         public void EndGame()
         {
+            formGameField.stopWatch.Stop();
+            gameTime = formGameField.stopWatch.Elapsed.TotalMilliseconds;
             FormEndGame formEndGame = new FormEndGame(gameTime);
             if (formEndGame.ShowDialog() == DialogResult.OK)
             {
@@ -327,8 +330,20 @@ namespace WarGame.Controller
                 }
                 formGameField.Close();
 
+                XmlBuilder xml = new XmlBuilder();
+                string filename = @"c:\WarGame\stats\Statistics.xml";
+                XmlDocument doc = new XmlDocument();
+                try
+                {
+                    doc.Load(filename);
+                    xml.ChangeFile(namePlayer, gameTime);
+                }
+                catch (FileNotFoundException)
+                {
+                    xml.CreateFile(namePlayer, gameTime);
+                }
+                finally { }
             }
-             
             // ToDo: Create class XmlBuilder. Build a xml file and store on disk.
         }
 

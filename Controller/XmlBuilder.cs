@@ -9,7 +9,7 @@ namespace WarGame.Controller
 {
     class XmlBuilder
     {
-        public void CreateFile(string name, int score)
+        public void CreateFile(string name, double score)
         {
             //create new instance of XmlWriter
             XmlTextWriter writer = new XmlTextWriter(@"c:\WarGame\stats\Statistics.xml", System.Text.Encoding.UTF8);
@@ -40,7 +40,7 @@ namespace WarGame.Controller
             writer.Close();
         }
 
-        public void Change(string name, int score)
+        public void ChangeFile(string name, double score)
         {
             //file name
             string filename = @"c:\WarGame\stats\Statistics.xml";

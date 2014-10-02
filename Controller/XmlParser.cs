@@ -73,27 +73,33 @@ namespace WarGame.Controller
             gameEngine.LevelImported = true;
         }
 
-        public void ParseScore(XmlDocument doc) 
+        public DataView ParseScore(XmlDocument doc, string l) 
         {
-            XmlNodeList xmlnode;
-            xmlnode = doc.GetElementsByTagName("player");
+            // Create XMLnode from XMLfile
+            XmlNodeList xmlnode = doc.GetElementsByTagName("player");
 
-            DataTable dt = new DataTable();
+            // Create Datatable
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("time", typeof(int));
+            dataTable.Columns.Add("level", typeof(string));
 
-            dt.Columns.Add("id", typeof(int));
-            dt.Columns.Add("name", typeof(string));
-            dt.Columns.Add("score", typeof(int));
-            dt.Columns.Add("level", typeof(string));
-
+            // Add nodes from XMLfile to Datatable
             for (int i = 0; i < xmlnode.Count; i++)
             {
-                int id = Convert.ToInt32(xmlnode[i].ChildNodes.Item(0).InnerText);
                 string name = xmlnode[i].ChildNodes.Item(1).InnerText;
-                int score = Convert.ToInt32(xmlnode[i].ChildNodes.Item(2).InnerText);
+                double score = Convert.ToDouble(xmlnode[i].ChildNodes.Item(2).InnerText);
                 string level = xmlnode[i].ChildNodes.Item(3).InnerText;
 
-                dt.Rows.Add(new object[] { id, name, score, level });
+                dataTable.Rows.Add(new object[] { name, score, level });
             }
+
+            // Create Dataview from Datatable and set sort and filter
+            DataView view = new DataView(dataTable);
+            view.Sort = "time ASC";
+            view.RowFilter = String.Format("level = '{0}'", l);
+
+            return view;
         }
     }
 }
