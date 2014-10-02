@@ -83,6 +83,7 @@ namespace WarGame.Controller
 
             Thread thread = new Thread(new ThreadStart(GameLoopThreadFunction));
             thread.Start();
+            FormGameField.gameState = true;
         }
 
         public void ImportLevel()
@@ -123,23 +124,25 @@ namespace WarGame.Controller
             {
                 while (true)
                 {
-                    HitDetect();
-                    
-                    move();
-                    
-           
-                    LaunchMissile();
-                    if (missile != null)
+                    if(FormGameField.gameState == true)
                     {
+                        HitDetect();
+
+                        move();
+
+
+                        LaunchMissile();
+                        if (missile != null)
+                        {
                             missile.FindPlayer((int)level.player.x, (int)level.player.y);
+                        }
+                        HitDetect();
+                        formGameField.Invoke((MethodInvoker)delegate
+                        {
+                            formGameField.Refresh();
+                        });
+                        Thread.Sleep(10);
                     }
-                    HitDetect();
-                    formGameField.Invoke((MethodInvoker)delegate
-                    {
-                        formGameField.Refresh();
-                    });
-                    Thread.Sleep(10);
-                    
                 }
             }
             catch (Exception ex)
@@ -306,7 +309,7 @@ namespace WarGame.Controller
         {
             FormGameOver formGameOver = new FormGameOver();
             formGameOver.ShowDialog();
-            //nog stopzetten timer
+            FormGameField.gameState = false;
         }
         public void LaunchMissile()
         {
