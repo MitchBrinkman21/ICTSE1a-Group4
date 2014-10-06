@@ -56,7 +56,16 @@ namespace WarGame.Controller
 
             //get max player_id from XML file and count 1
             XmlNode player = doc.SelectSingleNode("//player/player_id[not(. <=../preceding-sibling::player/player_id) and not(. <=../following-sibling::player/player_id)]");
-            int player_id = Convert.ToInt32(player.InnerText) + 1;
+            int player_id;
+
+            if (player == null)
+            {
+                player_id = 1;
+            }
+            else
+            {
+                player_id = Convert.ToInt32(player.InnerText) + 1;
+            }
 
             //create player_id node
             XmlNode nodeId = doc.CreateElement("player_id");

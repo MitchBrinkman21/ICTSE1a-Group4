@@ -16,7 +16,7 @@ namespace WarGame.View
     public partial class FormHighScores : Form
     {
         private XmlDocument doc = new XmlDocument();
-        private List<string> levels = new List<string>();
+        private List<string> levels;
         private XmlParser xmlParser = new XmlParser();
 
         public FormHighScores()
@@ -33,6 +33,7 @@ namespace WarGame.View
 
         private void FormHighScores_Load(object sender, EventArgs e)
         {
+            buttonDelete.Hide();
             // Load XMLfile if the XMLFile exists
             try
             {
@@ -45,6 +46,8 @@ namespace WarGame.View
 
             // Create XMLnode from XMLfile
             XmlNodeList xmlnode = doc.GetElementsByTagName("player");
+
+            levels = new List<string>();
 
             // Get levels from XMLfile, distinct levels
             for (int i = 0; i < xmlnode.Count; i++)
@@ -71,30 +74,59 @@ namespace WarGame.View
 
         private void comboBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Get level from selected item in combobox
-            string level = comboBoxLevel.SelectedItem.ToString();
-
-            // Clear all items in ListView and rows
-            listViewHighscores.Items.Clear();
-
-            // Parse score if level is not null
-            if (level != null)
+            if (comboBoxLevel.SelectedIndex != -1) 
             {
-                DataView view = xmlParser.ParseScore(doc, level);
+                // Get level from selected item in combobox
+                string level = comboBoxLevel.SelectedItem.ToString();
 
-                int rang = 1;
+                // Clear all items in ListView and rows
+                listViewHighscores.Items.Clear();
 
-                 // Add rows from Dataview to List rows and count rang
-                foreach (DataRowView row in view)
+                // Parse score if level is not null
+                if (level != null)
                 {
-                    ListViewItem lvi = new ListViewItem(rang.ToString());
-                    lvi.SubItems.Add(row["name"].ToString());
-                    lvi.SubItems.Add(row["time"].ToString());
-                    listViewHighscores.Items.Add(lvi);
+                    DataView view = xmlParser.ParseScore(doc, level);
 
-                    rang++;
-                } 
+                    int rang = 1;
+
+                     // Add rows from Dataview to List rows and count rang
+                    foreach (DataRowView row in view)
+                    {
+                        ListViewItem lvi = new ListViewItem(rang.ToString());
+                        lvi.SubItems.Add(row["name"].ToString());
+                        lvi.SubItems.Add(row["time"].ToString());
+                        listViewHighscores.Items.Add(lvi);
+
+                        rang++;
+                    } 
+                }
             }
+            buttonDelete.Show();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string level = comboBoxLevel.SelectedItem.ToString();
+            bool running = true;
+            while (running == true)
+            {
+                XmlElement el = (XmlElement)doc.SelectSingleNode("/players/player[player_level = '" + level + "']");
+                if (el != null) 
+                { 
+                    el.ParentNode.RemoveChild(el);
+                    el = (XmlElement)doc.SelectSingleNode("/players/player[player_level = '" + level + "']");
+                    if (el == null)
+                    {
+                        running = false;
+                    }
+                }
+            }
+            doc.Save(@"c:\WarGame\stats\Statistics.xml");
+            listViewHighscores.Items.Clear();
+            comboBoxLevel.Items.Clear();
+            comboBoxLevel.SelectedIndex = -1;
+            comboBoxLevel.Text = "Select a level";
+            FormHighScores_Load(sender, e);
         }
     }
 }
