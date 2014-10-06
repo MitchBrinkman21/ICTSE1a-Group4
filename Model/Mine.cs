@@ -11,13 +11,15 @@ namespace WarGame.Model
     {
         public int proximity;
         public Rectangle rectShow;  //use rectShow to check if the mine should show itself, use rect to check if the mine should explode
-
+        public bool visible { get; set; }
         public Mine(int x, int y)
             : base(x, y)
         {
             width = 25;
             length = 25;
-            image = new Bitmap(WarGame.Properties.Resources.transparent, width, length);
+            proximity = 3;
+            visible = false;
+            image = new Bitmap(WarGame.Properties.Resources.mine, width, length);
             rect = new Rectangle(x, y, width, length);
             rectShow = new Rectangle(x, y, width * 2, length * 2);
         }

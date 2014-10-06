@@ -245,6 +245,15 @@ namespace WarGame.Controller
                             break;
                     }
                 }
+
+                if (obstacle.ToString().Equals("WarGame.Model.Mine"))
+                {
+                    Mine mine = obstacle as Mine;
+                    if (Math.Sqrt(Math.Pow(Math.Abs(mine.x - (player.x + (player.width / 2))), 2) + Math.Pow(Math.Abs(mine.y - (player.y + (player.width / 2))), 2)) < mine.proximity * mine.width)
+                    {
+                        mine.visible = true;
+                    }
+                }
             }
             if (tempObstacle != null && settime == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
             {

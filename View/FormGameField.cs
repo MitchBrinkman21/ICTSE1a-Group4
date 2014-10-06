@@ -141,8 +141,20 @@ namespace WarGame.View
             {
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
-                    e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
-                    e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                    if (obstacle.ToString().Equals("WarGame.Model.Mine"))
+                    {
+                        Mine mine = obstacle as Mine;
+                        if (mine.visible == true)
+                        {
+                            e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                            e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                        }
+                    }
+                    else
+                    {
+                        e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                        e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                    }
                     
                 }
             }
