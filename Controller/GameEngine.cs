@@ -284,6 +284,11 @@ namespace WarGame.Controller
             {
                 formGameField.Close();
             }
+
+            LevelImported = false;
+            gameEngine.level.player = null;
+            gameEngine.level.obstacleList = null;
+            missile = null;
         }
         public void LaunchMissile()
         {   
