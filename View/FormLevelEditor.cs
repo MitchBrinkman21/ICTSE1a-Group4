@@ -13,8 +13,9 @@ namespace WarGame.View
 {
     public partial class FormLevelEditor : Form
     {
-
-
+        public bool stateToolBox = true;
+        
+        
         public FormLevelEditor()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace WarGame.View
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
             this.StartPosition = FormStartPosition.CenterScreen;
+        
             panelMenu.BringToFront();
 
         }
@@ -104,7 +106,15 @@ namespace WarGame.View
 
         private void buttonVisable_Click(object sender, EventArgs e)
         {
-            panelToolBox.Hide();
+            if (stateToolBox)
+	        {
+		         panelToolBox.Show();
+	        }
+            else
+            {
+                 panelToolBox.Hide();
+            }
+            stateToolBox = !stateToolBox;
         }
 
     }
