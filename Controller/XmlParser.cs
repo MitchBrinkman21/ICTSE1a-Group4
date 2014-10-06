@@ -20,6 +20,7 @@ namespace WarGame.Controller
         public XmlParser() 
         {
             gameEngine = GameEngine.Instance();
+            gameEngine.level.obstacleList = new List<Obstacle>();
         }
 
         public void ParseMap(XmlDocument doc, ref ProgressBarDialog progressBarDialog) 

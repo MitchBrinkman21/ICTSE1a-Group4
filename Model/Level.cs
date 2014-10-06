@@ -9,12 +9,8 @@ namespace WarGame.Model
 {
     public class Level
     {
-        public List<Obstacle> obstacleList = new List<Obstacle>();
+        public List<Obstacle> obstacleList;
         public Player player;
 
-        public Level()
-        {
-            player = new Player();
-        }
     }
 }

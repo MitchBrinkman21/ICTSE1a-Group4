@@ -97,8 +97,11 @@ namespace WarGame.View
         {
             if(gameEngine.LevelImported == true)
             {
-                buttonStart.Enabled = !buttonStart.Enabled;
-                timerImportState.Enabled = false;
+                buttonStart.Enabled = true;
+            }
+            else
+            {
+                buttonStart.Enabled = false;
             }
         }
 

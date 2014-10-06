@@ -25,7 +25,7 @@ namespace WarGame.Controller
         public FormMainEvents formMainEvents;
 
         private static GameEngine gameEngine;
-        public Level level = new Level();
+        public Level level;
 
         public Missile missile;
         public Missile missile2;
@@ -71,12 +71,18 @@ namespace WarGame.Controller
             mud = false;
             angle = 90;
 
+            level = new Level();
+            level.player = new Player();
+            
         }
 
 
         public void StartGame()
         {
-
+            if (level.player == null)
+            {
+                level.player = new Player();
+            }
             formGameField = new FormGameField();
             formGameField.Show();
 
@@ -87,6 +93,7 @@ namespace WarGame.Controller
             }
 
             FormGameField.gameState = true;
+
         }
 
         public void ImportLevel()
@@ -124,7 +131,7 @@ namespace WarGame.Controller
         public void GameLoopThreadFunction()
         {
             try
-            {
+            {                
                 if(FormGameField.gameState == true)
                 {
                     move();
@@ -151,7 +158,7 @@ namespace WarGame.Controller
             }
 
         }
-        
+
         public void HitDetect()
         {
             Player player = level.player;
@@ -160,109 +167,113 @@ namespace WarGame.Controller
             int playerY = (int)player.y;
             bool checkmud = false;
             Obstacle tempObstacle = null;
-            foreach(Obstacle obstacle in gameEngine.level.obstacleList)
+
+            if (player.lives == 0)
             {
-                if(missile != null) {
-                    if (!missile.exploded)
+                LevelImported = false;
+                GameOver();
+                
+            }
+            else
+            {
+                foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                {
+                    if (missile != null)
                     {
-                        if (missile.rect.IntersectsWith(obstacle.rect))
+                        if (!missile.exploded)
                         {
-                            switch (obstacle.ToString())
+                            if (missile.rect.IntersectsWith(obstacle.rect))
                             {
-                                case "WarGame.Model.Mine":
-                                    Console.WriteLine("Missile flies over mine...");
-                                    break;
-                                case "WarGame.Model.Finish":
-                                    Console.WriteLine("Missile flies over finish...");
-                                    break;
-                                case "WarGame.Model.Mud":
-                                    Console.WriteLine("Missile flies over mud ...");
-                                    break;
-                                default:
-                                    Console.WriteLine("missile hit object");
-                                    //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
-                                    missile.ShowExplosion();
-                                    missile.exploded = true;
-                                    break;
+                                switch (obstacle.ToString())
+                                {
+                                    case "WarGame.Model.Mine":
+                                        Console.WriteLine("Missile flies over mine...");
+                                        break;
+                                    case "WarGame.Model.Finish":
+                                        Console.WriteLine("Missile flies over finish...");
+                                        break;
+                                    case "WarGame.Model.Mud":
+                                        Console.WriteLine("Missile flies over mud ...");
+                                        break;
+                                    default:
+                                        Console.WriteLine("missile hit object");
+                                        //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
+                                        missile.ShowExplosion();
+                                        missile.exploded = true;
+                                        break;
+                                }
                             }
                         }
+                        else
+                        {
+                            if ((int)missile.explosiontimer.Elapsed.Seconds > 1)
+                                missile = null;
+                        }
                     }
-                    else
-                    {
-                        if ((int)missile.explosiontimer.Elapsed.Seconds > 1)
-                            missile = null;
-                    }
-                }
-                
-                if (obstacle.rect.IntersectsWith(playerRect))
-                {
-                    switch (obstacle.ToString())
-                    {
-                        case "WarGame.Model.Tree":
-                            Console.WriteLine("Player hit tree...");                        
-                            break;
-                        case "WarGame.Model.Sandbag":
-                            Console.WriteLine("Player hit sandbag...");
-                            break;
-                        case "WarGame.Model.Finish":
-                            Console.WriteLine("Player at finish...");
-                            EndGame();
-                            break;
-                        case "WarGame.Model.Mine":
-                            Console.WriteLine("Player hit mine");
-                            Mine mine = obstacle as Mine;
-                            mine.ShowExplosion();
-                            mine.rect = new Rectangle(-10, -10, 1, 1);
-                            player.DecreaseLive();
-                            formGameField.DrawHealthKits();
-                            if (player.lives == 0)
-                            {
-                                GameOver();
-                            }
-                            //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
-                            break;     
-                        case "WarGame.Model.Mud":
-                            Console.WriteLine("Player walks in mud");
-                            checkmud = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
 
-                if (obstacle.ToString().Equals("WarGame.Model.Mine"))
-                {
-                    Mine mine = obstacle as Mine;
-                    if (Math.Sqrt(Math.Pow(Math.Abs(mine.x - (player.x + (player.width / 2))), 2) + Math.Pow(Math.Abs(mine.y - (player.y + (player.width / 2))), 2)) < mine.proximity * mine.width)
+                    if (obstacle.rect.IntersectsWith(playerRect))
                     {
-                        mine.visible = true;
+                        switch (obstacle.ToString())
+                        {
+                            case "WarGame.Model.Tree":
+                                Console.WriteLine("Player hit tree...");
+                                break;
+                            case "WarGame.Model.Sandbag":
+                                Console.WriteLine("Player hit sandbag...");
+                                break;
+                            case "WarGame.Model.Finish":
+                                Console.WriteLine("Player at finish...");
+                                EndGame();
+                                break;
+                            case "WarGame.Model.Mine":
+                                Console.WriteLine("Player hit mine");
+                                Mine mine = obstacle as Mine;
+                                mine.ShowExplosion();
+                                mine.rect = new Rectangle(-10, -10, 1, 1);
+                                player.DecreaseLive();
+                                formGameField.DrawHealthKits();
+                                //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
+                                break;
+                            case "WarGame.Model.Mud":
+                                Console.WriteLine("Player walks in mud");
+                                checkmud = true;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                    if ((int)mine.explosiontimer.Elapsed.Seconds > 1) {                        
+
+                    if (obstacle.ToString().Equals("WarGame.Model.Mine"))
+                    {
+                        Mine mine = obstacle as Mine;
+                        if (Math.Sqrt(Math.Pow(Math.Abs(mine.x - (player.x + (player.width / 2))), 2) + Math.Pow(Math.Abs(mine.y - (player.y + (player.width / 2))), 2)) < mine.proximity * mine.width)
+                        {
+                            mine.visible = true;
+                        }
+                        if ((int)mine.explosiontimer.Elapsed.Seconds > 1)
+                        {
                             tempObstacle = mine;
+                        }
                     }
                 }
-            }
-            if (missile != null)
-            {
-                if (missile.rect.IntersectsWith(player.rect))
+                if (missile != null)
                 {
-                    missile.ShowExplosion();
-                    missile.exploded = true;
-                    missile.rect = new Rectangle(-10, -10, 1, 1);
-                    player.DecreaseLive();
-                    formGameField.DrawHealthKits();
-                    if (player.lives == 0)
+                    if (missile.rect.IntersectsWith(player.rect))
                     {
-                        GameOver();
+                        missile.ShowExplosion();
+                        missile.exploded = true;
+                        missile.rect = new Rectangle(-10, -10, 1, 1);
+                        player.DecreaseLive();
+                        formGameField.DrawHealthKits();
                     }
                 }
+                if (tempObstacle != null)
+                {
+                    level.obstacleList.Remove(tempObstacle);
+                    tempObstacle = null;
+                }
+                mud = checkmud;
             }
-            if (tempObstacle != null)
-            {
-                level.obstacleList.Remove(tempObstacle);
-                tempObstacle = null;
-            }
-            mud = checkmud;
         }
 
         public void GameOver()
@@ -293,6 +304,7 @@ namespace WarGame.Controller
 
         public void EndGame()
         {
+            
             FormGameField.gameState = false;
             formGameField.stopWatch.Stop();
             gameTime = formGameField.stopWatch.Elapsed.TotalMilliseconds;
@@ -322,7 +334,10 @@ namespace WarGame.Controller
                     formGameField.Close();
                 }
             }
-            // ToDo: Create class XmlBuilder. Build a xml file and store on disk.
+            LevelImported = false;
+            gameEngine.level.player = null;
+            gameEngine.level.obstacleList = null;
+            missile = null;
         }
 
         public void PressKey(KeyEventArgs kea)
