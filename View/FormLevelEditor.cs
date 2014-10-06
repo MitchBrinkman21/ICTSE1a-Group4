@@ -14,11 +14,23 @@ namespace WarGame.View
     public partial class FormLevelEditor : Form
     {
         public bool stateToolBox = true;
-        
-        
+
+        public List<Obstacle> ObstacleList { get; set; }
+
+        enum ObjectType
+        {
+            Mine,
+            Mud,
+            Sandbag,
+            Finish,
+            Tree,
+            Rocketlauncher
+        }
+
         public FormLevelEditor()
         {
             InitializeComponent();
+            ObstacleList = new List<Obstacle>();
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
@@ -29,80 +41,33 @@ namespace WarGame.View
         }
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
-
-            //Mine.DoDragDrop(this.SelectedClassModel, DragDropEffects.Copy | DragDropEffects.Move);
+            panelMine.DoDragDrop(ObjectType.Mine, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
         private void Finish_MouseDown(object sender, MouseEventArgs e)
         {
-            //Finish.DoDragDrop(ObjectType.SLOWER, DragDropEffects.Copy | DragDropEffects.Move);
+            panelFinish.DoDragDrop(ObjectType.Finish, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
         private void Tree_MouseDown(object sender, MouseEventArgs e)
         {
-            //Tree.DoDragDrop(ObjectType.EXPLODE, DragDropEffects.Copy | DragDropEffects.Move);
+            panelTree.DoDragDrop(ObjectType.Tree, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
         private void Mud_MouseDown(object sender, MouseEventArgs e)
         {
-            //Mud.DoDragDrop(ObjectType.TIMEBOMB, DragDropEffects.Copy | DragDropEffects.Move);
+            panelMud.DoDragDrop(ObjectType.Mud, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
         private void Sandbag_MouseDown(object sender, MouseEventArgs e)
         {
-            //Sandbag.DoDragDrop(GetDataPresent(), DragDropEffects.Copy | DragDropEffects.Move);
+            panelSandbag.DoDragDrop(ObjectType.Sandbag, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
-        private void Rocketlauncher_MouseDown(object sender, MouseEventArgs e)
+        private void RocketLauncher_MouseDown(object sender, MouseEventArgs e)
         {
-            //Rocketlauncher.DoDragDrop(ObjectType.HOME, DragDropEffects.Copy | DragDropEffects.Move);
+            panelRocketLauncher.DoDragDrop(ObjectType.Rocketlauncher, DragDropEffects.Copy | DragDropEffects.Move);
         }
-
-        //private void enter(object sender, DragEventArgs e)
-        //{
-        //    if (e.Data.GetDataPresent())
-        //    {
-        //        e.Effect = DragDropEffects.Copy;
-        //    }
-        //    else
-        //    {
-        //        e.Effect = DragDropEffects.None;
-        //    }
-        //}
-        //private void drag_drop(object sender, DragEventArgs e)
-        //{
-        //    // Get location
-
-        //    Point l = null;
-
-        //    // Add object
-        //    switch ((Object)e.Data.GetData(typeof(Object)))
-        //    {
-        //        case ObjectType.TIMEBOMB:
-        //            this.pf.AddObject(new EntityTimeBomb(50, 50, l.X, l.Y, 1.0f));
-        //            break;
-        //        case ObjectType.SLOWER:
-        //            this.pf.AddObject(new EntitySlower(50, 50, l.X, l.Y));
-        //            break;
-        //        case ObjectType.CAKE:
-        //            this.pf.GetObjects().RemoveAll((p) => { return p.GetType() == typeof(ObjectFinish); });
-        //            this.pf.AddObject(new ObjectFinish(50, 50, l.X, l.Y));
-        //            break;
-        //        case ObjectType.HOME:
-        //            this.pf.GetObjects().RemoveAll((p) => { return p.GetType() == typeof(ObjectStart); });
-        //            this.pf.AddObject(new ObjectStart(50, 50, l.X, l.Y));
-        //            break;
-        //        case ObjectType.CREEPER:
-        //            this.pf.AddObject(new EntityCreeper(50, 50, l.X, l.Y, 1.0f));
-        //            break;
-        //        case ObjectType.OBSTACLE:
-        //            this.pf.AddObject(new ObjectObstacle(50, 50, l.X, l.Y));
-        //            break;
-        //        case ObjectType.EXPLODE:
-        //            this.pf.AddObject(new EntityExplode(50, 50, l.X, l.Y, 1.0f));
-        //            break;
-        //    }
-        //}
 
         private void buttonVisable_Click(object sender, EventArgs e)
         {
@@ -117,5 +82,54 @@ namespace WarGame.View
             stateToolBox = !stateToolBox;
         }
 
+        private void FormLevelEditor_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(ObjectType)))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void FormLevelEditor_DragDrop(object sender, DragEventArgs e)
+        {
+            Point p = this.PointToClient(Cursor.Position);
+
+            switch ((ObjectType)e.Data.GetData(typeof(ObjectType)))
+            {
+                case ObjectType.Finish:
+                    ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Finish); });
+                    ObstacleList.Add(new Finish(p.X, p.Y));
+                    break;
+                case ObjectType.Mine:
+                    ObstacleList.Add(new Mine(p.X, p.Y));
+                    break;
+                case ObjectType.Mud:
+                    ObstacleList.Add(new Mud(p.X, p.Y));
+                    break;
+                case ObjectType.Rocketlauncher:
+                    //TOEVOEGEN!!
+                    //ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Rocketlauncher); });
+                    //ObstacleList.Add(new Rocketlauncher(p.X, p.Y));
+                    break;
+                case ObjectType.Sandbag:
+                    ObstacleList.Add(new Sandbag(p.X, p.Y));
+                    break;
+                case ObjectType.Tree:
+                    ObstacleList.Add(new Sandbag(p.X, p.Y));
+                    break;
+            }
+            //MessageBox.Show(string.Format("{0} gedropt at {1}, {2}", (ObjectType)e.Data.GetData(typeof(ObjectType)), p.X, p.Y));
+        }
+
+        private void FormLevelEditor_Paint(object sender, PaintEventArgs e)
+        {
+            if (ObstacleList != null)
+            {
+                foreach (Obstacle obstacle in ObstacleList)
+                {
+                    e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                }
+            }
+        }
     }
 }
