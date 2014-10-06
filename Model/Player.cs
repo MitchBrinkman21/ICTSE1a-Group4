@@ -24,7 +24,7 @@ namespace WarGame.Model
             this.lives = 3;
             this.x = 100;
             this.y = 100;
-            this.runspeed = 3;
+            this.runspeed = 5;
             this.mudspeed = 1;
             this.speed = runspeed;
             this.width = 25;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace WarGame.Model
         public int proximity;
         public Rectangle rectShow;  //use rectShow to check if the mine should show itself, use rect to check if the mine should explode
         public bool visible { get; set; }
+        public Stopwatch explosiontimer;
         public Mine(int x, int y)
             : base(x, y)
         {
@@ -19,6 +21,7 @@ namespace WarGame.Model
             length = 25;
             proximity = 3;
             visible = false;
+            explosiontimer = new Stopwatch();
             image = new Bitmap(WarGame.Properties.Resources.mine, width, length);
             rect = new Rectangle(x, y, width, length);
             rectShow = new Rectangle(x, y, width * 2, length * 2);
@@ -31,6 +34,7 @@ namespace WarGame.Model
 
         public void ShowExplosion()
         {
+            explosiontimer.Start();
             image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
         }
     }

@@ -44,7 +44,6 @@ namespace WarGame.Controller
 
         public bool DevMode;
 
-        Obstacle tempObstacle = null;
         int settime = -1;
         int settime2 = -1;
       
@@ -133,14 +132,14 @@ namespace WarGame.Controller
                     {
                         LaunchMissile();
                     }
-                    if(missile == null)
+                    if (missile == null)
                     {
                         isLaunched = false;
                     }
-                   
+
                     if (missile != null)
                     {
-                       missile.FindPlayer((int)level.player.x, (int)level.player.y);
+                        missile.FindPlayer((int)level.player.x, (int)level.player.y);
                     }
                     HitDetect();
                     formGameField.Invalidate();          
@@ -160,6 +159,7 @@ namespace WarGame.Controller
             int playerX = (int)player.x;
             int playerY = (int)player.y;
             bool checkmud = false;
+            Obstacle tempObstacle = null;
             foreach(Obstacle obstacle in gameEngine.level.obstacleList)
             {
                 if(missile != null) {
@@ -182,7 +182,6 @@ namespace WarGame.Controller
                                     Console.WriteLine("missile hit object");
                                     //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
                                     missile.ShowExplosion();
-                                    settime2 = (int)formGameField.stopWatch.Elapsed.TotalSeconds + 1;
                                     missile.exploded = true;
                                     break;
                             }
@@ -190,7 +189,7 @@ namespace WarGame.Controller
                     }
                     else
                     {
-                        if (settime2 == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
+                        if ((int)missile.explosiontimer.Elapsed.Seconds > 1)
                             missile = null;
                     }
                 }
@@ -209,25 +208,10 @@ namespace WarGame.Controller
                             Console.WriteLine("Player at finish...");
                             EndGame();
                             break;
-                        case "WarGame.Model.Missile":
-                            Console.WriteLine("Player hit missile");
-                            playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
-                            missile.ShowExplosion();
-                            missileCounter--;
-                            if (player.lives == 0)
-                                GameOver();
-                            else
-                            {
-                                player.DecreaseLive();
-                                formGameField.DrawHealthKits();
-                            }
-                            break;
                         case "WarGame.Model.Mine":
                             Console.WriteLine("Player hit mine");
                             Mine mine = obstacle as Mine;
-                            tempObstacle = mine;
                             mine.ShowExplosion();
-                            settime = (int) formGameField.stopWatch.Elapsed.TotalSeconds+1;
                             mine.rect = new Rectangle(-10, -10, 1, 1);
                             player.DecreaseLive();
                             formGameField.DrawHealthKits();
@@ -253,9 +237,27 @@ namespace WarGame.Controller
                     {
                         mine.visible = true;
                     }
+                    if ((int)mine.explosiontimer.Elapsed.Seconds > 1) {                        
+                            tempObstacle = mine;
+                    }
                 }
             }
-            if (tempObstacle != null && settime == (int)formGameField.stopWatch.Elapsed.TotalSeconds)
+            if (missile != null)
+            {
+                if (missile.rect.IntersectsWith(player.rect))
+                {
+                    missile.ShowExplosion();
+                    missile.exploded = true;
+                    missile.rect = new Rectangle(-10, -10, 1, 1);
+                    player.DecreaseLive();
+                    formGameField.DrawHealthKits();
+                    if (player.lives == 0)
+                    {
+                        GameOver();
+                    }
+                }
+            }
+            if (tempObstacle != null)
             {
                 level.obstacleList.Remove(tempObstacle);
                 tempObstacle = null;
@@ -437,55 +439,60 @@ namespace WarGame.Controller
 
                 int xsteps = 0;
                 bool xintersect = false;
-                while (xsteps < speed && !xintersect) {
-                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed * (xsteps + 1))), (int)gameEngine.level.player.y);
-                    foreach (Obstacle obstacle in gameEngine.level.obstacleList)
-                    {
-                        if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
-                        {
-                            switch (obstacle.ToString())
-                            {
-                                case "WarGame.Model.Tree":
-                                    xintersect = true;
-                                    break;
-                                case "WarGame.Model.Sandbag":
-                                    xintersect = true;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                    if (!xintersect) { 
-                        xsteps++;
-                    }
-                }
-
                 int ysteps = 0;
                 bool yintersect = false;
-                while (ysteps < speed && !yintersect)
+                while ((xsteps < speed && !xintersect) || (ysteps < speed && !yintersect))
                 {
-                    gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed * (ysteps + 1))));
-                    foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                    if (xsteps < speed && !xintersect)
                     {
-                        if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                        gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed * (xsteps + 1))), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed * (ysteps))));
+                        foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                         {
-                            switch (obstacle.ToString())
+                            if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
                             {
-                                case "WarGame.Model.Tree":
-                                    yintersect = true;
-                                    break;
-                                case "WarGame.Model.Sandbag":
-                                    yintersect = true;
-                                    break;
-                                default:
-                                    break;
+                                switch (obstacle.ToString())
+                                {
+                                    case "WarGame.Model.Tree":
+                                        xintersect = true;
+                                        break;
+                                    case "WarGame.Model.Sandbag":
+                                        xintersect = true;
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
+                        if (!xintersect)
+                        {
+                            xsteps++;
+                        }
                     }
-                    if (!yintersect)
+
+                    if (ysteps < speed && !yintersect)
                     {
-                        ysteps++;
+                        gameEngine.level.player.rect.Location = new Point((int)(gameEngine.level.player.x + ((x - gameEngine.level.player.x) / speed * (xsteps))), (int)(gameEngine.level.player.y + ((y - gameEngine.level.player.y) / speed * (ysteps + 1))));
+                        foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+                        {
+                            if (obstacle.rect.IntersectsWith(gameEngine.level.player.rect))
+                            {
+                                switch (obstacle.ToString())
+                                {
+                                    case "WarGame.Model.Tree":
+                                        yintersect = true;
+                                        break;
+                                    case "WarGame.Model.Sandbag":
+                                        yintersect = true;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                        if (!yintersect)
+                        {
+                            ysteps++;
+                        }
                     }
                 }
 

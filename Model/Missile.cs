@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -16,16 +17,16 @@ namespace WarGame.Model
         public int speed {get; set;}
         Bitmap baseimage;
         public Boolean exploded { get; set; }
-
+        public Stopwatch explosiontimer;
 
         public Missile(int x, int y)
             : base(x, y)
         {
-            speed = 8;
+            speed = 3;
             width = 30;
             length = 30;
             exploded = false;
-            
+            explosiontimer = new Stopwatch();
             image = new Bitmap(WarGame.Properties.Resources.missile, width, length);
             baseimage = new Bitmap(WarGame.Properties.Resources.missile, width, length);
             rect = new Rectangle(x, y, width, length);
@@ -52,7 +53,7 @@ namespace WarGame.Model
                 // move towards the player
                 x = (int)(x + speed * tx / distance);
                 y = (int)(y + speed * ty / distance);
-                rect = new Rectangle(x, y, width, length);
+                rect.Location = new Point(x, y);
             }
             
          
@@ -74,6 +75,7 @@ namespace WarGame.Model
          */
         public void ShowExplosion()
         {
+            explosiontimer.Start();
             image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
         }
 
