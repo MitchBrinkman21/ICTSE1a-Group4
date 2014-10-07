@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonVisable = new System.Windows.Forms.Panel();
+            this.buttonNew = new System.Windows.Forms.Panel();
+            this.buttonLoad = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Panel();
             this.panelToolBox = new System.Windows.Forms.Panel();
             this.panelRocketLauncher = new System.Windows.Forms.Panel();
             this.panelSandbag = new System.Windows.Forms.Panel();
@@ -36,10 +40,6 @@
             this.panelMud = new System.Windows.Forms.Panel();
             this.panelMine = new System.Windows.Forms.Panel();
             this.panelTree = new System.Windows.Forms.Panel();
-            this.buttonNew = new System.Windows.Forms.Panel();
-            this.buttonLoad = new System.Windows.Forms.Panel();
-            this.buttonSave = new System.Windows.Forms.Panel();
-            this.buttonVisable = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelToolBox.SuspendLayout();
             this.SuspendLayout();
@@ -56,83 +56,13 @@
             this.panelMenu.Size = new System.Drawing.Size(148, 32);
             this.panelMenu.TabIndex = 1;
             // 
-            // panelToolBox
+            // buttonVisable
             // 
-            this.panelToolBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelToolBox.Controls.Add(this.panelRocketLauncher);
-            this.panelToolBox.Controls.Add(this.panelSandbag);
-            this.panelToolBox.Controls.Add(this.panelFinish);
-            this.panelToolBox.Controls.Add(this.panelMud);
-            this.panelToolBox.Controls.Add(this.panelMine);
-            this.panelToolBox.Controls.Add(this.panelTree);
-            this.panelToolBox.Location = new System.Drawing.Point(1217, 32);
-            this.panelToolBox.Name = "panelToolBox";
-            this.panelToolBox.Size = new System.Drawing.Size(148, 234);
-            this.panelToolBox.TabIndex = 0;
-            // 
-            // panelRocketLauncher
-            // 
-            this.panelRocketLauncher.BackgroundImage = global::WarGame.Properties.Resources.missilelauncher;
-            this.panelRocketLauncher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelRocketLauncher.Location = new System.Drawing.Point(81, 154);
-            this.panelRocketLauncher.Name = "panelRocketLauncher";
-            this.panelRocketLauncher.Size = new System.Drawing.Size(63, 63);
-            this.panelRocketLauncher.TabIndex = 4;
-            this.panelRocketLauncher.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RocketLauncher_MouseDown);
-            // 
-            // panelSandbag
-            // 
-            this.panelSandbag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelSandbag.BackgroundImage = global::WarGame.Properties.Resources.sandbag;
-            this.panelSandbag.Location = new System.Drawing.Point(8, 154);
-            this.panelSandbag.Name = "panelSandbag";
-            this.panelSandbag.Size = new System.Drawing.Size(63, 63);
-            this.panelSandbag.TabIndex = 4;
-            this.panelSandbag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Sandbag_MouseDown);
-            // 
-            // panelFinish
-            // 
-            this.panelFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelFinish.BackgroundImage = global::WarGame.Properties.Resources.finish;
-            this.panelFinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelFinish.Location = new System.Drawing.Point(81, 85);
-            this.panelFinish.Name = "panelFinish";
-            this.panelFinish.Size = new System.Drawing.Size(63, 63);
-            this.panelFinish.TabIndex = 4;
-            this.panelFinish.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Finish_MouseDown);
-            // 
-            // panelMud
-            // 
-            this.panelMud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelMud.BackgroundImage = global::WarGame.Properties.Resources.mud;
-            this.panelMud.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelMud.Location = new System.Drawing.Point(8, 85);
-            this.panelMud.Name = "panelMud";
-            this.panelMud.Size = new System.Drawing.Size(63, 63);
-            this.panelMud.TabIndex = 3;
-            this.panelMud.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Mud_MouseDown);
-            // 
-            // panelMine
-            // 
-            this.panelMine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelMine.BackgroundImage = global::WarGame.Properties.Resources.mine;
-            this.panelMine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelMine.Location = new System.Drawing.Point(8, 16);
-            this.panelMine.Name = "panelMine";
-            this.panelMine.Size = new System.Drawing.Size(63, 63);
-            this.panelMine.TabIndex = 3;
-            this.panelMine.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Mine_MouseDown);
-            // 
-            // panelTree
-            // 
-            this.panelTree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panelTree.BackgroundImage = global::WarGame.Properties.Resources.tree;
-            this.panelTree.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelTree.Location = new System.Drawing.Point(81, 16);
-            this.panelTree.Name = "panelTree";
-            this.panelTree.Size = new System.Drawing.Size(63, 63);
-            this.panelTree.TabIndex = 2;
-            this.panelTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tree_MouseDown);
+            this.buttonVisable.Location = new System.Drawing.Point(119, 3);
+            this.buttonVisable.Name = "buttonVisable";
+            this.buttonVisable.Size = new System.Drawing.Size(25, 25);
+            this.buttonVisable.TabIndex = 4;
+            this.buttonVisable.Click += new System.EventHandler(this.buttonVisable_Click);
             // 
             // buttonNew
             // 
@@ -156,13 +86,78 @@
             this.buttonSave.Size = new System.Drawing.Size(25, 25);
             this.buttonSave.TabIndex = 3;
             // 
-            // buttonVisable
+            // panelToolBox
             // 
-            this.buttonVisable.Location = new System.Drawing.Point(119, 3);
-            this.buttonVisable.Name = "buttonVisable";
-            this.buttonVisable.Size = new System.Drawing.Size(25, 25);
-            this.buttonVisable.TabIndex = 4;
-            this.buttonVisable.Click += new System.EventHandler(this.buttonVisable_Click);
+            this.panelToolBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelToolBox.Controls.Add(this.panelRocketLauncher);
+            this.panelToolBox.Controls.Add(this.panelSandbag);
+            this.panelToolBox.Controls.Add(this.panelFinish);
+            this.panelToolBox.Controls.Add(this.panelMud);
+            this.panelToolBox.Controls.Add(this.panelMine);
+            this.panelToolBox.Controls.Add(this.panelTree);
+            this.panelToolBox.Location = new System.Drawing.Point(1217, 32);
+            this.panelToolBox.Name = "panelToolBox";
+            this.panelToolBox.Size = new System.Drawing.Size(148, 234);
+            this.panelToolBox.TabIndex = 0;
+            // 
+            // panelRocketLauncher
+            // 
+            this.panelRocketLauncher.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMissilelauncher;
+            this.panelRocketLauncher.Location = new System.Drawing.Point(81, 154);
+            this.panelRocketLauncher.Name = "panelRocketLauncher";
+            this.panelRocketLauncher.Size = new System.Drawing.Size(63, 63);
+            this.panelRocketLauncher.TabIndex = 4;
+            this.panelRocketLauncher.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RocketLauncher_MouseDown);
+            // 
+            // panelSandbag
+            // 
+            this.panelSandbag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelSandbag.BackgroundImage = global::WarGame.Properties.Resources.levelEditorSandbag;
+            this.panelSandbag.Location = new System.Drawing.Point(8, 154);
+            this.panelSandbag.Name = "panelSandbag";
+            this.panelSandbag.Size = new System.Drawing.Size(63, 63);
+            this.panelSandbag.TabIndex = 4;
+            this.panelSandbag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Sandbag_MouseDown);
+            // 
+            // panelFinish
+            // 
+            this.panelFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelFinish.BackgroundImage = global::WarGame.Properties.Resources.levelEditorFinish;
+            this.panelFinish.Location = new System.Drawing.Point(81, 85);
+            this.panelFinish.Name = "panelFinish";
+            this.panelFinish.Size = new System.Drawing.Size(63, 63);
+            this.panelFinish.TabIndex = 4;
+            this.panelFinish.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Finish_MouseDown);
+            // 
+            // panelMud
+            // 
+            this.panelMud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelMud.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMud;
+            this.panelMud.Location = new System.Drawing.Point(8, 85);
+            this.panelMud.Name = "panelMud";
+            this.panelMud.Size = new System.Drawing.Size(63, 63);
+            this.panelMud.TabIndex = 3;
+            this.panelMud.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Mud_MouseDown);
+            // 
+            // panelMine
+            // 
+            this.panelMine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelMine.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMine;
+            this.panelMine.Location = new System.Drawing.Point(8, 16);
+            this.panelMine.Name = "panelMine";
+            this.panelMine.Size = new System.Drawing.Size(63, 63);
+            this.panelMine.TabIndex = 3;
+            this.panelMine.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Mine_MouseDown);
+            // 
+            // panelTree
+            // 
+            this.panelTree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelTree.BackgroundImage = global::WarGame.Properties.Resources.levelEditorTree;
+            this.panelTree.Location = new System.Drawing.Point(81, 16);
+            this.panelTree.Name = "panelTree";
+            this.panelTree.Size = new System.Drawing.Size(63, 63);
+            this.panelTree.TabIndex = 2;
+            this.panelTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tree_MouseDown);
             // 
             // FormLevelEditor
             // 
