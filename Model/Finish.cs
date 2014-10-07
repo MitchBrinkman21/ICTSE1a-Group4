@@ -13,8 +13,8 @@ namespace WarGame.Model
         public Finish(int x, int y)
             : base(x, y)
         {
-            width = 64;
-            length = 56;
+            width = 40;
+            length = 35;
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.finish, width, length);
         }
