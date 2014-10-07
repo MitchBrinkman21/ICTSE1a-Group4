@@ -41,6 +41,15 @@ namespace WarGame.View
             this.StartPosition = FormStartPosition.CenterScreen;
             panelMenu.BringToFront();
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        } 
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
             panelMine.DoDragDrop(ObjectType.Mine, DragDropEffects.Copy | DragDropEffects.Move);
@@ -70,6 +79,7 @@ namespace WarGame.View
         {
             panelRocketLauncher.DoDragDrop(ObjectType.Rocketlauncher, DragDropEffects.Copy | DragDropEffects.Move);
         }
+
 
         private void buttonVisable_Click(object sender, EventArgs e)
         {
@@ -212,5 +222,15 @@ namespace WarGame.View
                 }
             }
         }
+
+        private void buttonNew_MouseClick(object sender, MouseEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete all objects?", "Delete objects", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+               ObstacleList.Clear();
+            }
+        }
     }
 }
+
