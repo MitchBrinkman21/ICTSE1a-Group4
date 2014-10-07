@@ -153,6 +153,26 @@ namespace WarGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap levelEditorOpenFile {
+            get {
+                object obj = ResourceManager.GetObject("levelEditorOpenFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap levelEditorRecyclebin {
+            get {
+                object obj = ResourceManager.GetObject("levelEditorRecyclebin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap levelEditorSandbag {
             get {
                 object obj = ResourceManager.GetObject("levelEditorSandbag", resourceCulture);
@@ -163,9 +183,29 @@ namespace WarGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap levelEditorSaveFile {
+            get {
+                object obj = ResourceManager.GetObject("levelEditorSaveFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap levelEditorTree {
             get {
                 object obj = ResourceManager.GetObject("levelEditorTree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap levelEditorVisible {
+            get {
+                object obj = ResourceManager.GetObject("levelEditorVisible", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

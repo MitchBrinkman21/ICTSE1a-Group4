@@ -58,6 +58,7 @@
             // 
             // buttonVisable
             // 
+            this.buttonVisable.BackgroundImage = global::WarGame.Properties.Resources.levelEditorVisible;
             this.buttonVisable.Location = new System.Drawing.Point(119, 3);
             this.buttonVisable.Name = "buttonVisable";
             this.buttonVisable.Size = new System.Drawing.Size(25, 25);
@@ -66,6 +67,7 @@
             // 
             // buttonNew
             // 
+            this.buttonNew.BackgroundImage = global::WarGame.Properties.Resources.levelEditorRecyclebin;
             this.buttonNew.Location = new System.Drawing.Point(8, 3);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(25, 25);
@@ -73,6 +75,7 @@
             // 
             // buttonLoad
             // 
+            this.buttonLoad.BackgroundImage = global::WarGame.Properties.Resources.levelEditorOpenFile;
             this.buttonLoad.Location = new System.Drawing.Point(45, 3);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(25, 25);
@@ -81,6 +84,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.BackgroundImage = global::WarGame.Properties.Resources.levelEditorSaveFile;
             this.buttonSave.Location = new System.Drawing.Point(82, 3);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(25, 25);

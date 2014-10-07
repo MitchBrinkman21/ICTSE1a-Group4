@@ -139,6 +139,12 @@
   <data name="first_aid_kit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\first-aid_kit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="levelEditorRecyclebin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorRecyclebin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="levelEditorMissilelauncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorMissilelauncher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="finish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\finish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,8 +172,17 @@
   <data name="reset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\reset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="levelEditorMine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorMine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="levelEditorMud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorMud.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pause1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\pause1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="levelEditorOpenFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorOpenFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="reset1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\reset1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +192,12 @@
   </data>
   <data name="Mainbackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mainbackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="levelEditorSaveFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorSaveFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="levelEditorTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorTree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\tree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,31 +214,22 @@
   <data name="recycleBinSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recycleBinSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="levelEditorSandbag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorSandbag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="start1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\start1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\mud.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pauseold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\pauseold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="levelEditorFinish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\levelEditorFinish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="levelEditorMine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\levelEditorMine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pauseold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\pauseold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="levelEditorMissilelauncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\levelEditorMissilelauncher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="levelEditorMud" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\levelEditorMud.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="levelEditorSandbag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\levelEditorSandbag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="levelEditorTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\levelEditorTree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="levelEditorVisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\levelEditorVisible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
