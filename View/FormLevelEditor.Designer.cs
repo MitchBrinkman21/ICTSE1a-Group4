@@ -64,6 +64,7 @@
             this.buttonLoad.Size = new System.Drawing.Size(25, 25);
             this.buttonLoad.TabIndex = 3;
             this.buttonLoad.TabStop = false;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // buttonSave
             // 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using WarGame.Controller;
 using WarGame.Model;
 
 namespace WarGame.View
@@ -14,7 +16,9 @@ namespace WarGame.View
     public partial class FormLevelEditor : Form
     {
         public bool stateToolBox = true;
-
+        FormImportLevel importLevel = new FormImportLevel();
+        GameEngine gameEngine = new GameEngine();
+        XmlDocument doc = null;
         public List<Obstacle> ObstacleList { get; set; }
 
         enum ObjectType
@@ -35,9 +39,7 @@ namespace WarGame.View
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
             this.StartPosition = FormStartPosition.CenterScreen;
-        
             panelMenu.BringToFront();
-
         }
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
@@ -76,7 +78,7 @@ namespace WarGame.View
 		         panelToolBox.Show();
 	        }
             else
-            {
+            { 
                  panelToolBox.Hide();
             }
             stateToolBox = !stateToolBox;
@@ -93,7 +95,6 @@ namespace WarGame.View
         private void FormLevelEditor_DragDrop(object sender, DragEventArgs e)
         {
             Point p = this.PointToClient(Cursor.Position);
-
             switch ((ObjectType)e.Data.GetData(typeof(ObjectType)))
             {
                 case ObjectType.Finish:
@@ -115,7 +116,7 @@ namespace WarGame.View
                     ObstacleList.Add(new Sandbag(p.X, p.Y));
                     break;
                 case ObjectType.Tree:
-                    ObstacleList.Add(new Sandbag(p.X, p.Y));
+                    ObstacleList.Add(new Tree(p.X, p.Y));
                     break;
             }
             //MessageBox.Show(string.Format("{0} gedropt at {1}, {2}", (ObjectType)e.Data.GetData(typeof(ObjectType)), p.X, p.Y));
@@ -128,6 +129,86 @@ namespace WarGame.View
                 foreach (Obstacle obstacle in ObstacleList)
                 {
                     e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                }
+                this.Invalidate();
+            }
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        { 
+            loadLevel();
+        }
+
+        private void loadLevel()
+        {
+            OpenFileDialog BrowseFile = new OpenFileDialog();
+            BrowseFile.Filter = "XML Files (*.xml)|*.xml";
+            BrowseFile.FilterIndex = 0;
+            BrowseFile.DefaultExt = "xml";
+            if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string fileName = "WarGameLevel.xml";
+                string sourcePath = BrowseFile.FileName;
+                string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
+                string destFile = System.IO.Path.Combine(targetPath, fileName);
+                string newFile = System.IO.Path.GetFileName(sourcePath);
+                if (newFile.Equals("WarGameLevel.xml"))
+                {
+                    string Text = targetPath + newFile;
+                    System.IO.File.Copy(sourcePath, destFile, true);
+                    doc = new XmlDocument();
+                    try
+                    {
+                        doc.Load(Text);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                XmlNodeList xmlnode;
+                xmlnode = doc.GetElementsByTagName("object");
+                for (int i = 0; i < xmlnode.Count; i++)
+                {
+                    string name = xmlnode[i].ChildNodes.Item(0).InnerText;
+                    int xaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(1).InnerText);
+                    int yaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(2).InnerText);
+                    string speed = xmlnode[i].ChildNodes.Item(3).InnerText;
+                    switch (name)
+                    {
+                        case "tree":
+                            Tree tree = new Tree(xaxis, yaxis);
+                            ObstacleList.Add(tree);
+                            Console.WriteLine("Tree added to list.");
+                            break;
+                        case "sandbag":
+                            Sandbag sandbag = new Sandbag(xaxis, yaxis);
+                            ObstacleList.Add(sandbag);
+                            Console.WriteLine("Tree added to list.");
+                            break;
+                        case "mine":
+                            Mine mine = new Mine(xaxis, yaxis);
+                            ObstacleList.Add(mine);
+                            Console.WriteLine("Tree added to list.");
+                            break;
+                        case "mud":
+                            Mud mud = new Mud(xaxis, yaxis);
+                            ObstacleList.Add(mud);
+                            Console.WriteLine("Tree added to list.");
+                            break;
+                        case "finish":
+                            Finish finish = new Finish(xaxis, yaxis);
+                            ObstacleList.Add(finish);
+                            Console.WriteLine("Tree added to list.");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
