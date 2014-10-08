@@ -84,7 +84,7 @@ namespace WarGame.View
             {
                 case DialogResult.Yes:
                     {
-                        gameEngine.ResetGame();
+                        gameEngine.ResetGame(false);
                         this.Close();
                         break;
                     }
@@ -104,7 +104,7 @@ namespace WarGame.View
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            gameEngine.ResetGame();
+            gameEngine.ResetGame(true);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -194,21 +194,21 @@ namespace WarGame.View
             gameEngine.PressKey(e);
             if (e.KeyCode ==  Keys.R)
             {
-                gameEngine.ResetGame();
+                gameEngine.ResetGame(true);
             }
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
                 gameState = false;
-                gameEngine.ResetGame();
+                gameEngine.ResetGame(false);
             }
             if (e.KeyCode == Keys.P)
             {
                 if (gameState == false)
                 {
-                   Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
-                   stopWatch.Start();
-                    
+                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                    stopWatch.Start();
+
                     buttonStartPause.Image = imagePause;
                     gameState = true;
                 }
@@ -216,11 +216,19 @@ namespace WarGame.View
                 {
                     Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
                     stopWatch.Stop();
-                    
+
                     buttonStartPause.Image = imagePlay;
                     gameState = false;
                 }
-                
+            }
+            
+            if (gameState == false) { 
+                if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+                {
+                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                    buttonStartPause.Image = imagePause;
+                    gameState = true;
+                }
             }
         }
 

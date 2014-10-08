@@ -88,15 +88,19 @@ namespace WarGame.Controller
 
         }
 
-        public void ResetGame()
+        public void ResetGame(bool refresh)
         {
-            formGameField.stopWatch = Stopwatch.StartNew();
+            formGameField.stopWatch.Reset();
+            stopwatch.Reset();            
             level.player = new Player();
             level.ResetLevel();
             missile = null;
-            formGameField.DrawHealthKits();
-            stopwatch.Restart();
+            formGameField.DrawHealthKits();            
             resetMovement();
+            if (refresh)
+            {
+                formGameField.Invalidate();
+            }
         }
 
         public void ImportLevel()
@@ -137,6 +141,14 @@ namespace WarGame.Controller
             {                
                 if(FormGameField.gameState == true)
                 {
+                    if (!stopwatch.IsRunning)
+                    {
+                        stopwatch.Start();                        
+                    }
+                    if (!formGameField.stopWatch.IsRunning)
+                    {
+                        formGameField.stopWatch.Start();
+                    }
                     move();
                     if (isLaunched == false)
                     {
@@ -294,12 +306,12 @@ namespace WarGame.Controller
                 if (DevMode)
                     formDevMode.Close();
 
-                ResetGame();
+                ResetGame(false);
             }
             else if (dr == DialogResult.Retry)
             {
                 FormGameField.gameState = true;
-                ResetGame();
+                ResetGame(true);
             }
 
         }
