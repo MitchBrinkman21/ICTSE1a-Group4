@@ -128,9 +128,9 @@ namespace WarGame.View
                     ObstacleList.Add(new Mud(p.X, p.Y));
                     break;
                 case ObjectType.Rocketlauncher:
-                    //TOEVOEGEN!!
-                    //ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Rocketlauncher); });
-                    //ObstacleList.Add(new Rocketlauncher(p.X, p.Y));
+
+                    ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Missilelauncher); });
+                    ObstacleList.Add(new Missilelauncher(p.X, p.Y));
                     mlAdded = true;
                     break;
                 case ObjectType.Sandbag:
