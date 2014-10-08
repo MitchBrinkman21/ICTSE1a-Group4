@@ -20,7 +20,6 @@ namespace WarGame.View
     {
         GameEngine gameEngine;
         public Boolean gameOver;
-        Graphics Visual;
         public Stopwatch stopWatch = new Stopwatch();
         Pen p = new Pen(System.Drawing.Color.Blue, 1);
         public static Boolean gameState;
@@ -48,7 +47,7 @@ namespace WarGame.View
         {
             Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
             Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
-            if (buttonStartPause.Tag == "pause" )
+            if (buttonStartPause.Tag.ToString().Equals("pause") )
             {
                 buttonStartPause.Image = imagePlay;
                 buttonStartPause.Tag = "play";
@@ -147,24 +146,24 @@ namespace WarGame.View
                         if (mine.visible == true)
                         {
                             e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
-                            e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                            //e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
                         }
                     }
                     else
                     {
                         e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
-                        e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                        //e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
                     }
                     
                 }
             }
-            e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
+            //e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
             e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
 
             
             if (gameEngine.missile != null)
             {
-                e.Graphics.DrawRectangle(p, gameEngine.missile.rect);
+                //e.Graphics.DrawRectangle(p, gameEngine.missile.rect);
                 e.Graphics.DrawImage(gameEngine.missile.image, gameEngine.missile.x, gameEngine.missile.y);
             }
 

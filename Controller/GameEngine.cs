@@ -30,8 +30,6 @@ namespace WarGame.Controller
         public Missile missile;
         public Missile missile2;
 
-        private int missileCounter = 0;
-
         private double gameTime; // The time you spend in the game
         private String namePlayer;
 
@@ -43,9 +41,6 @@ namespace WarGame.Controller
         public float angle { get; set; }
 
         public bool DevMode;
-
-        int settime = -1;
-        int settime2 = -1;
 
         public static string levelName;      
 
@@ -61,8 +56,8 @@ namespace WarGame.Controller
         {
             formMainEvents += StartGame;
             formMainEvents += ImportLevel;
-            SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
-            sound.PlayLooping();
+            //SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
+            //sound.PlayLooping();
             up = false;
             down = false;
             left = false;
@@ -477,8 +472,6 @@ namespace WarGame.Controller
                                 switch (obstacle.ToString())
                                 {
                                     case "WarGame.Model.Tree":
-                                        xintersect = true;
-                                        break;
                                     case "WarGame.Model.Sandbag":
                                         xintersect = true;
                                         break;
@@ -503,8 +496,6 @@ namespace WarGame.Controller
                                 switch (obstacle.ToString())
                                 {
                                     case "WarGame.Model.Tree":
-                                        yintersect = true;
-                                        break;
                                     case "WarGame.Model.Sandbag":
                                         yintersect = true;
                                         break;
