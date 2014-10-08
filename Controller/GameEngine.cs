@@ -309,35 +309,40 @@ namespace WarGame.Controller
 
         public void EndGame()
         {
-            
+            // Stop GameLoopThreadFunction and stopWatch
             FormGameField.gameState = false;
             formGameField.stopWatch.Stop();
+
+            // Put stopWatch time into int variable gameTime
             gameTime = formGameField.stopWatch.Elapsed.TotalMilliseconds;
+
+            // Open FormEndGame and check result this form
             FormEndGame formEndGame = new FormEndGame(gameTime);
             if (formEndGame.ShowDialog() == DialogResult.OK)
             {
+                // Initialize namePlayer with result of FormEndGame
                 namePlayer = formEndGame.namePlayer;
                 if (namePlayer.Equals(""))
                 {
                     namePlayer = "Anonymous";
                 }
 
+                // Create XmlBuilder and put name of file in a string variable
                 XmlBuilder xml = new XmlBuilder();
                 string filename = @"c:\WarGame\stats\Statistics.xml";
-                XmlDocument doc = new XmlDocument();
-                try
+                
+                // If file already exists, change that file with the new Highscore
+                if(File.Exists(filename))
                 {
+                    XmlDocument doc = new XmlDocument();
                     doc.Load(filename);
                     xml.ChangeFile(namePlayer, gameTime);
                 }
-                catch (FileNotFoundException)
+                else
                 {
                     xml.CreateFile(namePlayer, gameTime);
                 }
-                finally 
-                {
                     formGameField.Close();
-                }
             }
             LevelImported = false;
             gameEngine.level.player = null;

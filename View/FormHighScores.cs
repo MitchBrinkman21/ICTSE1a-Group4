@@ -33,43 +33,45 @@ namespace WarGame.View
 
         private void FormHighScores_Load(object sender, EventArgs e)
         {
-            buttonDelete.Hide();
-            // Load XMLfile if the XMLFile exists
-            try
-            {
-                doc.Load(@"c:\WarGame\stats\Statistics.xml");
-            }
-            catch (FileNotFoundException)
-            {
+            // Save name of file in string variable
+            string filename = @"c:\WarGame\stats\Statistics.xml";
 
+            // Load XMLfile if the XMLFile exists
+            if (File.Exists(filename))
+            {
+                doc.Load(filename);
             }
 
             // Create XMLnode from XMLfile
             XmlNodeList xmlnode = doc.GetElementsByTagName("player");
 
+            // Initialize levels
             levels = new List<string>();
 
             // Get levels from XMLfile, distinct levels
             for (int i = 0; i < xmlnode.Count; i++)
             {
                 string level = xmlnode[i].ChildNodes.Item(3).InnerText;
-                bool answer = true;
+                bool add = true;
 
                 foreach (string l in levels)
                 {
                     if (level == l)
                     {
-                        answer = false;
+                        add = false;
                     }
                 }
 
-                if (answer)
+                if (add)
                 {
                     comboBoxLevel.Items.Add(level);
                 }
 
                 levels.Add(level);
             }
+
+            // Hide Delete button
+            buttonDelete.Hide();
         }
 
         private void comboBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,14 +103,21 @@ namespace WarGame.View
                     } 
                 }
             }
+
+            // Show Delete button
             buttonDelete.Show();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            // Save selected level in combobox in string variable
             string level = comboBoxLevel.SelectedItem.ToString();
-            bool running = true;
-            while (running == true)
+
+            // Initialize deleteprocess with bool true
+            bool deleteprocess = true;
+
+            // Process of deleting highscores from selected level
+            while (deleteprocess == true)
             {
                 XmlElement el = (XmlElement)doc.SelectSingleNode("/players/player[player_level = '" + level + "']");
                 if (el != null) 
@@ -117,15 +126,21 @@ namespace WarGame.View
                     el = (XmlElement)doc.SelectSingleNode("/players/player[player_level = '" + level + "']");
                     if (el == null)
                     {
-                        running = false;
+                        deleteprocess = false;
                     }
                 }
             }
+
+            // Save XmlFile
             doc.Save(@"c:\WarGame\stats\Statistics.xml");
+
+            // Clear Highscores in form and items in combobox
             listViewHighscores.Items.Clear();
             comboBoxLevel.Items.Clear();
             comboBoxLevel.SelectedIndex = -1;
             comboBoxLevel.Text = "Select a level";
+
+            // Reload FormHighScores
             FormHighScores_Load(sender, e);
         }
     }
