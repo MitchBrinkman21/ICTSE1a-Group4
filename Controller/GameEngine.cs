@@ -56,8 +56,6 @@ namespace WarGame.Controller
         {
             formMainEvents += StartGame;
             formMainEvents += ImportLevel;
-            //SoundPlayer sound = new SoundPlayer(WarGame.Properties.Resources.Music);
-            //sound.PlayLooping();
             up = false;
             down = false;
             left = false;
