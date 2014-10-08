@@ -113,7 +113,7 @@ namespace WarGame.View
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString();
+            label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString("D2");
         }
 
         public void DrawHealthKits()
