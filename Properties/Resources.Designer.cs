@@ -113,6 +113,16 @@ namespace WarGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KIA {
+            get {
+                object obj = ResourceManager.GetObject("KIA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap levelEditorFinish {
             get {
                 object obj = ResourceManager.GetObject("levelEditorFinish", resourceCulture);
@@ -355,6 +365,16 @@ namespace WarGame.Properties {
         internal static System.Drawing.Bitmap sandbag {
             get {
                 object obj = ResourceManager.GetObject("sandbag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star_sprangled_banner {
+            get {
+                object obj = ResourceManager.GetObject("star_sprangled_banner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

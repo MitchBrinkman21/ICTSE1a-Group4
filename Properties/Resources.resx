@@ -232,4 +232,10 @@
   <data name="levelEditorVisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\levelEditorVisible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="KIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\124523[1].jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_sprangled_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\71539216[1].jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
