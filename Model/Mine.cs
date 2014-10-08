@@ -37,5 +37,17 @@ namespace WarGame.Model
             explosiontimer.Start();
             image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
         }
+
+        public Mine(Mine m)
+            : base(m.x, m.y)
+        {
+            width = m.width;
+            length = m.length;
+            proximity = m.proximity;
+            visible = false;
+            explosiontimer = new Stopwatch();
+            image = m.image;
+            rect = m.rect;
+        }
     }
 }

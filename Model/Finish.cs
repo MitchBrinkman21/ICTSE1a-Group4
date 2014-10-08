@@ -18,5 +18,15 @@ namespace WarGame.Model
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.finish, width, length);
         }
+
+        public Finish(Finish f)
+            : base(f.x, f.y)
+        {
+            width = f.width;
+            length = f.length;
+            rect = f.rect;
+            image = f.image;
+
+        }
     }
 }

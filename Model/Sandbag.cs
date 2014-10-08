@@ -19,5 +19,14 @@ namespace WarGame.Model
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.sandbag, width, length);
         }
+
+        public Sandbag(Sandbag sb)
+            : base(sb.x, sb.y)
+        {
+            width = sb.width;
+            length = sb.length;
+            rect = sb.rect;
+            image = sb.image;
+        }
     }
 }

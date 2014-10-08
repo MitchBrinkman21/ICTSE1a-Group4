@@ -21,6 +21,7 @@ namespace WarGame.Controller
         {
             gameEngine = GameEngine.Instance();
             gameEngine.level.obstacleList = new List<Obstacle>();
+            gameEngine.level.parsedList = new List<Obstacle>();
         }
 
         public void ParseMap(XmlDocument doc, ref ProgressBarDialog progressBarDialog) 
@@ -47,32 +48,32 @@ namespace WarGame.Controller
                         Missilelauncher missilelauncher = new Missilelauncher(xaxis, yaxis);
                         gameEngine.level.x = xaxis;
                         gameEngine.level.y = yaxis;
-                        gameEngine.level.obstacleList.Add(missilelauncher);
+                        gameEngine.level.parsedList.Add(missilelauncher);
                         Console.WriteLine("Missilelauncher added to list.");
                         break;
                     case "tree":
                         Tree tree = new Tree(xaxis, yaxis);
-                        gameEngine.level.obstacleList.Add(tree);
+                        gameEngine.level.parsedList.Add(tree);
                         Console.WriteLine("Tree added to list.");
                         break;
                     case "sandbag":
                         Sandbag sandbag = new Sandbag(xaxis, yaxis);
-                        gameEngine.level.obstacleList.Add(sandbag);
+                        gameEngine.level.parsedList.Add(sandbag);
                         Console.WriteLine("Sandbag added to list.");
                         break;
                     case "mine":
                         Mine mine = new Mine(xaxis, yaxis);
-                        gameEngine.level.obstacleList.Add(mine);
+                        gameEngine.level.parsedList.Add(mine);
                         Console.WriteLine("Mine added to list.");
                         break;
                     case "mud":
                         Mud mud = new Mud(xaxis, yaxis);
-                        gameEngine.level.obstacleList.Add(mud);
+                        gameEngine.level.parsedList.Add(mud);
                         Console.WriteLine("Mud added to list.");
                         break;
                     case "finish":
                         Finish finish = new Finish(xaxis, yaxis);
-                        gameEngine.level.obstacleList.Add(finish);
+                        gameEngine.level.parsedList.Add(finish);
                         Console.WriteLine("Finish added to list.");
                         break;
                     default:
@@ -81,7 +82,30 @@ namespace WarGame.Controller
                 progressBarDialog.updateProgressBar(xmlnode.Count, i+1);
             }
             progressBarDialog.Close();
-
+            foreach (Obstacle obstacle in gameEngine.level.parsedList)
+            {
+                switch (obstacle.ToString())
+                {
+                    case "WarGame.Model.Mine":
+                        gameEngine.level.obstacleList.Add(new Mine(obstacle as Mine));
+                        break;
+                    case "WarGame.Model.Mud":
+                        gameEngine.level.obstacleList.Add(new Mud(obstacle as Mud));
+                        break;
+                    case "WarGame.Model.Missilelauncher":
+                        gameEngine.level.obstacleList.Add(new Missilelauncher(obstacle as Missilelauncher));
+                        break;
+                    case "WarGame.Model.Tree":
+                        gameEngine.level.obstacleList.Add(new Tree(obstacle as Tree));
+                        break;
+                    case "WarGame.Model.Sandbag":
+                        gameEngine.level.obstacleList.Add(new Sandbag(obstacle as Sandbag));
+                        break;
+                    case "WarGame.Model.Finish":
+                        gameEngine.level.obstacleList.Add(new Finish(obstacle as Finish));
+                        break;
+                }
+            }
             gameEngine.LevelImported = true;
         }
 

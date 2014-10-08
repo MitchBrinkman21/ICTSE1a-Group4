@@ -17,5 +17,13 @@ namespace WarGame.Model
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.missilelauncher, width, length);
         }
+
+        public Missilelauncher(Missilelauncher ml) : base (ml.x, ml.y)         
+        {
+            width = ml.width;
+            length = ml.length;
+            rect = ml.rect;
+            image = ml.image;
+        }
     }
 }

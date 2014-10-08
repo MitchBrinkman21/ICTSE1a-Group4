@@ -23,5 +23,14 @@ namespace WarGame.Model
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.mud, width, length);
         }
+
+        public Mud(Mud m)
+            : base(m.x, m.y)
+        {
+            width = m.width;
+            length = m.length;
+            rect = m.rect;
+            image = m.image;
+        }
     }
 }

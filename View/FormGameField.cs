@@ -104,7 +104,12 @@ namespace WarGame.View
         private void buttonReset_Click(object sender, EventArgs e)
         {
             stopWatch = Stopwatch.StartNew();
-            
+            gameEngine.level.player = new Player();
+            gameEngine.level.ResetLevel();
+            gameEngine.missile = null;
+            DrawHealthKits();
+            gameEngine.stopwatch.Restart();
+            gameEngine.resetMovement();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -115,14 +120,21 @@ namespace WarGame.View
         {
             Bitmap imageHealthKitON = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
             Bitmap imageHealthKitOFF = new Bitmap(WarGame.Properties.Resources.first_aid_kit_blacked_out);
-          
-            if (gameEngine.level.player.lives == 2)
+            if (gameEngine.level.player.lives == 3)
             {
+                imageHealthKit1.Image = imageHealthKitON;
+                imageHealthKit2.Image = imageHealthKitON;
+                imageHealthKit3.Image = imageHealthKitON;
+            }
+            else if (gameEngine.level.player.lives == 2)
+            {
+                imageHealthKit1.Image = imageHealthKitON;
+                imageHealthKit2.Image = imageHealthKitON;
                 imageHealthKit3.Image = imageHealthKitOFF;
             }
             else if (gameEngine.level.player.lives == 1)
             {
-     
+                imageHealthKit1.Image = imageHealthKitON;
                 imageHealthKit2.Image = imageHealthKitOFF;
                 imageHealthKit3.Image = imageHealthKitOFF;
             }

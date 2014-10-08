@@ -19,5 +19,14 @@ namespace WarGame.Model
             rect = new Rectangle(x, y, width, length);
             image = new Bitmap(WarGame.Properties.Resources.tree, width, length);
         }
+
+        public Tree(Tree t)
+            : base(t.x, t.y)
+        {
+            width = t.width;
+            length = t.length;
+            rect = t.rect;
+            image = t.image;
+        }
     }
 }

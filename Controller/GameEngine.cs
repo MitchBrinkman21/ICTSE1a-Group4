@@ -19,7 +19,7 @@ namespace WarGame.Controller
     public class GameEngine
     {
         bool isLaunched = false;
-        Stopwatch stopwatch = new Stopwatch();
+        public Stopwatch stopwatch = new Stopwatch();
 
         public delegate void FormMainEvents();
         public FormMainEvents formMainEvents;
