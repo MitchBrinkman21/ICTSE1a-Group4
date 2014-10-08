@@ -16,6 +16,7 @@ namespace WarGame.View
         {
             get { return textBoxName.Text; }
         }
+        public bool close;
         public FormEndGame(double gameTime)
         {
             InitializeComponent();
@@ -29,6 +30,19 @@ namespace WarGame.View
                             t.Seconds,
                             t.Milliseconds);
             labelTime.Text = answer;
+        }
+
+        private void textBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Enter)
+            {
+                close = true;
+                this.Close();
+            }
+            else
+            {
+                close = false;
+            }
         } 
     }
 }
