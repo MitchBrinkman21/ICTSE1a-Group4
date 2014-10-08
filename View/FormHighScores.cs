@@ -143,5 +143,13 @@ namespace WarGame.View
             // Reload FormHighScores
             FormHighScores_Load(sender, e);
         }
+
+        private void FormHighScores_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Enter)
+            {
+                this.Close();
+            }
+        }
     }
 }

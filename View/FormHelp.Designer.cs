@@ -56,6 +56,7 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "This Game, WarGame 2014, is a stratagy game with is a race against the clock. bla" +
     "blabla";
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // buttonOK
             // 
