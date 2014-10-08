@@ -42,6 +42,9 @@ namespace WarGame.View
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
             this.StartPosition = FormStartPosition.CenterScreen;
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.FromArgb(0x66141414);
+            
             panelMenu.BringToFront();
         }
         protected override CreateParams CreateParams
@@ -52,7 +55,8 @@ namespace WarGame.View
                 cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
                 return cp;
             }
-        } 
+        }
+
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
             panelMine.DoDragDrop(ObjectType.Mine, DragDropEffects.Copy | DragDropEffects.Move);
