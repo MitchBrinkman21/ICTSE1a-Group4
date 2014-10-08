@@ -39,6 +39,11 @@ namespace WarGame.Controller
 
                 switch(name)
                 {
+                    case "missilelauncher":
+                        Missilelauncher missilelauncher = new Missilelauncher(xaxis, yaxis);
+                        gameEngine.level.missilelauncher = missilelauncher;
+                        Console.WriteLine("Missilelauncher added to list.");
+                        break;
                     case "tree":
                         Tree tree = new Tree(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(tree);
@@ -47,22 +52,22 @@ namespace WarGame.Controller
                     case "sandbag":
                         Sandbag sandbag = new Sandbag(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(sandbag);
-                        Console.WriteLine("Tree added to list.");
+                        Console.WriteLine("Sandbag added to list.");
                         break;
                     case "mine":
                         Mine mine = new Mine(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mine);
-                        Console.WriteLine("Tree added to list.");
+                        Console.WriteLine("Mine added to list.");
                         break;
                     case "mud":
                         Mud mud = new Mud(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(mud);
-                        Console.WriteLine("Tree added to list.");
+                        Console.WriteLine("Mud added to list.");
                         break;
                     case "finish":
                         Finish finish = new Finish(xaxis, yaxis);
                         gameEngine.level.obstacleList.Add(finish);
-                        Console.WriteLine("Tree added to list.");
+                        Console.WriteLine("Finish added to list.");
                         break;
                     default:
                         break;

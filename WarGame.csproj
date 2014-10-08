@@ -47,6 +47,7 @@
     <Compile Include="Controller\ViewController.cs" />
     <Compile Include="Controller\XmlBuilder.cs" />
     <Compile Include="Model\Finish.cs" />
+    <Compile Include="Model\Missilelauncher.cs" />
     <Compile Include="Model\Mud.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Missile.cs" />

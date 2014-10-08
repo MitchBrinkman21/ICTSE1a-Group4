@@ -11,6 +11,8 @@ namespace WarGame.Model
     {
         public List<Obstacle> obstacleList;
         public Player player;
+        public Missilelauncher missilelauncher;
+        
 
     }
 }
