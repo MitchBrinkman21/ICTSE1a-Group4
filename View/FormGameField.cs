@@ -159,7 +159,7 @@ namespace WarGame.View
             }
             //e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
             e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
-            e.Graphics.DrawImage(gameEngine.level.missilelauncher.image, gameEngine.level.missilelauncher.x, gameEngine.level.missilelauncher.y );
+            
 
             
             if (gameEngine.missile != null)

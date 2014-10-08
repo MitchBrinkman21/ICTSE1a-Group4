@@ -41,7 +41,8 @@ namespace WarGame.Controller
                 {
                     case "missilelauncher":
                         Missilelauncher missilelauncher = new Missilelauncher(xaxis, yaxis);
-                        gameEngine.level.missilelauncher = missilelauncher;
+                        gameEngine.level.x = xaxis;
+                        gameEngine.level.y = yaxis;
                         Console.WriteLine("Missilelauncher added to list.");
                         break;
                     case "tree":

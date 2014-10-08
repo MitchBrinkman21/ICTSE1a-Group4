@@ -292,7 +292,7 @@ namespace WarGame.Controller
                 }
                 if (stopwatch.ElapsedMilliseconds >= 3000) //3 sec
                 {
-                    missile = new Missile(level.missilelauncher.x, level.missilelauncher.y); // Launch from the center of the map...
+                    missile = new Missile(level.x, level.y); // Launch from the center of the map...
                     stopwatch.Restart();
                     isLaunched = true;
                 }
