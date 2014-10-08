@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.IO;
 using WarGame.Controller;
 using WarGame.Model;
 
@@ -15,7 +16,7 @@ namespace WarGame.View
 {
     public partial class FormLevelEditor : Form
     {
-        public bool stateToolBox = true;
+        public bool stateToolBox = true, mlAdded = false, finAdded = false;
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine = new GameEngine();
         XmlDocument doc = null;
@@ -118,6 +119,7 @@ namespace WarGame.View
                 case ObjectType.Finish:
                     ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Finish); });
                     ObstacleList.Add(new Finish(p.X, p.Y));
+                    finAdded = true;
                     break;
                 case ObjectType.Mine:
                     ObstacleList.Add(new Mine(p.X, p.Y));
@@ -129,6 +131,7 @@ namespace WarGame.View
                     //TOEVOEGEN!!
                     //ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Rocketlauncher); });
                     //ObstacleList.Add(new Rocketlauncher(p.X, p.Y));
+                    mlAdded = true;
                     break;
                 case ObjectType.Sandbag:
                     ObstacleList.Add(new Sandbag(p.X, p.Y));
@@ -153,6 +156,103 @@ namespace WarGame.View
             }
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            saveLevel(ObstacleList);
+        }
+
+        private void saveLevel(List<Obstacle> obstacleList)
+        {
+            if (!mlAdded && !finAdded)
+            {
+                MessageBox.Show("You have to add a finish and a missilelauncher to the level.");
+            }
+            else if (!mlAdded)
+            {
+                MessageBox.Show("You have to add a missilelauncher to the level.");
+            }
+            else if (!finAdded)
+            {
+                MessageBox.Show("You have to add a finish to the level.");
+            }
+            else
+            {
+                SaveFileDialog SaveFile = new SaveFileDialog();
+                SaveFile.Filter = "XML Files (*.xml)|*.xml";
+                SaveFile.FilterIndex = 0;
+                SaveFile.DefaultExt = "xml";
+                if (SaveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    createXmlLevelFile(SaveFile.FileName, ObstacleList);
+                }
+            }
+        }
+
+        private void createXmlLevelFile(string filePath, List<Obstacle> obstacleList)
+        {
+            //create new instance of XmlWriter
+            XmlTextWriter writer = new XmlTextWriter(string.Format(@"{0}", filePath), System.Text.Encoding.UTF8);
+            writer.WriteStartDocument(true);
+            writer.Formatting = Formatting.Indented;
+            writer.Indentation = 2;
+
+            //create XmlDocument
+            writer.WriteStartElement("wargamelevel");
+            writer.WriteStartElement("objects");
+
+            foreach (Obstacle obstacle in obstacleList)
+            {
+                writer.WriteStartElement("object");
+
+                //objecttype
+                writer.WriteStartElement("object_type");
+                switch (obstacle.ToString())
+                {
+                    case "WarGame.Model.Finish":
+                        writer.WriteString("finish");
+                        break;
+                    case "WarGame.Model.Mine":
+                        writer.WriteString("mine");
+                        break;
+                    case "WarGame.Model.Mud":
+                        writer.WriteString("mud");
+                        break;
+                    case "WarGame.Model.Sandbag":
+                        writer.WriteString("sandbag");
+                        break;
+                    case "WarGame.Model.Tree":
+                        writer.WriteString("tree");
+                        break;
+                    case "WarGame.Model.Missilelauncher":
+                        writer.WriteString("missilelauncher");
+                        break;
+                }
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("object_x");
+                writer.WriteString(obstacle.x.ToString());
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("object_y");
+                writer.WriteString(obstacle.y.ToString());
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("object_speed");
+                writer.WriteString("0");
+                writer.WriteEndElement();
+
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
+
+            writer.WriteEndElement();
+
+            //End of XmlFile and save
+            writer.WriteEndDocument();
+            writer.Close();
+        }
+
         private void buttonLoad_Click(object sender, EventArgs e)
         { 
             loadLevel();
@@ -171,24 +271,14 @@ namespace WarGame.View
                 string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
                 string destFile = System.IO.Path.Combine(targetPath, fileName);
                 string newFile = System.IO.Path.GetFileName(sourcePath);
-                if (newFile.Equals("WarGameLevel.xml"))
+                doc = new XmlDocument();
+                try
                 {
-                    string Text = targetPath + newFile;
-                    System.IO.File.Copy(sourcePath, destFile, true);
-                    doc = new XmlDocument();
-                    try
-                    {
-                        doc.Load(Text);
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    doc.Load(Text);
                 }
-                else
+                catch (Exception e)
                 {
-                    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 XmlNodeList xmlnode;
                 xmlnode = doc.GetElementsByTagName("object");
@@ -239,10 +329,6 @@ namespace WarGame.View
             {
                ObstacleList.Clear();
             }
-        }
-
-        private void buttonSave_MouseClick(object sender, MouseEventArgs e)
-        {
         }
 
         Point movingPoint = Point.Empty;

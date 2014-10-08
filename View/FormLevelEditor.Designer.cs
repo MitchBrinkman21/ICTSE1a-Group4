@@ -94,7 +94,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(25, 25);
             this.buttonSave.TabIndex = 3;
-            this.buttonSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonSave_MouseClick);
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // panelToolBox
             // 

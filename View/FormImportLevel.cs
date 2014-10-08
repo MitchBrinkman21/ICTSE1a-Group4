@@ -37,7 +37,6 @@ namespace WarGame.View
 
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
                 string fileName = "WarGameLevel.xml";
                 string sourcePath = BrowseFile.FileName;
                 string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
@@ -45,27 +44,37 @@ namespace WarGame.View
 
                 string newFile = System.IO.Path.GetFileName(sourcePath);
 
-                if (newFile.Equals("WarGameLevel.xml"))
-                {
-                    textBoxXMLFile.Text = targetPath + newFile;
-                    System.IO.File.Copy(sourcePath, destFile, true);
+                //if (newFile.Equals("WarGameLevel.xml"))
+                //{
+                //    textBoxXMLFile.Text = targetPath + newFile;
+                //    System.IO.File.Copy(sourcePath, destFile, true);
                     
 
-                    doc = new XmlDocument();
-                    try
-                    {
-                        doc.Load(textBoxXMLFile.Text);
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                //    doc = new XmlDocument();
+                //    try
+                //    {
+                //        doc.Load(textBoxXMLFile.Text);
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
 
-                }
-                else
+                //}
+                //else
+                //{
+                //    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+
+                doc = new XmlDocument();
+                try
                 {
-                    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    doc.Load(BrowseFile.FileName);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
