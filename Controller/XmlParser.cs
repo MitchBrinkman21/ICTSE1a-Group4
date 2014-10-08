@@ -43,6 +43,7 @@ namespace WarGame.Controller
                         Missilelauncher missilelauncher = new Missilelauncher(xaxis, yaxis);
                         gameEngine.level.x = xaxis;
                         gameEngine.level.y = yaxis;
+                        gameEngine.level.obstacleList.Add(missilelauncher);
                         Console.WriteLine("Missilelauncher added to list.");
                         break;
                     case "tree":

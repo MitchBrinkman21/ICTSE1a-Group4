@@ -187,6 +187,9 @@ namespace WarGame.Controller
                                     case "WarGame.Model.Mud":
                                         Console.WriteLine("Missile flies over mud ...");
                                         break;
+                                    case "WarGame.Model.Missilelauncher":
+                                        Console.WriteLine("Missile flies over launcher ...");
+                                        break;
                                     default:
                                         Console.WriteLine("missile hit object");
                                         //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
@@ -471,6 +474,7 @@ namespace WarGame.Controller
                                 {
                                     case "WarGame.Model.Tree":
                                     case "WarGame.Model.Sandbag":
+                                    case "WarGame.Model.Missilelauncher":
                                         xintersect = true;
                                         break;
                                     default:
@@ -495,6 +499,7 @@ namespace WarGame.Controller
                                 {
                                     case "WarGame.Model.Tree":
                                     case "WarGame.Model.Sandbag":
+                                    case "WarGame.Model.Missilelauncher":
                                         yintersect = true;
                                         break;
                                     default:
