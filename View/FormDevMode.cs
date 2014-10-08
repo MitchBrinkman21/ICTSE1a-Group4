@@ -36,12 +36,15 @@ namespace WarGame.View
             int i = 0;
 
             //Player ListViewItem
-            ListViewItem plvi = new ListViewItem(i++.ToString());
-            plvi.SubItems.Add("Player");
-            plvi.SubItems.Add(GameEngine.Instance().level.player.x.ToString());
-            plvi.SubItems.Add(GameEngine.Instance().level.player.y.ToString());
-            plvi.SubItems.Add(GameEngine.Instance().level.player.speed.ToString());
-            listView1.Items.Add(plvi);
+            if (GameEngine.Instance().level.player != null)
+            {
+                ListViewItem plvi = new ListViewItem(i++.ToString());
+                plvi.SubItems.Add("Player");
+                plvi.SubItems.Add(GameEngine.Instance().level.player.x.ToString());
+                plvi.SubItems.Add(GameEngine.Instance().level.player.y.ToString());
+                plvi.SubItems.Add(GameEngine.Instance().level.player.speed.ToString());
+                listView1.Items.Add(plvi);
+            }
 
             //Missile ListViewItem
             if (GameEngine.Instance().missile != null)
@@ -53,6 +56,8 @@ namespace WarGame.View
                 mlvi.SubItems.Add(GameEngine.Instance().missile.speed.ToString());
                 listView1.Items.Add(mlvi);
             }
+
+
 
             //Print obstacles from obstacleList
             List<Obstacle> obstacleList = new List<Obstacle>();
@@ -82,6 +87,9 @@ namespace WarGame.View
                         break;
                     case "WarGame.Model.Tree":
                         lvi = fillLvi(lvi, obj, "Tree");
+                        break;
+                    case "WarGame.Model.Missilelauncher":
+                        lvi = fillLvi(lvi, obj, "Missilelauncher");
                         break;
                 }
 
