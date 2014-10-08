@@ -30,7 +30,7 @@ namespace WarGame.Controller
             writer.WriteString(score.ToString());
             writer.WriteEndElement();
             writer.WriteStartElement("player_level");
-            writer.WriteString("level 1");
+            writer.WriteString(GameEngine.levelName);
             writer.WriteEndElement();
             writer.WriteEndElement();
             writer.WriteEndElement();
@@ -81,7 +81,7 @@ namespace WarGame.Controller
 
             //create player_level node
             XmlNode nodeLevel = doc.CreateElement("player_level");
-            nodeLevel.InnerText = "level 1";
+            nodeLevel.InnerText = GameEngine.levelName;
 
             //add to parent node
             node.AppendChild(nodeId);

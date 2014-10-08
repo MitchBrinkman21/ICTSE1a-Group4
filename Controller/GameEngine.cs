@@ -46,9 +46,8 @@ namespace WarGame.Controller
 
         int settime = -1;
         int settime2 = -1;
-      
 
-       
+        public static string levelName;      
 
         public static GameEngine Instance()
         {
