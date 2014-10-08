@@ -16,12 +16,13 @@ namespace WarGame.View
 {
     public partial class FormLevelEditor : Form
     {
-        public bool stateToolBox = true, mlAdded = false, finAdded = false;
+        public bool stateToolBox = false, mlAdded = false, finAdded = false;
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine = new GameEngine();
         XmlDocument doc = null;
         Player player = new Player();
         Obstacle currentMovingObject;
+        Point movingPoint = Point.Empty;
         public List<Obstacle> ObstacleList { get; set; }
 
         enum ObjectType
@@ -56,6 +57,7 @@ namespace WarGame.View
                 return cp;
             }
         }
+
 
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
@@ -348,7 +350,6 @@ namespace WarGame.View
             }
         }
 
-        Point movingPoint = Point.Empty;
         private void FormLevelEditor_MouseClick(object sender, MouseEventArgs e)
         {
             Point p = this.PointToClient(Cursor.Position);
