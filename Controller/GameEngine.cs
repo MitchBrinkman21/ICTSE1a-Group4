@@ -318,7 +318,7 @@ namespace WarGame.Controller
 
             // Open FormEndGame and check result this form
             FormEndGame formEndGame = new FormEndGame(gameTime);
-            if (formEndGame.ShowDialog() == DialogResult.OK)
+            if (formEndGame.ShowDialog() == DialogResult.OK || formEndGame.close == true)
             {
                 // Initialize namePlayer with result of FormEndGame
                 namePlayer = formEndGame.namePlayer;
