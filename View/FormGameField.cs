@@ -84,6 +84,7 @@ namespace WarGame.View
             {
                 case DialogResult.Yes:
                     {
+                        gameEngine.ResetGame();
                         this.Close();
                         break;
                     }
@@ -103,13 +104,7 @@ namespace WarGame.View
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            stopWatch = Stopwatch.StartNew();
-            gameEngine.level.player = new Player();
-            gameEngine.level.ResetLevel();
-            gameEngine.missile = null;
-            DrawHealthKits();
-            gameEngine.stopwatch.Restart();
-            gameEngine.resetMovement();
+            gameEngine.ResetGame();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

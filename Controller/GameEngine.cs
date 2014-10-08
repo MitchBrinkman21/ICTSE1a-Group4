@@ -88,6 +88,17 @@ namespace WarGame.Controller
 
         }
 
+        public void ResetGame()
+        {
+            formGameField.stopWatch = Stopwatch.StartNew();
+            level.player = new Player();
+            level.ResetLevel();
+            missile = null;
+            formGameField.DrawHealthKits();
+            stopwatch.Restart();
+            resetMovement();
+        }
+
         public void ImportLevel()
         {
             XmlDocument doc = null;
@@ -275,20 +286,22 @@ namespace WarGame.Controller
         {
             FormGameField.gameState = false;
             FormGameOver formGameOver = new FormGameOver();
-            if (formGameOver.ShowDialog() == DialogResult.Abort)
+            DialogResult dr = formGameOver.ShowDialog();
+            if (dr == DialogResult.Abort)
             {
                 formGameField.Close();
 
                 if (DevMode)
                     formDevMode.Close();
 
-                resetMovement();
+                ResetGame();
+            }
+            else if (dr == DialogResult.Retry)
+            {
+                FormGameField.gameState = true;
+                ResetGame();
             }
 
-            LevelImported = false;
-            gameEngine.level.player = null;
-            gameEngine.level.obstacleList = null;
-            missile = null;
         }
         public void LaunchMissile()
         {   
