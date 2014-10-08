@@ -27,7 +27,11 @@ namespace WarGame.Controller
         {
             XmlNodeList xmlnode;
 
+            xmlnode = doc.GetElementsByTagName("level_name");
+            GameEngine.levelName = xmlnode[0].InnerText;
+
             xmlnode = doc.GetElementsByTagName("object");
+
             progressBarDialog.updateProgressBar(xmlnode.Count, 0);
 
             for (int i = 0; i < xmlnode.Count; i++)
