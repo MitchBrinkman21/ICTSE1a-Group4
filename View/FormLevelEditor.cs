@@ -264,7 +264,7 @@ namespace WarGame.View
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
-        { 
+        {
             loadLevel();
         }
 
@@ -276,6 +276,8 @@ namespace WarGame.View
             BrowseFile.DefaultExt = "xml";
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                ObstacleList.Clear();
+
                 doc = new XmlDocument();
                 try
                 {
@@ -319,6 +321,12 @@ namespace WarGame.View
                             Finish finish = new Finish(xaxis, yaxis);
                             ObstacleList.Add(finish);
                             Console.WriteLine("Tree added to list.");
+                            finAdded = true;
+                            break;
+                        case "missilelauncher":
+                            ObstacleList.Add(new Missilelauncher(xaxis, yaxis));
+                            Console.WriteLine("Missilelauncher added to list.");
+                            mlAdded = true;
                             break;
                         default:
                             break;
