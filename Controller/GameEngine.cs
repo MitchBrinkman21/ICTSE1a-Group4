@@ -278,6 +278,11 @@ namespace WarGame.Controller
             if (formGameOver.ShowDialog() == DialogResult.Abort)
             {
                 formGameField.Close();
+
+                if (DevMode)
+                    formDevMode.Close();
+
+                resetMovement();
             }
 
             LevelImported = false;
@@ -338,6 +343,11 @@ namespace WarGame.Controller
                     xml.CreateFile(namePlayer, gameTime);
                 }
                     formGameField.Close();
+
+                    if (DevMode)
+                        formDevMode.Close();
+
+                    resetMovement();
             }
             LevelImported = false;
             gameEngine.level.player = null;
@@ -590,6 +600,16 @@ namespace WarGame.Controller
                 }
             }
             
+        }
+
+        public void resetMovement()
+        {
+            up = false;
+            down = false;
+            left = false;
+            right = false;
+            mud = false;
+            angle = 90;
         }
     }
 }

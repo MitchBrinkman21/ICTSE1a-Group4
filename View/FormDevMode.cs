@@ -23,11 +23,14 @@ namespace WarGame.View
 
         private void updateTimerTick(object sender, EventArgs e)
         {
-            int index = listView1.TopItem.Index;
+            if (listView1.Items.Count != 0)
+            {
+                int index = listView1.TopItem.Index;
 
-            this.updateViewList();
+                this.updateViewList();
 
-            listView1.TopItem = listView1.Items[index];
+                listView1.TopItem = listView1.Items[index];
+            }
         }
 
         private void updateViewList()
@@ -57,43 +60,44 @@ namespace WarGame.View
                 listView1.Items.Add(mlvi);
             }
 
-
-
             //Print obstacles from obstacleList
-            List<Obstacle> obstacleList = new List<Obstacle>();
-
-            foreach (Obstacle obstacle in Controller.GameEngine.Instance().level.obstacleList)
+            if (GameEngine.Instance().level.obstacleList != null)
             {
-                obstacleList.Add(obstacle);
-            }
+                List<Obstacle> obstacleList = new List<Obstacle>();
 
-            foreach (Obstacle obj in obstacleList)
-            {
-                ListViewItem lvi = new ListViewItem(i++.ToString());
-
-                switch (obj.ToString())
+                foreach (Obstacle obstacle in Controller.GameEngine.Instance().level.obstacleList)
                 {
-                    case "WarGame.Model.Finish":
-                        lvi = fillLvi(lvi, obj, "Finish");
-                        break;
-                    case "WarGame.Model.Mine":
-                        lvi = fillLvi(lvi, obj, "Mine");
-                        break;
-                    case "WarGame.Model.Mud":
-                        lvi = fillLvi(lvi, obj, "Mud");
-                        break;
-                    case "WarGame.Model.Sandbag":
-                        lvi = fillLvi(lvi, obj, "Sandbag");
-                        break;
-                    case "WarGame.Model.Tree":
-                        lvi = fillLvi(lvi, obj, "Tree");
-                        break;
-                    case "WarGame.Model.Missilelauncher":
-                        lvi = fillLvi(lvi, obj, "Missilelauncher");
-                        break;
+                    obstacleList.Add(obstacle);
                 }
 
-                listView1.Items.Add(lvi);
+                foreach (Obstacle obj in obstacleList)
+                {
+                    ListViewItem lvi = new ListViewItem(i++.ToString());
+
+                    switch (obj.ToString())
+                    {
+                        case "WarGame.Model.Finish":
+                            lvi = fillLvi(lvi, obj, "Finish");
+                            break;
+                        case "WarGame.Model.Mine":
+                            lvi = fillLvi(lvi, obj, "Mine");
+                            break;
+                        case "WarGame.Model.Mud":
+                            lvi = fillLvi(lvi, obj, "Mud");
+                            break;
+                        case "WarGame.Model.Sandbag":
+                            lvi = fillLvi(lvi, obj, "Sandbag");
+                            break;
+                        case "WarGame.Model.Tree":
+                            lvi = fillLvi(lvi, obj, "Tree");
+                            break;
+                        case "WarGame.Model.Missilelauncher":
+                            lvi = fillLvi(lvi, obj, "Missilelauncher");
+                            break;
+                    }
+
+                    listView1.Items.Add(lvi);
+                }
             }
         }
 
