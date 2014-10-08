@@ -380,6 +380,14 @@ namespace WarGame.View
             panelToolBox.Show();
             stateToolBox = true;
         }
+
+        private void FormLevelEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
 

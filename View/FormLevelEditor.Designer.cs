@@ -185,6 +185,7 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormLevelEditor_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormLevelEditor_DragEnter);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormLevelEditor_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLevelEditor_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseUp);
