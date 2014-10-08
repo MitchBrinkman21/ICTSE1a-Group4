@@ -94,6 +94,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(25, 25);
             this.buttonSave.TabIndex = 3;
+            this.buttonSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonSave_MouseClick);
             // 
             // panelToolBox
             // 
@@ -184,6 +185,9 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormLevelEditor_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormLevelEditor_DragEnter);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormLevelEditor_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseClick);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormLevelEditor_MouseUp);
             this.panelMenu.ResumeLayout(false);
             this.panelToolBox.ResumeLayout(false);
             this.ResumeLayout(false);

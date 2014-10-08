@@ -19,6 +19,8 @@ namespace WarGame.View
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine = new GameEngine();
         XmlDocument doc = null;
+        Player player = new Player();
+        Obstacle currentMovingObject;
         public List<Obstacle> ObstacleList { get; set; }
 
         enum ObjectType
@@ -68,6 +70,7 @@ namespace WarGame.View
         private void Mud_MouseDown(object sender, MouseEventArgs e)
         {
             panelMud.DoDragDrop(ObjectType.Mud, DragDropEffects.Copy | DragDropEffects.Move);
+            
         }
 
         private void Sandbag_MouseDown(object sender, MouseEventArgs e)
@@ -97,9 +100,14 @@ namespace WarGame.View
         private void FormLevelEditor_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(ObjectType)))
+            {
                 e.Effect = DragDropEffects.Copy;
+            }
             else
+            {
                 e.Effect = DragDropEffects.None;
+            }
+      
         }
 
         private void FormLevelEditor_DragDrop(object sender, DragEventArgs e)
@@ -140,6 +148,7 @@ namespace WarGame.View
                 {
                     e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
                 }
+                e.Graphics.DrawImage(player.image, (int)player.x, (int)player.y);
                 this.Invalidate();
             }
         }
@@ -230,6 +239,55 @@ namespace WarGame.View
             {
                ObstacleList.Clear();
             }
+        }
+
+        private void buttonSave_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        Point movingPoint = Point.Empty;
+        private void FormLevelEditor_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point p = this.PointToClient(Cursor.Position);
+            foreach (Obstacle obstacle in ObstacleList)
+            {
+                if (p.X >= obstacle.x && p.X <= (obstacle.x+obstacle.width) && p.Y >= obstacle.y && p.Y <= (obstacle.y +obstacle.length))
+                {
+                    currentMovingObject = obstacle;
+                }
+            }
+            if (this.currentMovingObject != null)
+            {
+                this.movingPoint = new Point(p.X - this.currentMovingObject.x, p.Y - this.currentMovingObject.y);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                ObstacleList.Remove(currentMovingObject);
+            }
+            panelToolBox.Hide();
+            stateToolBox = false;
+        }
+
+        private void FormLevelEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.currentMovingObject != null)
+            {
+                Point p = this.PointToClient(Cursor.Position);
+                this.currentMovingObject.x = p.X - this.movingPoint.X;
+                this.currentMovingObject.y = p.Y - this.movingPoint.Y;
+                this.Invalidate();
+            }
+
+        }
+
+        private void FormLevelEditor_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (this.currentMovingObject != null)
+            {
+                this.currentMovingObject = null;
+            }
+            panelToolBox.Show();
+            stateToolBox = true;
         }
     }
 }
