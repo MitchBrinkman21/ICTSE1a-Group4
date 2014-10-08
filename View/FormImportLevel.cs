@@ -66,6 +66,7 @@ namespace WarGame.View
                 //    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //    return;
                 //}
+                textBoxXMLFile.Text = BrowseFile.FileName;
 
                 doc = new XmlDocument();
                 try
