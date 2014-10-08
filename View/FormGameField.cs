@@ -192,6 +192,36 @@ namespace WarGame.View
         private void FormGameField_KeyDown(object sender, KeyEventArgs e)
         {
             gameEngine.PressKey(e);
+            if (e.KeyCode ==  Keys.R)
+            {
+                gameEngine.ResetGame();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+                gameState = false;
+                gameEngine.ResetGame();
+            }
+            if (e.KeyCode == Keys.P)
+            {
+                if (gameState == false)
+                {
+                   Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                   stopWatch.Start();
+                    
+                    buttonStartPause.Image = imagePause;
+                    gameState = true;
+                }
+                else if (gameState == true)
+                {
+                    Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+                    stopWatch.Stop();
+                    
+                    buttonStartPause.Image = imagePlay;
+                    gameState = false;
+                }
+                
+            }
         }
 
         private void FormGameField_KeyUp(object sender, KeyEventArgs e)
