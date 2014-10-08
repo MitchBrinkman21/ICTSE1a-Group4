@@ -192,9 +192,7 @@ namespace WarGame.Controller
 
             if (player.lives == 0)
             {
-                LevelImported = false;
-                GameOver();
-                
+                GameOver();                
             }
             else
             {
@@ -381,10 +379,7 @@ namespace WarGame.Controller
 
                     resetMovement();
             }
-            LevelImported = false;
-            gameEngine.level.player = null;
-            gameEngine.level.obstacleList = null;
-            missile = null;
+            ResetGame(false);
         }
 
         public void PressKey(KeyEventArgs kea)
