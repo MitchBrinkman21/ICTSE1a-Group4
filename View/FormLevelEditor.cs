@@ -177,18 +177,24 @@ namespace WarGame.View
             }
             else
             {
-                SaveFileDialog SaveFile = new SaveFileDialog();
-                SaveFile.Filter = "XML Files (*.xml)|*.xml";
-                SaveFile.FilterIndex = 0;
-                SaveFile.DefaultExt = "xml";
-                if (SaveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                FormLevelEditorNameDialog nameDlg = new FormLevelEditorNameDialog();
+                DialogResult result = nameDlg.ShowDialog();
+
+                if (result == DialogResult.OK)
                 {
-                    createXmlLevelFile(SaveFile.FileName, ObstacleList);
+                    SaveFileDialog SaveFile = new SaveFileDialog();
+                    SaveFile.Filter = "XML Files (*.xml)|*.xml";
+                    SaveFile.FilterIndex = 0;
+                    SaveFile.DefaultExt = "xml";
+                    if (SaveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        createXmlLevelFile(SaveFile.FileName, nameDlg.levelName, ObstacleList);
+                    }
                 }
             }
         }
 
-        private void createXmlLevelFile(string filePath, List<Obstacle> obstacleList)
+        private void createXmlLevelFile(string filePath, string name, List<Obstacle> obstacleList)
         {
             //create new instance of XmlWriter
             XmlTextWriter writer = new XmlTextWriter(string.Format(@"{0}", filePath), System.Text.Encoding.UTF8);
@@ -198,6 +204,9 @@ namespace WarGame.View
 
             //create XmlDocument
             writer.WriteStartElement("wargamelevel");
+            writer.WriteStartElement("level_name");
+            writer.WriteString(name);
+            writer.WriteEndElement();
             writer.WriteStartElement("objects");
 
             foreach (Obstacle obstacle in obstacleList)
@@ -266,15 +275,10 @@ namespace WarGame.View
             BrowseFile.DefaultExt = "xml";
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string fileName = "WarGameLevel.xml";
-                string sourcePath = BrowseFile.FileName;
-                string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
-                string destFile = System.IO.Path.Combine(targetPath, fileName);
-                string newFile = System.IO.Path.GetFileName(sourcePath);
                 doc = new XmlDocument();
                 try
                 {
-                    doc.Load(Text);
+                    doc.Load(BrowseFile.FileName);
                 }
                 catch (Exception e)
                 {

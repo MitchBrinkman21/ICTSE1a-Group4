@@ -37,12 +37,12 @@ namespace WarGame.View
 
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string fileName = "WarGameLevel.xml";
-                string sourcePath = BrowseFile.FileName;
-                string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
-                string destFile = System.IO.Path.Combine(targetPath, fileName);
+                //string fileName = "WarGameLevel.xml";
+                //string sourcePath = BrowseFile.FileName;
+                //string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
+                //string destFile = System.IO.Path.Combine(targetPath, fileName);
 
-                string newFile = System.IO.Path.GetFileName(sourcePath);
+                //string newFile = System.IO.Path.GetFileName(sourcePath);
 
                 //if (newFile.Equals("WarGameLevel.xml"))
                 //{
