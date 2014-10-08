@@ -129,6 +129,13 @@ namespace WarGame.Controller
             FormHelp h = new FormHelp();
             h.Show();
         }
+
+        public void OpenIntro() 
+        {
+            FormIntro i = new FormIntro();
+            i.Show();
+        }
+
         public void OpenHighscores()
         {
             FormHighScores hs = new FormHighScores();

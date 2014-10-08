@@ -32,6 +32,7 @@ namespace WarGame.View
             // Create a directory on C: disk.
             CreateDirOnDisk();
             timer1.Enabled = true;
+            gameEngine.OpenIntro();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
