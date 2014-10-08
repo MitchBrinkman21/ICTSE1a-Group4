@@ -183,6 +183,7 @@ namespace WarGame.View
                 if (result == DialogResult.OK)
                 {
                     SaveFileDialog SaveFile = new SaveFileDialog();
+                    SaveFile.FileName = nameDlg.levelName;
                     SaveFile.Filter = "XML Files (*.xml)|*.xml";
                     SaveFile.FilterIndex = 0;
                     SaveFile.DefaultExt = "xml";
