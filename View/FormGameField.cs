@@ -145,25 +145,65 @@ namespace WarGame.View
         {
             if (gameEngine.level.obstacleList != null)
             {
+                List<Mine> mines = new List<Mine>();
+                List<Tree> trees = new List<Tree>();
+                List<Sandbag> sandbags = new List<Sandbag>();
+                List<Mud> muds = new List<Mud>();
+                List<Missilelauncher> missilelaunchers = new List<Missilelauncher>();
+                Finish finish = new Finish(-1, -1);
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
-                    if (obstacle.ToString().Equals("WarGame.Model.Mine"))
+                    switch (obstacle.ToString())
                     {
-                        Mine mine = obstacle as Mine;
-                        if (mine.visible == true)
-                        {
-                            e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
-                            //e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
-                        }
+                        case "WarGame.Model.Mine":
+                            mines.Add(obstacle as Mine);
+                            break;
+                        case "WarGame.Model.Tree":
+                            trees.Add(obstacle as Tree);
+                            break;
+                        case "WarGame.Model.Sandbag":
+                            sandbags.Add(obstacle as Sandbag);
+                            break;
+                        case "WarGame.Model.Mud":
+                            muds.Add(obstacle as Mud);
+                            break;
+                        case "WarGame.Model.MissileLauncher":
+                            missilelaunchers.Add(obstacle as Missilelauncher);
+                            break;
+                        case "WarGame.Model.Finish":
+                            finish = obstacle as Finish;
+                            break;
                     }
-                    else
+                }
+
+                foreach (Mud mud in muds)
+                {
+                    e.Graphics.DrawImage(mud.image, mud.x, mud.y);
+                }
+                foreach (Sandbag sandbag in sandbags)
+                {
+                    e.Graphics.DrawImage(sandbag.image, sandbag.x, sandbag.y);
+                }
+                foreach (Tree tree in trees)
+                {
+                    e.Graphics.DrawImage(tree.image, tree.x, tree.y);
+                }
+                foreach (Missilelauncher missilelauncher in missilelaunchers)
+                {
+                    e.Graphics.DrawImage(missilelauncher.image, missilelauncher.x, missilelauncher.y);
+                }
+                foreach (Mine mine in mines)
+                {
+                    if (mine.visible == true)
                     {
-                        e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                        e.Graphics.DrawImage(mine.image, mine.x, mine.y);
                         //e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
                     }
-                    
                 }
+                e.Graphics.DrawImage(finish.image, finish.x, finish.y);
+                
             }
+            
             //e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
             e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
             
