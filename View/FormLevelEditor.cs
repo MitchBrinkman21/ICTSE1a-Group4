@@ -366,7 +366,8 @@ namespace WarGame.View
             {
                 this.movingPoint = new Point(p.X - this.currentMovingObject.x, p.Y - this.currentMovingObject.y);
 
-                panelToolBox.Hide();
+                if (e.Button == MouseButtons.Left)
+                    panelToolBox.Hide();
             }
             if (e.Button == MouseButtons.Right)
             {
