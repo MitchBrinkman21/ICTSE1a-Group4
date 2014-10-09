@@ -44,44 +44,56 @@
             // 
             // devButtonUp
             // 
+            this.devButtonUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButtonUp.Font = new System.Drawing.Font("Stencil", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.devButtonUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.devButtonUp.Location = new System.Drawing.Point(170, 389);
             this.devButtonUp.Name = "devButtonUp";
             this.devButtonUp.Size = new System.Drawing.Size(46, 43);
             this.devButtonUp.TabIndex = 1;
-            this.devButtonUp.Text = "^";
+            this.devButtonUp.Text = "↑";
             this.devButtonUp.UseVisualStyleBackColor = true;
             this.devButtonUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonUp_MouseDown);
             this.devButtonUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonUp_MouseUp);
             // 
             // devButtonDown
             // 
+            this.devButtonDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButtonDown.Font = new System.Drawing.Font("Stencil", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.devButtonDown.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.devButtonDown.Location = new System.Drawing.Point(170, 438);
             this.devButtonDown.Name = "devButtonDown";
             this.devButtonDown.Size = new System.Drawing.Size(46, 43);
             this.devButtonDown.TabIndex = 2;
-            this.devButtonDown.Text = "v";
+            this.devButtonDown.Text = "↓";
             this.devButtonDown.UseVisualStyleBackColor = true;
             this.devButtonDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonDown_MouseDown);
             this.devButtonDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonDown_MouseUp);
             // 
             // devButtonRight
             // 
+            this.devButtonRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButtonRight.Font = new System.Drawing.Font("Stencil", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.devButtonRight.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.devButtonRight.Location = new System.Drawing.Point(222, 438);
             this.devButtonRight.Name = "devButtonRight";
             this.devButtonRight.Size = new System.Drawing.Size(46, 43);
             this.devButtonRight.TabIndex = 3;
-            this.devButtonRight.Text = ">";
+            this.devButtonRight.Text = "→";
             this.devButtonRight.UseVisualStyleBackColor = true;
             this.devButtonRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonRight_MouseDown);
             this.devButtonRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonRight_MouseUp);
             // 
             // devButtonLeft
             // 
+            this.devButtonLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButtonLeft.Font = new System.Drawing.Font("Stencil", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.devButtonLeft.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.devButtonLeft.Location = new System.Drawing.Point(118, 438);
             this.devButtonLeft.Name = "devButtonLeft";
             this.devButtonLeft.Size = new System.Drawing.Size(46, 43);
             this.devButtonLeft.TabIndex = 4;
-            this.devButtonLeft.Text = "<";
+            this.devButtonLeft.Text = "←";
             this.devButtonLeft.UseVisualStyleBackColor = true;
             this.devButtonLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.devButtonLeft_MouseDown);
             this.devButtonLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.devButtonLeft_MouseUp);
@@ -135,6 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(387, 493);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.devButtonLeft);
