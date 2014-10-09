@@ -18,6 +18,9 @@ namespace WarGame.View
         FileInfo[] files;
         bool buttonClicked = false;
         string filenameLevelPicker;
+        string selectedfile;
+        Button selected = new Button();
+
 
         public FormImportLevel()
         {
@@ -40,7 +43,7 @@ namespace WarGame.View
             return files;
         }
         public void addButtonsToLevelPicker(FileInfo[] files)
-        {
+        {            
             panelLevelPicker.Controls.Clear();
             int y = 0;
             foreach (FileInfo file in files)
@@ -55,6 +58,14 @@ namespace WarGame.View
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
                 panelLevelPicker.Controls.Add(button);
                 y += 30;
+                if (selectedfile == button.Text)
+                {
+                    selected.BackColor = System.Drawing.Color.Black;
+                    selected = button;
+                    selected.BackColor = System.Drawing.Color.Red;
+                    textBoxXMLFile.Text = button.Text;
+                    filenameLevelPicker = button.Tag.ToString();
+                }
             }
         }
         protected override CreateParams CreateParams
@@ -70,7 +81,12 @@ namespace WarGame.View
         {
             Button b = sender as Button;
             filenameLevelPicker = b.Tag.ToString();
+            textBoxXMLFile.Text = b.Text;
             ForeColor = System.Drawing.SystemColors.HighlightText;
+            selected.BackColor = System.Drawing.Color.Black;
+            selected = b;
+            selectedfile = b.Text;
+            selected.BackColor = System.Drawing.Color.Red;
             buttonClicked = true;
         }
 
@@ -84,14 +100,16 @@ namespace WarGame.View
             {
                 try
                 {
+                    selectedfile = System.IO.Path.GetFileName(BrowseFile.FileName);
                     System.IO.File.Copy(BrowseFile.FileName, "C:/Wargame/levels/" + System.IO.Path.GetFileName(BrowseFile.FileName));
+                    textBoxXMLFile.Text = System.IO.Path.GetFileName(BrowseFile.FileName);
                 }catch(IOException e){
                     MessageBox.Show("This file already exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }        
             }
-
             files = readLevelFolder("C:/WarGame/levels");
             addButtonsToLevelPicker(files);
+            
         }
 
         private void buttonStart_Click(object sender, EventArgs e)

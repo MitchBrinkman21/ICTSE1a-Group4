@@ -84,9 +84,9 @@
             this.labelImportHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelImportHelp.Location = new System.Drawing.Point(17, 360);
             this.labelImportHelp.Name = "labelImportHelp";
-            this.labelImportHelp.Size = new System.Drawing.Size(70, 17);
+            this.labelImportHelp.Size = new System.Drawing.Size(100, 17);
             this.labelImportHelp.TabIndex = 6;
-            this.labelImportHelp.Text = "Add level:";
+            this.labelImportHelp.Text = "Selected level:";
             // 
             // buttonBrowseXML
             // 
