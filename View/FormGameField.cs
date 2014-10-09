@@ -45,8 +45,8 @@ namespace WarGame.View
 
         private void buttonStartPause_Click(object sender, EventArgs e)
         {
-            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
-            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause);
+            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start);
             if (buttonStartPause.Tag.ToString().Equals("pause") )
             {
                 buttonStartPause.Image = imagePlay;
@@ -75,7 +75,7 @@ namespace WarGame.View
         } 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+            Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start);
             stopWatch.Stop();
             gameState = false;
             buttonStartPause.Image = imagePlay;
@@ -94,7 +94,7 @@ namespace WarGame.View
                         break;       
                     }
             }
-            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+            Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause);
             buttonStartPause.Image = imagePause;
             buttonStartPause.Tag = "pause";
             stopWatch.Start();
@@ -276,7 +276,7 @@ namespace WarGame.View
             {
                 if (gameState == false)
                 {
-                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause);
                     stopWatch.Start();
 
                     buttonStartPause.Image = imagePause;
@@ -284,7 +284,7 @@ namespace WarGame.View
                 }
                 else if (gameState == true)
                 {
-                    Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start1);
+                    Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start);
                     stopWatch.Stop();
 
                     buttonStartPause.Image = imagePlay;
@@ -295,7 +295,7 @@ namespace WarGame.View
             if (gameState == false) { 
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
                 {
-                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause1);
+                    Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause);
                     buttonStartPause.Image = imagePause;
                     gameState = true;
                 }

@@ -66,7 +66,7 @@
             // buttonStartPause
             // 
             this.buttonStartPause.BackColor = System.Drawing.Color.Transparent;
-            this.buttonStartPause.Image = global::WarGame.Properties.Resources.pause1;
+            this.buttonStartPause.Image = global::WarGame.Properties.Resources.pause;
             this.buttonStartPause.Location = new System.Drawing.Point(1639, 0);
             this.buttonStartPause.Margin = new System.Windows.Forms.Padding(4);
             this.buttonStartPause.Name = "buttonStartPause";
@@ -80,7 +80,7 @@
             // buttonStop
             // 
             this.buttonStop.BackColor = System.Drawing.Color.Transparent;
-            this.buttonStop.Image = global::WarGame.Properties.Resources.stop1;
+            this.buttonStop.Image = global::WarGame.Properties.Resources.stop;
             this.buttonStop.Location = new System.Drawing.Point(1691, 0);
             this.buttonStop.Margin = new System.Windows.Forms.Padding(4);
             this.buttonStop.Name = "buttonStop";
@@ -93,7 +93,7 @@
             // buttonReset
             // 
             this.buttonReset.BackColor = System.Drawing.Color.Transparent;
-            this.buttonReset.Image = global::WarGame.Properties.Resources.reset1;
+            this.buttonReset.Image = global::WarGame.Properties.Resources.reset;
             this.buttonReset.Location = new System.Drawing.Point(1743, 0);
             this.buttonReset.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReset.Name = "buttonReset";
