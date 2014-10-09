@@ -167,7 +167,7 @@ namespace WarGame.View
                         case "WarGame.Model.Mud":
                             muds.Add(obstacle as Mud);
                             break;
-                        case "WarGame.Model.MissileLauncher":
+                        case "WarGame.Model.Missilelauncher":
                             missilelaunchers.Add(obstacle as Missilelauncher);
                             break;
                         case "WarGame.Model.Finish":
