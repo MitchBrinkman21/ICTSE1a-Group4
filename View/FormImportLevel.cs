@@ -39,6 +39,7 @@ namespace WarGame.View
         }
         public void addButtonsToLevelPicker(FileInfo[] files)
         {
+            panelLevelPicker.Controls.Clear();
             int y = 0;
             foreach (FileInfo file in files)
             {
