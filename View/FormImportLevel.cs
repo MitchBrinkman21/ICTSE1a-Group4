@@ -53,15 +53,25 @@ namespace WarGame.View
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
                 panelLevelPicker.Controls.Add(button);
                 y += 30;
-                if (y >= 360)
-                {
-                    ScrollBar vScrollBar1 = new VScrollBar();
-                    vScrollBar1.Dock = DockStyle.Right;
-                    vScrollBar1.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = vScrollBar1.Value; };
-                    panelLevelPicker.Controls.Add(vScrollBar1);
-                }
+            }
+            if (y >= 330)
+            {
+                //ScrollBar vScrollBar1 = new VScrollBar();
+                //vScrollBar1.Dock = DockStyle.Right;
+                scrollbarLevelPicker.Visible = true;
+                scrollbarLevelPicker.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = scrollbarLevelPicker.Value; };
+                //panelLevelPicker.Controls.Add(vScrollBar1);
             }
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        } 
         private void levelPicked(Object sender, EventArgs e)
         {
             Button b = sender as Button;
