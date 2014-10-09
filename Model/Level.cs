@@ -12,8 +12,6 @@ namespace WarGame.Model
         public List<Obstacle> obstacleList;
         public List<Obstacle> parsedList;
         public Player player;
-        public int x;
-        public int y;
 
         public void ResetLevel()
         {

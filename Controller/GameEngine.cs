@@ -18,7 +18,7 @@ namespace WarGame.Controller
 {
     public class GameEngine
     {
-        bool isLaunched = false;
+        
         public Stopwatch stopwatch = new Stopwatch();
 
         public delegate void FormMainEvents();
@@ -26,9 +26,6 @@ namespace WarGame.Controller
 
         private static GameEngine gameEngine;
         public Level level;
-
-        public Missile missile;
-        public Missile missile2;
 
         private double gameTime; // The time you spend in the game
         private String namePlayer;
@@ -94,7 +91,6 @@ namespace WarGame.Controller
             stopwatch.Reset();            
             level.player = new Player();
             level.ResetLevel();
-            missile = null;
             formGameField.DrawHealthKits();            
             resetMovement();
             if (refresh)
@@ -157,19 +153,7 @@ namespace WarGame.Controller
                         formGameField.stopWatch.Start();
                     }
                     move();
-                    if (isLaunched == false)
-                    {
-                        LaunchMissile();
-                    }
-                    if (missile == null)
-                    {
-                        isLaunched = false;
-                    }
-
-                    if (missile != null)
-                    {
-                        missile.FindPlayer((int)level.player.x, (int)level.player.y);
-                    }
+                    LaunchMissiles();
                     HitDetect();
                     formGameField.Invalidate();          
                 }
@@ -190,7 +174,7 @@ namespace WarGame.Controller
             bool checkmud = false;
             Obstacle tempObstacle = null;
 
-            if (player.lives == 0)
+            if (player.lives <= 0)
             {
                 GameOver();                
             }
@@ -198,40 +182,67 @@ namespace WarGame.Controller
             {
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
-                    if (missile != null)
+                    foreach (Obstacle o in gameEngine.level.obstacleList)
                     {
-                        if (!missile.exploded)
+                        if (o.ToString().Equals("WarGame.Model.Missilelauncher"))
                         {
-                            if (missile.rect.IntersectsWith(obstacle.rect))
+                            Missilelauncher missilelauncher = o as Missilelauncher;
+                            Missile tempMissile = null;
+                            foreach (Missile missile in missilelauncher.missiles)
                             {
-                                switch (obstacle.ToString())
+                                if (missile != null)
                                 {
-                                    case "WarGame.Model.Mine":
-                                        Console.WriteLine("Missile flies over mine...");
-                                        break;
-                                    case "WarGame.Model.Finish":
-                                        Console.WriteLine("Missile flies over finish...");
-                                        break;
-                                    case "WarGame.Model.Mud":
-                                        Console.WriteLine("Missile flies over mud ...");
-                                        break;
-                                    case "WarGame.Model.Missilelauncher":
-                                        Console.WriteLine("Missile flies over launcher ...");
-                                        break;
-                                    default:
-                                        Console.WriteLine("missile hit object");
-                                        //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
-                                        missile.ShowExplosion();
-                                        missile.exploded = true;
-                                        missile.rect.Location = new Point(-missile.width, -missile.length);
-                                        break;
+                                    if (!missile.exploded)
+                                    {
+                                        if (missile.rect.IntersectsWith(obstacle.rect))
+                                        {
+                                            switch (obstacle.ToString())
+                                            {
+                                                case "WarGame.Model.Mine":
+                                                    Console.WriteLine("Missile flies over mine...");
+                                                    break;
+                                                case "WarGame.Model.Finish":
+                                                    Console.WriteLine("Missile flies over finish...");
+                                                    break;
+                                                case "WarGame.Model.Mud":
+                                                    Console.WriteLine("Missile flies over mud ...");
+                                                    break;
+                                                case "WarGame.Model.Missilelauncher":
+                                                    Console.WriteLine("Missile flies over launcher ...");
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("missile hit object");
+                                                    //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
+                                                    missile.ShowExplosion();
+                                                    missile.exploded = true;
+                                                    missile.rect.Location = new Point(-missile.width, -missile.length);
+                                                    break;
+                                            }
+                                        }
+                                        else if (missile.rect.IntersectsWith(player.rect))
+                                        {
+                                            missile.ShowExplosion();
+                                            missile.exploded = true;
+                                            missile.rect = new Rectangle(-10, -10, 1, 1);
+                                            player.DecreaseLive();
+                                            formGameField.DrawHealthKits();
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if ((int)missile.explosiontimer.Elapsed.Seconds > 1)
+                                        {
+                                            tempMissile = missile;
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            if ((int)missile.explosiontimer.Elapsed.Seconds > 1)
-                                missile = null;
+                            if (tempMissile != null)
+                            {
+                                missilelauncher.RemoveMissile(tempMissile);
+                                tempMissile = null;
+                            }
                         }
                     }
 
@@ -280,23 +291,36 @@ namespace WarGame.Controller
                         }
                     }
                 }
-                if (missile != null)
-                {
-                    if (missile.rect.IntersectsWith(player.rect))
-                    {
-                        missile.ShowExplosion();
-                        missile.exploded = true;
-                        missile.rect = new Rectangle(-10, -10, 1, 1);
-                        player.DecreaseLive();
-                        formGameField.DrawHealthKits();
-                    }
-                }
                 if (tempObstacle != null)
                 {
                     level.obstacleList.Remove(tempObstacle);
                     tempObstacle = null;
                 }
                 mud = checkmud;
+            }
+        }
+
+        public void LaunchMissiles()
+        {
+            foreach (Obstacle obstacle in gameEngine.level.obstacleList)
+            {                
+                if (obstacle.ToString().Equals("WarGame.Model.Missilelauncher"))
+                {
+                    Missilelauncher missilelauncher = obstacle as Missilelauncher;
+                    if (!missilelauncher.launchtimer.IsRunning)
+                    {
+                        missilelauncher.launchtimer.Start();
+                    }
+                    if (missilelauncher.launchtimer.ElapsedMilliseconds > missilelauncher.launchinterval)
+                    {
+                        missilelauncher.LaunchMissile();
+                        missilelauncher.launchtimer.Restart();
+                    }
+                    foreach (Missile missile in missilelauncher.missiles)
+                    {
+                        missile.FindPlayer((int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
+                    }
+                }
             }
         }
 
@@ -321,22 +345,7 @@ namespace WarGame.Controller
             }
 
         }
-        public void LaunchMissile()
-        {   
-            if (missile == null)
-            {
-                if (stopwatch.IsRunning == false)
-                {
-                    stopwatch.Start();
-                }
-                if (stopwatch.ElapsedMilliseconds >= 3000) //3 sec
-                {
-                    missile = new Missile(level.x, level.y); // Launch from the center of the map...
-                    stopwatch.Restart();
-                    isLaunched = true;
-                }
-            }
-        }
+        
 
         public void EndGame()
         {

@@ -14,7 +14,6 @@ namespace WarGame.Controller
     public class XmlParser
     {
         public delegate void DoWork(object sender, DoWorkEventArgs e);
-        public event DoWork doWork;
         GameEngine gameEngine;
 
         public XmlParser(bool clear) 
@@ -48,8 +47,6 @@ namespace WarGame.Controller
                 {
                     case "missilelauncher":
                         Missilelauncher missilelauncher = new Missilelauncher(xaxis, yaxis);
-                        gameEngine.level.x = xaxis;
-                        gameEngine.level.y = yaxis;
                         gameEngine.level.parsedList.Add(missilelauncher);
                         Console.WriteLine("Missilelauncher added to list.");
                         break;

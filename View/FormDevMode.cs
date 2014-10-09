@@ -49,16 +49,7 @@ namespace WarGame.View
                 listView1.Items.Add(plvi);
             }
 
-            //Missile ListViewItem
-            if (GameEngine.Instance().missile != null)
-            {
-                ListViewItem mlvi = new ListViewItem(i++.ToString());
-                mlvi.SubItems.Add("Missile");
-                mlvi.SubItems.Add(GameEngine.Instance().missile.x.ToString());
-                mlvi.SubItems.Add(GameEngine.Instance().missile.y.ToString());
-                mlvi.SubItems.Add(GameEngine.Instance().missile.speed.ToString());
-                listView1.Items.Add(mlvi);
-            }
+            
 
             //Print obstacles from obstacleList
             if (GameEngine.Instance().level.obstacleList != null)
@@ -93,6 +84,17 @@ namespace WarGame.View
                             break;
                         case "WarGame.Model.Missilelauncher":
                             lvi = fillLvi(lvi, obj, "Missilelauncher");
+                            //Missile ListViewItem
+                            Missilelauncher missilelauncher = obj as Missilelauncher;
+                            foreach (Missile missile in missilelauncher.missiles)
+                            {
+                                ListViewItem mlvi = new ListViewItem(i++.ToString());
+                                mlvi.SubItems.Add("Missile");
+                                mlvi.SubItems.Add(missile.x.ToString());
+                                mlvi.SubItems.Add(missile.y.ToString());
+                                mlvi.SubItems.Add(missile.speed.ToString());
+                                listView1.Items.Add(mlvi);
+                            }
                             break;
                     }
 

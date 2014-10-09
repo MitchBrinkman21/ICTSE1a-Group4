@@ -200,15 +200,7 @@ namespace WarGame.View
                     {
                         e.Graphics.DrawRectangle(Pens.Green, tree.rect);
                     }
-                }
-                foreach (Missilelauncher missilelauncher in missilelaunchers)
-                {
-                    e.Graphics.DrawImage(missilelauncher.image, missilelauncher.x, missilelauncher.y);
-                    if (gameEngine.DevMode)
-                    {
-                        e.Graphics.DrawRectangle(Pens.Red, missilelauncher.rect);
-                    }
-                }
+                }                
                 foreach (Mine mine in mines)
                 {
                     if (mine.visible == true)
@@ -227,6 +219,29 @@ namespace WarGame.View
                         }
                     }
                 }
+                foreach (Missilelauncher missilelauncher in missilelaunchers)
+                {
+                    foreach (Missile missile in missilelauncher.missiles)
+                    {
+                        if (missile.explosiontimer.IsRunning)
+                        {
+                            e.Graphics.DrawImage(missile.image, (int)(missile.x - (missile.width * (missile.scale / 200))), (int)(missile.y - (missile.length * (missile.scale / 200))));
+                        }
+                        else
+                        {
+                            e.Graphics.DrawImage(missile.image, missile.x, missile.y);
+                        }
+                        if (gameEngine.DevMode)
+                        {
+                            e.Graphics.DrawRectangle(Pens.Red, missile.rect);
+                        }
+                    }
+                    e.Graphics.DrawImage(missilelauncher.image, missilelauncher.x, missilelauncher.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, missilelauncher.rect);
+                    }
+                }
                 
                 e.Graphics.DrawImage(finish.image, finish.x, finish.y);
                 if (gameEngine.DevMode)
@@ -234,23 +249,6 @@ namespace WarGame.View
                     e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
                 }
                 
-            }
-            
-            if (gameEngine.missile != null)
-            {
-
-                if (gameEngine.missile.explosiontimer.IsRunning)
-                {
-                    e.Graphics.DrawImage(gameEngine.missile.image, (int)(gameEngine.missile.x - (gameEngine.missile.width * (gameEngine.missile.scale / 200))), (int)(gameEngine.missile.y - (gameEngine.missile.length * (gameEngine.missile.scale / 200))));
-                }
-                else
-                {
-                    e.Graphics.DrawImage(gameEngine.missile.image, gameEngine.missile.x, gameEngine.missile.y);
-                }   
-                if (gameEngine.DevMode)
-                {
-                    e.Graphics.DrawRectangle(Pens.Red, gameEngine.missile.rect);
-                }
             }
 
             e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)(gameEngine.level.player.x - (gameEngine.level.player.width * (gameEngine.level.player.scale / 200))), (int)(gameEngine.level.player.y - (gameEngine.level.player.height * (gameEngine.level.player.scale / 200))));
