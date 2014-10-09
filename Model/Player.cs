@@ -18,7 +18,7 @@ namespace WarGame.Model
         public Bitmap image { get; set; }
         public Rectangle rect;
         private int runspeed, mudspeed;
-
+        public double scale { get; set; }
         public Player()
         {
             this.lives = 3;
@@ -29,8 +29,9 @@ namespace WarGame.Model
             this.speed = runspeed;
             this.width = 25;
             this.height = 25;
+            this.scale = 30;
             this.rect = new Rectangle((int)x, (int)y, width, height);
-            image = new Bitmap(WarGame.Properties.Resources.player, width, height);
+            image = new Bitmap(WarGame.Properties.Resources.player, (int)(width * (1 + (scale / 100))), (int)(height * (1 + (scale / 100))));
         }
 
         public void MovePlayer(double x, double y, bool mud)

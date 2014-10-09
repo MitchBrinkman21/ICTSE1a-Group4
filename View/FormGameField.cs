@@ -179,40 +179,70 @@ namespace WarGame.View
                 foreach (Mud mud in muds)
                 {
                     e.Graphics.DrawImage(mud.image, mud.x, mud.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, mud.rect);
+                    }
+                    
                 }
                 foreach (Sandbag sandbag in sandbags)
                 {
                     e.Graphics.DrawImage(sandbag.image, sandbag.x, sandbag.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Yellow, sandbag.rect);
+                    }
                 }
                 foreach (Tree tree in trees)
                 {
                     e.Graphics.DrawImage(tree.image, tree.x, tree.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Green, tree.rect);
+                    }
                 }
                 foreach (Missilelauncher missilelauncher in missilelaunchers)
                 {
                     e.Graphics.DrawImage(missilelauncher.image, missilelauncher.x, missilelauncher.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, missilelauncher.rect);
+                    }
                 }
                 foreach (Mine mine in mines)
                 {
                     if (mine.visible == true)
                     {
                         e.Graphics.DrawImage(mine.image, mine.x, mine.y);
-                        //e.Graphics.DrawRectangle(Pens.Red, obstacle.rect);
+                        if (gameEngine.DevMode)
+                        {
+                            e.Graphics.DrawRectangle(Pens.Red, mine.rect);
+                        }
                     }
                 }
-                e.Graphics.DrawImage(finish.image, finish.x, finish.y);
                 
+                e.Graphics.DrawImage(finish.image, finish.x, finish.y);
+                if (gameEngine.DevMode)
+                {
+                    e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
+                }
+                
+            }           
+                        
+            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)(gameEngine.level.player.x - (gameEngine.level.player.width * (gameEngine.level.player.scale/200))), (int)(gameEngine.level.player.y - (gameEngine.level.player.height * (gameEngine.level.player.scale / 200))));
+            if (gameEngine.DevMode)
+            {
+                e.Graphics.DrawRectangle(Pens.Blue, gameEngine.level.player.rect);
             }
-            
-            //e.Graphics.DrawRectangle(p, gameEngine.level.player.rect);            
-            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)gameEngine.level.player.x, (int)gameEngine.level.player.y);
-            
 
             
             if (gameEngine.missile != null)
             {
-                //e.Graphics.DrawRectangle(p, gameEngine.missile.rect);
                 e.Graphics.DrawImage(gameEngine.missile.image, gameEngine.missile.x, gameEngine.missile.y);
+                if (gameEngine.DevMode)
+                {
+                    e.Graphics.DrawRectangle(Pens.Red, gameEngine.missile.rect);
+                }
             }
 
 
