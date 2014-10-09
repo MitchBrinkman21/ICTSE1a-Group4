@@ -116,7 +116,7 @@ namespace WarGame.Controller
             if(doc != null)
             {
                 ProgressBarDialog progressBarDialog = new ProgressBarDialog();
-                XmlParser xmlParser = new XmlParser();
+                XmlParser xmlParser = new XmlParser(true);
                 xmlParser.ParseMap(doc, ref progressBarDialog);
             }
             
@@ -223,6 +223,7 @@ namespace WarGame.Controller
                                         //playerRect.Location = new Point((int)player.x, (int)player.y); // Location after hit...
                                         missile.ShowExplosion();
                                         missile.exploded = true;
+                                        missile.rect.Location = new Point(-missile.width, -missile.length);
                                         break;
                                 }
                             }
@@ -252,7 +253,7 @@ namespace WarGame.Controller
                                 Console.WriteLine("Player hit mine");
                                 Mine mine = obstacle as Mine;
                                 mine.ShowExplosion();
-                                mine.rect = new Rectangle(-10, -10, 1, 1);
+                                mine.rect.Location = new Point(-mine.width, -mine.length);
                                 player.DecreaseLive();
                                 formGameField.DrawHealthKits();
                                 //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);

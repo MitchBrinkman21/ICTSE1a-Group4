@@ -17,7 +17,7 @@ namespace WarGame.View
     {
         private XmlDocument doc = new XmlDocument();
         private List<string> levels;
-        private XmlParser xmlParser = new XmlParser();
+        private XmlParser xmlParser = new XmlParser(false);
 
         public FormHighScores()
         {

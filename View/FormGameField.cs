@@ -150,7 +150,7 @@ namespace WarGame.View
                 List<Sandbag> sandbags = new List<Sandbag>();
                 List<Mud> muds = new List<Mud>();
                 List<Missilelauncher> missilelaunchers = new List<Missilelauncher>();
-                Finish finish = new Finish(-1, -1);
+                Finish finish = new Finish(0, 0);
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
                     switch (obstacle.ToString())

@@ -17,11 +17,13 @@ namespace WarGame.Controller
         public event DoWork doWork;
         GameEngine gameEngine;
 
-        public XmlParser() 
+        public XmlParser(bool clear) 
         {
-            gameEngine = GameEngine.Instance();
-            gameEngine.level.obstacleList = new List<Obstacle>();
-            gameEngine.level.parsedList = new List<Obstacle>();
+            if (clear) { 
+                gameEngine = GameEngine.Instance();
+                gameEngine.level.obstacleList = new List<Obstacle>();
+                gameEngine.level.parsedList = new List<Obstacle>();
+            }   
         }
 
         public void ParseMap(XmlDocument doc, ref ProgressBarDialog progressBarDialog) 
