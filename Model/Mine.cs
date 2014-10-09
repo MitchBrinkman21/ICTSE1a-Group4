@@ -10,21 +10,21 @@ namespace WarGame.Model
 {
     class Mine : Obstacle
     {
-        public int proximity;
-        public Rectangle rectShow;  //use rectShow to check if the mine should show itself, use rect to check if the mine should explode
+        public int proximity;        
         public bool visible { get; set; }
         public Stopwatch explosiontimer;
+        public double scale { get; set; }
         public Mine(int x, int y)
             : base(x, y)
         {
             width = 25;
             length = 25;
             proximity = 3;
+            scale = 200;
             visible = false;
             explosiontimer = new Stopwatch();
             image = new Bitmap(WarGame.Properties.Resources.mine, width, length);
-            rect = new Rectangle(x, y, width, length);
-            rectShow = new Rectangle(x, y, width * 2, length * 2);
+            rect = new Rectangle(x, y, width, length);            
         }
 
         public void ShowObject()
@@ -35,7 +35,7 @@ namespace WarGame.Model
         public void ShowExplosion()
         {
             explosiontimer.Start();
-            image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
+            image = new Bitmap(WarGame.Properties.Resources.explosion, (int)(width * (1 + (scale / 100))), (int)(length * (1 + (scale / 100))));
         }
 
         public Mine(Mine m)
@@ -48,6 +48,7 @@ namespace WarGame.Model
             explosiontimer = new Stopwatch();
             image = m.image;
             rect = m.rect;
+            scale = m.scale;
         }
     }
 }

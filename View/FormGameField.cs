@@ -213,7 +213,14 @@ namespace WarGame.View
                 {
                     if (mine.visible == true)
                     {
-                        e.Graphics.DrawImage(mine.image, mine.x, mine.y);
+                        if (mine.explosiontimer.IsRunning)
+                        {
+                            e.Graphics.DrawImage(mine.image, (int)(mine.x - (mine.width * (mine.scale / 200))), (int)(mine.y - (mine.length * (mine.scale / 200))));
+                        }
+                        else
+                        {
+                            e.Graphics.DrawImage(mine.image, mine.x, mine.y);
+                        }                        
                         if (gameEngine.DevMode)
                         {
                             e.Graphics.DrawRectangle(Pens.Red, mine.rect);
@@ -227,22 +234,29 @@ namespace WarGame.View
                     e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
                 }
                 
-            }           
-                        
-            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)(gameEngine.level.player.x - (gameEngine.level.player.width * (gameEngine.level.player.scale/200))), (int)(gameEngine.level.player.y - (gameEngine.level.player.height * (gameEngine.level.player.scale / 200))));
-            if (gameEngine.DevMode)
-            {
-                e.Graphics.DrawRectangle(Pens.Blue, gameEngine.level.player.rect);
             }
-
             
             if (gameEngine.missile != null)
             {
-                e.Graphics.DrawImage(gameEngine.missile.image, gameEngine.missile.x, gameEngine.missile.y);
+
+                if (gameEngine.missile.explosiontimer.IsRunning)
+                {
+                    e.Graphics.DrawImage(gameEngine.missile.image, (int)(gameEngine.missile.x - (gameEngine.missile.width * (gameEngine.missile.scale / 200))), (int)(gameEngine.missile.y - (gameEngine.missile.length * (gameEngine.missile.scale / 200))));
+                }
+                else
+                {
+                    e.Graphics.DrawImage(gameEngine.missile.image, gameEngine.missile.x, gameEngine.missile.y);
+                }   
                 if (gameEngine.DevMode)
                 {
                     e.Graphics.DrawRectangle(Pens.Red, gameEngine.missile.rect);
                 }
+            }
+
+            e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)(gameEngine.level.player.x - (gameEngine.level.player.width * (gameEngine.level.player.scale / 200))), (int)(gameEngine.level.player.y - (gameEngine.level.player.height * (gameEngine.level.player.scale / 200))));
+            if (gameEngine.DevMode)
+            {
+                e.Graphics.DrawRectangle(Pens.Blue, gameEngine.level.player.rect);
             }
 
 

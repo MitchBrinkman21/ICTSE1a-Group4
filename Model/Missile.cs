@@ -18,6 +18,7 @@ namespace WarGame.Model
         Bitmap baseimage;
         public Boolean exploded { get; set; }
         public Stopwatch explosiontimer;
+        public double scale { get; set; }
 
         public Missile(int x, int y)
             : base(x, y)
@@ -25,6 +26,7 @@ namespace WarGame.Model
             speed = 3;
             width = 30;
             length = 30;
+            scale = 250;
             exploded = false;
             explosiontimer = new Stopwatch();
             image = new Bitmap(WarGame.Properties.Resources.missile, width, length);
@@ -76,7 +78,7 @@ namespace WarGame.Model
         public void ShowExplosion()
         {
             explosiontimer.Start();
-            image = new Bitmap(WarGame.Properties.Resources.explosion, width*2, length*2);
+            image = new Bitmap(WarGame.Properties.Resources.explosion, (int)(width * (1 + (scale / 100))), (int)(length * (1 + (scale / 100))));
         }
 
 
