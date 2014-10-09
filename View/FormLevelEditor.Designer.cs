@@ -60,6 +60,7 @@
             // 
             this.buttonVisable.BackColor = System.Drawing.Color.Transparent;
             this.buttonVisable.BackgroundImage = global::WarGame.Properties.Resources.levelEditorVisible;
+            this.buttonVisable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonVisable.Location = new System.Drawing.Point(119, 3);
             this.buttonVisable.Name = "buttonVisable";
             this.buttonVisable.Size = new System.Drawing.Size(25, 25);
@@ -70,6 +71,7 @@
             // 
             this.buttonNew.BackColor = System.Drawing.Color.Transparent;
             this.buttonNew.BackgroundImage = global::WarGame.Properties.Resources.levelEditorRecyclebin;
+            this.buttonNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonNew.Location = new System.Drawing.Point(8, 3);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(25, 25);
@@ -80,6 +82,7 @@
             // 
             this.buttonLoad.BackColor = System.Drawing.Color.Transparent;
             this.buttonLoad.BackgroundImage = global::WarGame.Properties.Resources.levelEditorOpenFile;
+            this.buttonLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLoad.Location = new System.Drawing.Point(45, 3);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(25, 25);
@@ -90,6 +93,7 @@
             // 
             this.buttonSave.BackColor = System.Drawing.Color.Transparent;
             this.buttonSave.BackgroundImage = global::WarGame.Properties.Resources.levelEditorSaveFile;
+            this.buttonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSave.Location = new System.Drawing.Point(82, 3);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(25, 25);
@@ -112,7 +116,9 @@
             // 
             // panelRocketLauncher
             // 
+            this.panelRocketLauncher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelRocketLauncher.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMissilelauncher;
+            this.panelRocketLauncher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelRocketLauncher.Location = new System.Drawing.Point(81, 154);
             this.panelRocketLauncher.Name = "panelRocketLauncher";
             this.panelRocketLauncher.Size = new System.Drawing.Size(63, 63);
@@ -121,8 +127,9 @@
             // 
             // panelSandbag
             // 
-            this.panelSandbag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelSandbag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelSandbag.BackgroundImage = global::WarGame.Properties.Resources.levelEditorSandbag;
+            this.panelSandbag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelSandbag.Location = new System.Drawing.Point(8, 154);
             this.panelSandbag.Name = "panelSandbag";
             this.panelSandbag.Size = new System.Drawing.Size(63, 63);
@@ -131,8 +138,9 @@
             // 
             // panelFinish
             // 
-            this.panelFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelFinish.BackgroundImage = global::WarGame.Properties.Resources.levelEditorFinish;
+            this.panelFinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelFinish.Location = new System.Drawing.Point(81, 85);
             this.panelFinish.Name = "panelFinish";
             this.panelFinish.Size = new System.Drawing.Size(63, 63);
@@ -141,8 +149,9 @@
             // 
             // panelMud
             // 
-            this.panelMud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelMud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelMud.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMud;
+            this.panelMud.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelMud.Location = new System.Drawing.Point(8, 85);
             this.panelMud.Name = "panelMud";
             this.panelMud.Size = new System.Drawing.Size(63, 63);
@@ -151,8 +160,9 @@
             // 
             // panelMine
             // 
-            this.panelMine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelMine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelMine.BackgroundImage = global::WarGame.Properties.Resources.levelEditorMine;
+            this.panelMine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelMine.Location = new System.Drawing.Point(8, 16);
             this.panelMine.Name = "panelMine";
             this.panelMine.Size = new System.Drawing.Size(63, 63);
@@ -161,8 +171,9 @@
             // 
             // panelTree
             // 
-            this.panelTree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelTree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelTree.BackgroundImage = global::WarGame.Properties.Resources.levelEditorTree;
+            this.panelTree.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelTree.Location = new System.Drawing.Point(81, 16);
             this.panelTree.Name = "panelTree";
             this.panelTree.Size = new System.Drawing.Size(63, 63);

@@ -42,6 +42,8 @@ namespace WarGame.View
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximumSize = new Size(1366, 768);
             this.MinimumSize = new Size(1366, 768);
+            panelMenu.Location = new Point(this.Width - panelMenu.Width, 0);
+            panelToolBox.Location = new Point(this.Width - panelToolBox.Width, panelMenu.Height);
             this.StartPosition = FormStartPosition.CenterScreen;
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.BackColor = Color.FromArgb(0x66141414);
