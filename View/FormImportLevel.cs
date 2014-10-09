@@ -17,7 +17,7 @@ namespace WarGame.View
         public XmlDocument doc;
         FileInfo[] files;
         bool buttonClicked = false;
-        int y = 0;
+        string filenameLevelPicker;
 
         public FormImportLevel()
         {
@@ -42,10 +42,10 @@ namespace WarGame.View
         public void addButtonsToLevelPicker(FileInfo[] files)
         {
             panelLevelPicker.Controls.Clear();
-      
+            int y = 0;
             foreach (FileInfo file in files)
             {
-                Button button = new Button();
+                Button button = new Button();               
                 button.Size = new Size(362, 30);
                 button.Location = new Point(0, y);
                 button.Text = file.ToString();
@@ -55,14 +55,6 @@ namespace WarGame.View
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
                 panelLevelPicker.Controls.Add(button);
                 y += 30;
-            }
-            if (y >= 300)
-            {
-                //ScrollBar vScrollBar1 = new VScrollBar();
-                //vScrollBar1.Dock = DockStyle.Right;
-                //scrollbarLevelPicker.Visible = true;
-                //scrollbarLevelPicker.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = scrollbarLevelPicker.Value; };
-                //panelLevelPicker.Controls.Add(vScrollBar1);
             }
         }
         protected override CreateParams CreateParams
@@ -77,7 +69,7 @@ namespace WarGame.View
         private void levelPicked(Object sender, EventArgs e)
         {
             Button b = sender as Button;
-            textBoxXMLFile.Text = b.Tag.ToString();
+            filenameLevelPicker = b.Tag.ToString();
             ForeColor = System.Drawing.SystemColors.HighlightText;
             buttonClicked = true;
         }
@@ -111,7 +103,7 @@ namespace WarGame.View
                     try
                     {
                         doc = new XmlDocument();
-                        doc.Load(textBoxXMLFile.Text);
+                        doc.Load(filenameLevelPicker);
                     }
                     catch (Exception ex)
                     {
