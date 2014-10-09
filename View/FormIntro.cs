@@ -16,8 +16,8 @@ namespace WarGame.View
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.MaximumSize = new Size(1920/2, 1080/2);
-            this.MinimumSize = new Size(1920 / 2, 1080 / 2);
+            this.MaximumSize = new Size(1280, 720);
+            this.MinimumSize = new Size(1280, 720);
             axWindowsMediaPlayer1.uiMode =  "none";
         }
 
