@@ -60,8 +60,8 @@ namespace WarGame.View
             {
                 //ScrollBar vScrollBar1 = new VScrollBar();
                 //vScrollBar1.Dock = DockStyle.Right;
-                scrollbarLevelPicker.Visible = true;
-                scrollbarLevelPicker.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = scrollbarLevelPicker.Value; };
+                //scrollbarLevelPicker.Visible = true;
+                //scrollbarLevelPicker.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = scrollbarLevelPicker.Value; };
                 //panelLevelPicker.Controls.Add(vScrollBar1);
             }
         }
