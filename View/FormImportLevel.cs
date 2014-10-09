@@ -77,7 +77,13 @@ namespace WarGame.View
             BrowseFile.DefaultExt = "xml";
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                System.IO.File.Copy(BrowseFile.FileName, "C:/Wargame/levels/" + System.IO.Path.GetFileName(BrowseFile.FileName));
+                try
+                {
+                    System.IO.File.Copy(BrowseFile.FileName, "C:/Wargame/levels/" + System.IO.Path.GetFileName(BrowseFile.FileName));
+                }catch(IOException e){
+                    MessageBox.Show("This file already exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }        
+
                 files = readLevelFolder("C:/Wargame/levels");
                 addButtonsToLevelPicker(files);
             }
