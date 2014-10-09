@@ -17,6 +17,7 @@ namespace WarGame.View
         public XmlDocument doc;
         FileInfo[] files;
         bool buttonClicked = false;
+        int y = 0;
 
         public FormImportLevel()
         {
@@ -25,6 +26,7 @@ namespace WarGame.View
             this.StartPosition = FormStartPosition.CenterScreen;
             files = readLevelFolder("C:/Wargame/levels");
             addButtonsToLevelPicker(files);
+
         }
 
         private void buttonBrowseXML_Click(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace WarGame.View
         public void addButtonsToLevelPicker(FileInfo[] files)
         {
             panelLevelPicker.Controls.Clear();
-            int y = 0;
+      
             foreach (FileInfo file in files)
             {
                 Button button = new Button();
@@ -54,7 +56,7 @@ namespace WarGame.View
                 panelLevelPicker.Controls.Add(button);
                 y += 30;
             }
-            if (y >= 330)
+            if (y >= 300)
             {
                 //ScrollBar vScrollBar1 = new VScrollBar();
                 //vScrollBar1.Dock = DockStyle.Right;
@@ -94,10 +96,10 @@ namespace WarGame.View
                 }catch(IOException e){
                     MessageBox.Show("This file already exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }        
-
-                files = readLevelFolder("C:/Wargame/levels");
-                addButtonsToLevelPicker(files);
             }
+
+            files = readLevelFolder("C:/WarGame/levels");
+            addButtonsToLevelPicker(files);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -106,8 +108,16 @@ namespace WarGame.View
             {
                 if (buttonClicked == true)
                 {
-                    doc = new XmlDocument();
-                    doc.Load(textBoxXMLFile.Text);
+                    try
+                    {
+                        doc = new XmlDocument();
+                        doc.Load(textBoxXMLFile.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        doc = null;
+                        MessageBox.Show("File not found", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
