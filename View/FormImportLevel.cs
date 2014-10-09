@@ -16,7 +16,8 @@ namespace WarGame.View
     {
         public XmlDocument doc;
         FileInfo[] files;
-   
+        bool buttonClicked = false;
+
         public FormImportLevel()
         {
             InitializeComponent();
@@ -63,9 +64,11 @@ namespace WarGame.View
         private void levelPicked(Object sender, EventArgs e)
         {
             Button b = sender as Button;
-             textBoxXMLFile.Text = b.Tag.ToString();
+            textBoxXMLFile.Text = b.Tag.ToString();
             ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonClicked = true;
         }
+
         void addFile()
         {
             OpenFileDialog BrowseFile = new OpenFileDialog();
@@ -77,16 +80,19 @@ namespace WarGame.View
                 System.IO.File.Copy(BrowseFile.FileName, "C:/Wargame/levels/" + System.IO.Path.GetFileName(BrowseFile.FileName));
                 files = readLevelFolder("C:/Wargame/levels");
                 addButtonsToLevelPicker(files);
-                }
             }
+        }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
             if (doc == null)
             {
+                if (buttonClicked == true)
+                {
                     doc = new XmlDocument();
-                doc.Load(textBoxXMLFile.Text);
+                    doc.Load(textBoxXMLFile.Text);
+                }
             }
         }
-        }
     }
+}
