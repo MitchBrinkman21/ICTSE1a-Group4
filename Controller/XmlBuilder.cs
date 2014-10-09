@@ -7,9 +7,9 @@ using System.Xml;
 
 namespace WarGame.Controller
 {
-    class XmlBuilder
+    public class XmlBuilder
     {
-        public void CreateFile(string name, double score)
+        public void CreateFile(string name, string score)
         {
             //create new instance of XmlWriter
             XmlTextWriter writer = new XmlTextWriter(@"c:\WarGame\stats\Statistics.xml", System.Text.Encoding.UTF8);
@@ -27,7 +27,7 @@ namespace WarGame.Controller
             writer.WriteString(name);
             writer.WriteEndElement();
             writer.WriteStartElement("player_score");
-            writer.WriteString(score.ToString());
+            writer.WriteString(score);
             writer.WriteEndElement();
             writer.WriteStartElement("player_level");
             writer.WriteString(GameEngine.levelName);
@@ -40,7 +40,7 @@ namespace WarGame.Controller
             writer.Close();
         }
 
-        public void ChangeFile(string name, double score)
+        public void ChangeFile(string name, string score)
         {
             //file name
             string filename = @"c:\WarGame\stats\Statistics.xml";
@@ -77,7 +77,7 @@ namespace WarGame.Controller
 
             //create player_score node
             XmlNode nodeScore = doc.CreateElement("player_score");
-            nodeScore.InnerText = score.ToString();
+            nodeScore.InnerText = score;
 
             //create player_level node
             XmlNode nodeLevel = doc.CreateElement("player_level");

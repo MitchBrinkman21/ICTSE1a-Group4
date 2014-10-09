@@ -367,11 +367,11 @@ namespace WarGame.Controller
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(filename);
-                    xml.ChangeFile(namePlayer, gameTime);
+                    xml.ChangeFile(namePlayer, formEndGame.time);
                 }
                 else
                 {
-                    xml.CreateFile(namePlayer, gameTime);
+                    xml.CreateFile(namePlayer, formEndGame.time);
                 }
                     formGameField.Close();
 

@@ -16,6 +16,7 @@ namespace WarGame.View
         {
             get { return textBoxName.Text; }
         }
+        public string time { get; set; }
         public bool close;
         public FormEndGame(double gameTime)
         {
@@ -24,12 +25,12 @@ namespace WarGame.View
             this.StartPosition = FormStartPosition.CenterScreen;
             TimeSpan t = TimeSpan.FromMilliseconds(gameTime);
 
-            string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
+            time = string.Format("{1:D2}m:{2:D2}s:{3:D3}ms",
                             t.Hours,
                             t.Minutes,
                             t.Seconds,
                             t.Milliseconds);
-            labelTime.Text = answer;
+            labelTime.Text = time;
         }
 
         private void textBoxName_KeyDown(object sender, KeyEventArgs e)

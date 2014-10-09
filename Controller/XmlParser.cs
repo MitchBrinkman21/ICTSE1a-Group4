@@ -119,14 +119,14 @@ namespace WarGame.Controller
             // Create Datatable
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("name", typeof(string));
-            dataTable.Columns.Add("time", typeof(int));
+            dataTable.Columns.Add("time", typeof(string));
             dataTable.Columns.Add("level", typeof(string));
 
             // Add nodes from XMLfile to Datatable
             for (int i = 0; i < xmlnode.Count; i++)
             {
                 string name = xmlnode[i].ChildNodes.Item(1).InnerText;
-                double score = Convert.ToDouble(xmlnode[i].ChildNodes.Item(2).InnerText);
+                string score = xmlnode[i].ChildNodes.Item(2).InnerText;
                 string level = xmlnode[i].ChildNodes.Item(3).InnerText;
 
                 dataTable.Rows.Add(new object[] { name, score, level });
