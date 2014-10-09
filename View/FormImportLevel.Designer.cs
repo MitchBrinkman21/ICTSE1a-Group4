@@ -33,6 +33,7 @@
             this.textBoxXMLFile = new System.Windows.Forms.TextBox();
             this.labelImportHelp = new System.Windows.Forms.Label();
             this.buttonBrowseXML = new System.Windows.Forms.Button();
+            this.panelLevelPicker = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // Button
@@ -43,7 +44,7 @@
             this.Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button.Location = new System.Drawing.Point(6, 67);
+            this.Button.Location = new System.Drawing.Point(11, 447);
             this.Button.Margin = new System.Windows.Forms.Padding(2);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(89, 34);
@@ -60,17 +61,18 @@
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonStart.Location = new System.Drawing.Point(291, 67);
+            this.buttonStart.Location = new System.Drawing.Point(286, 447);
             this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(89, 34);
             this.buttonStart.TabIndex = 8;
             this.buttonStart.Text = "OK";
             this.buttonStart.UseVisualStyleBackColor = false;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // textBoxXMLFile
             // 
-            this.textBoxXMLFile.Location = new System.Drawing.Point(12, 34);
+            this.textBoxXMLFile.Location = new System.Drawing.Point(11, 401);
             this.textBoxXMLFile.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxXMLFile.Name = "textBoxXMLFile";
             this.textBoxXMLFile.Size = new System.Drawing.Size(298, 20);
@@ -80,12 +82,12 @@
             // 
             this.labelImportHelp.AutoSize = true;
             this.labelImportHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelImportHelp.Location = new System.Drawing.Point(10, 9);
+            this.labelImportHelp.Location = new System.Drawing.Point(11, 376);
             this.labelImportHelp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelImportHelp.Name = "labelImportHelp";
-            this.labelImportHelp.Size = new System.Drawing.Size(75, 13);
+            this.labelImportHelp.Size = new System.Drawing.Size(54, 13);
             this.labelImportHelp.TabIndex = 6;
-            this.labelImportHelp.Text = "Choose Level:";
+            this.labelImportHelp.Text = "Add level:";
             // 
             // buttonBrowseXML
             // 
@@ -95,7 +97,7 @@
             this.buttonBrowseXML.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonBrowseXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowseXML.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonBrowseXML.Location = new System.Drawing.Point(314, 29);
+            this.buttonBrowseXML.Location = new System.Drawing.Point(313, 396);
             this.buttonBrowseXML.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBrowseXML.Name = "buttonBrowseXML";
             this.buttonBrowseXML.Size = new System.Drawing.Size(52, 29);
@@ -104,12 +106,20 @@
             this.buttonBrowseXML.UseVisualStyleBackColor = false;
             this.buttonBrowseXML.Click += new System.EventHandler(this.buttonBrowseXML_Click);
             // 
+            // panelLevelPicker
+            // 
+            this.panelLevelPicker.Location = new System.Drawing.Point(13, 13);
+            this.panelLevelPicker.Name = "panelLevelPicker";
+            this.panelLevelPicker.Size = new System.Drawing.Size(362, 360);
+            this.panelLevelPicker.TabIndex = 10;
+            // 
             // FormImportLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(386, 107);
+            this.ClientSize = new System.Drawing.Size(386, 492);
+            this.Controls.Add(this.panelLevelPicker);
             this.Controls.Add(this.Button);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.textBoxXMLFile);
@@ -130,5 +140,6 @@
         private System.Windows.Forms.TextBox textBoxXMLFile;
         private System.Windows.Forms.Label labelImportHelp;
         private System.Windows.Forms.Button buttonBrowseXML;
+        private System.Windows.Forms.Panel panelLevelPicker;
     }
 }

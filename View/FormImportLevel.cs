@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,70 +15,78 @@ namespace WarGame.View
     public partial class FormImportLevel : Form
     {
         public XmlDocument doc;
-
+        FileInfo[] files;
+   
         public FormImportLevel()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-
+            files = readLevelFolder("C:/Wargame/levels");
+            addButtonsToLevelPicker(files);
         }
 
         private void buttonBrowseXML_Click(object sender, EventArgs e)
         {
-            Import();
+            addFile();
         }
-
-        void Import()
+        public FileInfo[] readLevelFolder(string folder)
+        {
+            DirectoryInfo di = new DirectoryInfo(folder);
+            FileInfo[] files = di.GetFiles("*.xml");
+            return files;
+        }
+        public void addButtonsToLevelPicker(FileInfo[] files)
+        {
+            int y = 0;
+            foreach (FileInfo file in files)
+            {
+                Button button = new Button();
+                button.Size = new Size(362, 30);
+                button.Location = new Point(0, y);
+                button.Text = file.ToString();
+                button.Tag = file.FullName;
+                button.Click += new System.EventHandler(levelPicked);
+                button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                button.ForeColor = System.Drawing.SystemColors.HighlightText;
+                panelLevelPicker.Controls.Add(button);
+                y += 30;
+                if (y >= 360)
+                {
+                    ScrollBar vScrollBar1 = new VScrollBar();
+                    vScrollBar1.Dock = DockStyle.Right;
+                    vScrollBar1.Scroll += (sender, e) => { panelLevelPicker.VerticalScroll.Value = vScrollBar1.Value; };
+                    panelLevelPicker.Controls.Add(vScrollBar1);
+                }
+            }
+        }
+        private void levelPicked(Object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+             textBoxXMLFile.Text = b.Tag.ToString();
+            ForeColor = System.Drawing.SystemColors.HighlightText;
+        }
+        void addFile()
         {
             OpenFileDialog BrowseFile = new OpenFileDialog();
             BrowseFile.Filter = "XML Files (*.xml)|*.xml";
             BrowseFile.FilterIndex = 0;
             BrowseFile.DefaultExt = "xml";
-
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //string fileName = "WarGameLevel.xml";
-                //string sourcePath = BrowseFile.FileName;
-                //string targetPath = Properties.Settings.Default.ImportPath + "\\levels\\";
-                //string destFile = System.IO.Path.Combine(targetPath, fileName);
-
-                //string newFile = System.IO.Path.GetFileName(sourcePath);
-
-                //if (newFile.Equals("WarGameLevel.xml"))
-                //{
-                //    textBoxXMLFile.Text = targetPath + newFile;
-                //    System.IO.File.Copy(sourcePath, destFile, true);
-                    
-
-                //    doc = new XmlDocument();
-                //    try
-                //    {
-                //        doc.Load(textBoxXMLFile.Text);
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-
-                //}
-                //else
-                //{
-                //    MessageBox.Show("This File is not a WarGame level. Please try a different file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-                textBoxXMLFile.Text = BrowseFile.FileName;
-
-                doc = new XmlDocument();
-                try
-                {
-                    doc.Load(BrowseFile.FileName);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Level Could't be read please check your file. Error: " + e, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.IO.File.Copy(BrowseFile.FileName, "C:/Wargame/levels/" + System.IO.Path.GetFileName(BrowseFile.FileName));
+                files = readLevelFolder("C:/Wargame/levels");
+                addButtonsToLevelPicker(files);
                 }
             }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            if (doc == null)
+            {
+                    doc = new XmlDocument();
+                doc.Load(textBoxXMLFile.Text);
+            }
+        }
         }
     }
-}
