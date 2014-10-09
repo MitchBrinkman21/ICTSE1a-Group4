@@ -16,7 +16,7 @@ namespace WarGame.View
 {
     public partial class FormLevelEditor : Form
     {
-        public bool stateToolBox = false, mlAdded = false, finAdded = false;
+        public bool showToolBox = true, mlAdded = false, finAdded = false;
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine = new GameEngine();
         XmlDocument doc = null;
@@ -95,15 +95,15 @@ namespace WarGame.View
 
         private void buttonVisable_Click(object sender, EventArgs e)
         {
-            if (stateToolBox)
-	        {
-		         panelToolBox.Show();
-	        }
-            else
-            { 
-                 panelToolBox.Hide();
+            showToolBox = !showToolBox;
+            if (showToolBox)
+            {
+                panelToolBox.Show();
             }
-            stateToolBox = !stateToolBox;
+            else
+            {
+                panelToolBox.Hide();
+            }
         }
 
         private void FormLevelEditor_DragEnter(object sender, DragEventArgs e)
@@ -365,13 +365,13 @@ namespace WarGame.View
             if (this.currentMovingObject != null)
             {
                 this.movingPoint = new Point(p.X - this.currentMovingObject.x, p.Y - this.currentMovingObject.y);
+
+                panelToolBox.Hide();
             }
             if (e.Button == MouseButtons.Right)
             {
                 ObstacleList.Remove(currentMovingObject);
             }
-            panelToolBox.Hide();
-            stateToolBox = false;
         }
 
         private void FormLevelEditor_MouseMove(object sender, MouseEventArgs e)
@@ -391,9 +391,10 @@ namespace WarGame.View
             if (this.currentMovingObject != null)
             {
                 this.currentMovingObject = null;
+
+                if (showToolBox)
+                    panelToolBox.Show();
             }
-            panelToolBox.Show();
-            stateToolBox = true;
         }
 
         private void FormLevelEditor_KeyDown(object sender, KeyEventArgs e)
