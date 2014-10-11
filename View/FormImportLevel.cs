@@ -29,6 +29,7 @@ namespace WarGame.View
             this.StartPosition = FormStartPosition.CenterScreen;
             files = readLevelFolder("C:/Wargame/levels");
             addButtonsToLevelPicker(files);
+            selectedfile = null;
 
         }
 
@@ -51,20 +52,21 @@ namespace WarGame.View
                 Button button = new Button();               
                 button.Size = new Size(362, 30);
                 button.Location = new Point(0, y);
-                button.Text = file.ToString();
+                button.Text = file.ToString().Remove(file.ToString().Length - 4);
                 button.Tag = file.FullName;
                 button.Click += new System.EventHandler(levelPicked);
                 button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
                 panelLevelPicker.Controls.Add(button);
                 y += 30;
-                if (selectedfile == button.Text)
+                if (selectedfile == file.ToString())
                 {
                     selected.BackColor = System.Drawing.Color.Black;
                     selected = button;
                     selected.BackColor = System.Drawing.Color.Red;
                     textBoxXMLFile.Text = button.Text;
                     filenameLevelPicker = button.Tag.ToString();
+                    buttonClicked = true;
                 }
             }
         }
