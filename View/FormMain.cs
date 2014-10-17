@@ -58,6 +58,7 @@ namespace WarGame.View
                 // Try to create the directory.
                 DirectoryInfo di = Directory.CreateDirectory(path + "\\levels\\");
                 DirectoryInfo di2 = Directory.CreateDirectory(path + "\\stats\\");
+                DirectoryInfo di3 = Directory.CreateDirectory(path + "\\levels\\levelPreviews\\");
                 Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
 
                 Properties.Settings.Default.ImportPath = path;

@@ -15,7 +15,8 @@ namespace WarGame.View
     public partial class FormImportLevel : Form
     {
         public XmlDocument doc;
-        FileInfo[] files;
+        FileInfo[] levelFiles;
+        FileInfo[] levelPreviewFiles;
         bool buttonClicked = false;
         string filenameLevelPicker;
         string selectedfile;
@@ -27,10 +28,11 @@ namespace WarGame.View
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-            files = readLevelFolder("C:/Wargame/levels");
-            addButtonsToLevelPicker(files);
+            levelFiles = readLevelFolder("C:/Wargame/levels");
+            levelPreviewFiles = readLevelPreviewFolder("C:/Wargame/levels/levelPreviews");
+            addButtonsToLevelPicker(levelFiles);
             selectedfile = null;
-
+            panelFormLevelPreview.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void buttonBrowseXML_Click(object sender, EventArgs e)
@@ -43,6 +45,12 @@ namespace WarGame.View
             FileInfo[] files = di.GetFiles("*.xml");
             return files;
         }
+        public FileInfo[] readLevelPreviewFolder(string folder)
+        {
+            DirectoryInfo di = new DirectoryInfo(folder);
+            FileInfo[] files = di.GetFiles("*.jpg");
+            return files;
+        }
         public void addButtonsToLevelPicker(FileInfo[] files)
         {            
             panelLevelPicker.Controls.Clear();
@@ -50,15 +58,17 @@ namespace WarGame.View
             foreach (FileInfo file in files)
             {
                 Button button = new Button();               
-                button.Size = new Size(362, 30);
+                button.Size = new Size(228, 25);
                 button.Location = new Point(0, y);
                 button.Text = file.ToString().Remove(file.ToString().Length - 4);
                 button.Tag = file.FullName;
                 button.Click += new System.EventHandler(levelPicked);
+                button.MouseMove += new System.Windows.Forms.MouseEventHandler(levelPreview_Hover);
+                button.MouseLeave += new System.EventHandler(levelPreview_MouseLeave);
                 button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
                 panelLevelPicker.Controls.Add(button);
-                y += 30;
+                y += 25;
                 if (selectedfile == file.ToString())
                 {
                     selected.BackColor = System.Drawing.Color.Black;
@@ -109,11 +119,30 @@ namespace WarGame.View
                     MessageBox.Show("This file already exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }        
             }
-            files = readLevelFolder("C:/WarGame/levels");
-            addButtonsToLevelPicker(files);
+            levelFiles = readLevelFolder("C:/WarGame/levels");
+            addButtonsToLevelPicker(levelFiles);
             
         }
 
+        private void levelPreview_MouseLeave(object sener, EventArgs e)
+        {
+            panelFormLevelPreview.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
+        }
+        private void levelPreview_Hover(object sender, MouseEventArgs e)
+        {
+            
+            Button b = sender as Button;
+            var loc = b.PointToScreen(Point.Empty);
+            
+            foreach (FileInfo file in levelPreviewFiles)
+            {
+                string filename = Path.GetFileNameWithoutExtension(file.FullName);
+                if (b.Text == filename)
+                {
+                    panelFormLevelPreview.BackgroundImage = Image.FromFile(file.FullName);
+                }
+            }
+        }
         private void buttonStart_Click(object sender, EventArgs e)
         {
             if (doc == null)

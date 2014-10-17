@@ -11,6 +11,7 @@ using System.Xml;
 using System.IO;
 using WarGame.Controller;
 using WarGame.Model;
+using System.Drawing.Imaging;
 
 namespace WarGame.View
 {
@@ -185,7 +186,8 @@ namespace WarGame.View
             {
                 FormLevelEditorNameDialog nameDlg = new FormLevelEditorNameDialog();
                 DialogResult result = nameDlg.ShowDialog();
-
+                string defLocation = "C:/WarGame/levels/levelPreviews/";
+                string defExt = ".jpg";
                 if (result == DialogResult.OK)
                 {
                     SaveFileDialog SaveFile = new SaveFileDialog();
@@ -195,12 +197,26 @@ namespace WarGame.View
                     SaveFile.DefaultExt = "xml";
                     if (SaveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        createXmlLevelFile(SaveFile.FileName, nameDlg.levelName, ObstacleList);
+                        createXmlLevelFile(SaveFile.FileName, nameDlg.levelName, ObstacleList); 
+                        screenshotLevel(defLocation + nameDlg.levelName + defExt);
                     }
                 }
             }
         }
 
+        private void screenshotLevel(string location)
+        {
+            var frm = Form.ActiveForm;
+            panelToolBox.Hide();
+            panelMenu.Hide();
+            using (var bmp = new Bitmap(frm.Width, frm.Height))
+            {
+                frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                bmp.Save(location);
+            }
+            panelToolBox.Show();
+            panelMenu.Show();
+        }
         private void createXmlLevelFile(string filePath, string name, List<Obstacle> obstacleList)
         {
             //create new instance of XmlWriter
