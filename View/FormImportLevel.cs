@@ -126,7 +126,10 @@ namespace WarGame.View
 
         private void levelPreview_MouseLeave(object sener, EventArgs e)
         {
-            panelFormLevelPreview.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
+            if (buttonClicked == false)
+            {
+                panelFormLevelPreview.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
+            }
         }
         private void levelPreview_Hover(object sender, MouseEventArgs e)
         {
