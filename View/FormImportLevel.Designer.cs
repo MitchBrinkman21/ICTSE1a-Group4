@@ -75,6 +75,7 @@
             // 
             this.textBoxXMLFile.BackColor = System.Drawing.Color.Black;
             this.textBoxXMLFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxXMLFile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxXMLFile.Location = new System.Drawing.Point(11, 290);
             this.textBoxXMLFile.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxXMLFile.Name = "textBoxXMLFile";
