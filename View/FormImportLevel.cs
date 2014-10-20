@@ -63,7 +63,7 @@ namespace WarGame.View
                 button.Text = file.ToString().Remove(file.ToString().Length - 4);
                 button.Tag = file.FullName;
                 button.Click += new System.EventHandler(levelPicked);
-                button.MouseMove += new System.Windows.Forms.MouseEventHandler(levelPreview_Hover);
+                button.MouseClick += new System.Windows.Forms.MouseEventHandler(levelPreview_Click);
                 button.MouseLeave += new System.EventHandler(levelPreview_MouseLeave);
                 button.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 button.ForeColor = System.Drawing.SystemColors.HighlightText;
@@ -131,7 +131,7 @@ namespace WarGame.View
                 panelFormLevelPreview.BackgroundImage = global::WarGame.Properties.Resources.backgrounddrop;
             }
         }
-        private void levelPreview_Hover(object sender, MouseEventArgs e)
+        private void levelPreview_Click(object sender, MouseEventArgs e)
         {
             
             Button b = sender as Button;
