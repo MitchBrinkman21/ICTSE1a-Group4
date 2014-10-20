@@ -19,7 +19,7 @@ namespace WarGame.View
     {
         public bool showToolBox = true, mlAdded = false, finAdded = false;
         FormImportLevel importLevel = new FormImportLevel();
-        GameEngine gameEngine = new GameEngine();
+        GameEngine gameEngine;
         XmlDocument doc = null;
         Player player = new Player();
         Obstacle currentMovingObject;
@@ -48,7 +48,7 @@ namespace WarGame.View
             this.StartPosition = FormStartPosition.CenterScreen;
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.BackColor = Color.FromArgb(0x66141414);
-            
+            gameEngine = GameEngine.Instance();
             panelMenu.BringToFront();
         }
         protected override CreateParams CreateParams
@@ -154,11 +154,91 @@ namespace WarGame.View
         {
             if (ObstacleList != null)
             {
+                List<Mine> mines = new List<Mine>();
+                List<Tree> trees = new List<Tree>();
+                List<Sandbag> sandbags = new List<Sandbag>();
+                List<Mud> muds = new List<Mud>();
+                List<Missilelauncher> missilelaunchers = new List<Missilelauncher>();
+                Finish finish = new Finish(-50, -50);
                 foreach (Obstacle obstacle in ObstacleList)
                 {
-                    e.Graphics.DrawImage(obstacle.image, obstacle.x, obstacle.y);
+                    switch (obstacle.ToString())
+                    {
+                        case "WarGame.Model.Mine":
+                            mines.Add(obstacle as Mine);
+                            break;
+                        case "WarGame.Model.Tree":
+                            trees.Add(obstacle as Tree);
+                            break;
+                        case "WarGame.Model.Sandbag":
+                            sandbags.Add(obstacle as Sandbag);
+                            break;
+                        case "WarGame.Model.Mud":
+                            muds.Add(obstacle as Mud);
+                            break;
+                        case "WarGame.Model.Missilelauncher":
+                            missilelaunchers.Add(obstacle as Missilelauncher);
+                            break;
+                        case "WarGame.Model.Finish":
+                            finish = obstacle as Finish;
+                            break;
+                    }
                 }
-                e.Graphics.DrawImage(player.image, (int)player.x, (int)player.y);
+                foreach (Mud mud in muds)
+                {
+                    e.Graphics.DrawImage(mud.image, mud.x, mud.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, mud.rect);
+                    }
+
+                }
+                foreach (Sandbag sandbag in sandbags)
+                {
+                    e.Graphics.DrawImage(sandbag.image, sandbag.x, sandbag.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Yellow, sandbag.rect);
+                    }
+                }
+                foreach (Tree tree in trees)
+                {
+                    e.Graphics.DrawImage(tree.image, tree.x, tree.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Green, tree.rect);
+                    }
+                }
+                foreach (Mine mine in mines)
+                {                    
+                    e.Graphics.DrawImage(mine.image, mine.x, mine.y);                        
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, mine.rect);
+                    }
+                    
+                }
+                foreach (Missilelauncher missilelauncher in missilelaunchers)
+                {                    
+                    e.Graphics.DrawImage(missilelauncher.image, missilelauncher.x, missilelauncher.y);
+                    if (gameEngine.DevMode)
+                    {
+                        e.Graphics.DrawRectangle(Pens.Red, missilelauncher.rect);
+                    }
+                }
+
+                e.Graphics.DrawImage(finish.image, finish.x, finish.y);
+                if (gameEngine.DevMode)
+                {
+                    e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
+                }
+
+                e.Graphics.DrawImage(player.image, (int)(player.x - (player.width * (player.scale / 200))), (int)(player.y - (player.height * (player.scale / 200))));
+
+                if (gameEngine.DevMode)
+                {
+                    e.Graphics.DrawRectangle(Pens.Blue, player.rect);
+                }
                 this.Invalidate();
             }
         }
@@ -396,6 +476,7 @@ namespace WarGame.View
                 Point p = this.PointToClient(Cursor.Position);
                 this.currentMovingObject.x = p.X - this.movingPoint.X;
                 this.currentMovingObject.y = p.Y - this.movingPoint.Y;
+                this.currentMovingObject.rect.Location = new Point(p.X - this.movingPoint.X, p.Y - this.movingPoint.Y);
                 this.Invalidate();
             }
 
