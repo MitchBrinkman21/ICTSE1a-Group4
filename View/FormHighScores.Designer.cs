@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.labelLevel = new System.Windows.Forms.Label();
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.labelLevel.AutoSize = true;
             this.labelLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelLevel.Location = new System.Drawing.Point(19, 20);
+            this.labelLevel.Location = new System.Drawing.Point(19, 24);
             this.labelLevel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLevel.Name = "labelLevel";
             this.labelLevel.Size = new System.Drawing.Size(42, 13);
@@ -56,9 +56,9 @@
             // 
             this.comboBoxLevel.FormattingEnabled = true;
             this.comboBoxLevel.Location = new System.Drawing.Point(62, 20);
-            this.comboBoxLevel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxLevel.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxLevel.Name = "comboBoxLevel";
-            this.comboBoxLevel.Size = new System.Drawing.Size(92, 21);
+            this.comboBoxLevel.Size = new System.Drawing.Size(113, 21);
             this.comboBoxLevel.TabIndex = 1;
             this.comboBoxLevel.Text = "Select a level";
             this.comboBoxLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxLevel_SelectedIndexChanged);
@@ -71,10 +71,10 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonOK.Location = new System.Drawing.Point(244, 304);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOK.Location = new System.Drawing.Point(256, 300);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(46, 29);
+            this.buttonOK.Size = new System.Drawing.Size(46, 30);
             this.buttonOK.TabIndex = 3;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@
             this.columnHeaderName,
             this.columnHeaderTime});
             this.listViewHighscores.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6});
+            listViewItem2});
             this.listViewHighscores.Location = new System.Drawing.Point(22, 63);
-            this.listViewHighscores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewHighscores.Margin = new System.Windows.Forms.Padding(2);
             this.listViewHighscores.Name = "listViewHighscores";
             this.listViewHighscores.Size = new System.Drawing.Size(270, 218);
             this.listViewHighscores.TabIndex = 4;
@@ -115,7 +115,7 @@
             // 
             this.buttonDelete.BackgroundImage = global::WarGame.Properties.Resources.recycleBinSmall;
             this.buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonDelete.Location = new System.Drawing.Point(159, 17);
+            this.buttonDelete.Location = new System.Drawing.Point(186, 18);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(19, 27);
             this.buttonDelete.TabIndex = 5;
@@ -127,13 +127,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(313, 343);
+            this.ClientSize = new System.Drawing.Size(313, 341);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.listViewHighscores);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBoxLevel);
             this.Controls.Add(this.labelLevel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormHighScores";
             this.Text = "HighScores";
             this.Load += new System.EventHandler(this.FormHighScores_Load);
