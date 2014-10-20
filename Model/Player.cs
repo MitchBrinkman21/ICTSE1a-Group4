@@ -53,9 +53,5 @@ namespace WarGame.Model
         {
             this.lives--;
         } 
-
-
     }
-
-    
 }

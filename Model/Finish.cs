@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarGame.Model
 {
-    class Finish : Obstacle
+    public class Finish : Obstacle
     {
       
         public Finish(int x, int y)

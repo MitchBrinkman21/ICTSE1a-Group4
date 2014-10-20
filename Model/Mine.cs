@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WarGame.Model
 {
-    class Mine : Obstacle
+    public class Mine : Obstacle
     {
         public int proximity;        
         public bool visible { get; set; }

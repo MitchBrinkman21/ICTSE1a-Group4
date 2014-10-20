@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarGame.Model
 {
-    class Tree : Obstacle
+    public class Tree : Obstacle
     {
 
         public Tree(int x, int y)

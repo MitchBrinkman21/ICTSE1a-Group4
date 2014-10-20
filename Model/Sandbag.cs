@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarGame.Model
 {
-    class Sandbag : Obstacle
+    public class Sandbag : Obstacle
     {
 
         public Sandbag(int x, int y)

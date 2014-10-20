@@ -9,7 +9,7 @@ namespace WarGame.Model
 {
     
 
-    class Mud : Obstacle
+    public class Mud : Obstacle
     {
 
         public int slow { get { return slow; } set { slow = 10; } }
