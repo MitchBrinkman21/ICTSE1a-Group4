@@ -17,7 +17,7 @@ namespace WarGame.View
 {
     public partial class FormLevelEditor : Form
     {
-        public bool showToolBox = true, mlAdded = false, finAdded = false;
+        public bool showToolBox = true;
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine;
         XmlDocument doc = null;
@@ -60,7 +60,6 @@ namespace WarGame.View
                 return cp;
             }
         }
-
 
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
@@ -128,7 +127,6 @@ namespace WarGame.View
                 case ObjectType.Finish:
                     ObstacleList.RemoveAll((o) => { return o.GetType() == typeof(Finish); });
                     ObstacleList.Add(new Finish(p.X, p.Y));
-                    finAdded = true;
                     break;
                 case ObjectType.Mine:
                     ObstacleList.Add(new Mine(p.X, p.Y));
@@ -138,7 +136,6 @@ namespace WarGame.View
                     break;
                 case ObjectType.Rocketlauncher:
                     ObstacleList.Add(new Missilelauncher(p.X, p.Y));
-                    mlAdded = true;
                     break;
                 case ObjectType.Sandbag:
                     ObstacleList.Add(new Sandbag(p.X, p.Y));
@@ -250,15 +247,17 @@ namespace WarGame.View
 
         private void saveLevel(List<Obstacle> obstacleList)
         {
-            if (!mlAdded && !finAdded)
+            bool finAdded = false;
+
+            foreach (Obstacle obstacle in obstacleList)
             {
-                MessageBox.Show("You have to add a finish and a missilelauncher to the level.");
+                if (obstacle.ToString().Equals("WarGame.Model.Finish"))
+                {
+                    finAdded = true;
+                }
             }
-            else if (!mlAdded)
-            {
-                MessageBox.Show("You have to add a missilelauncher to the level.");
-            }
-            else if (!finAdded)
+
+            if (!finAdded)
             {
                 MessageBox.Show("You have to add a finish to the level.");
             }
@@ -423,12 +422,10 @@ namespace WarGame.View
                             Finish finish = new Finish(xaxis, yaxis);
                             ObstacleList.Add(finish);
                             Console.WriteLine("Tree added to list.");
-                            finAdded = true;
                             break;
                         case "missilelauncher":
                             ObstacleList.Add(new Missilelauncher(xaxis, yaxis));
                             Console.WriteLine("Missilelauncher added to list.");
-                            mlAdded = true;
                             break;
                         default:
                             break;
