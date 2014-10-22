@@ -185,7 +185,7 @@
             buttonImportLevel.Name = "buttonImportLevel";
             buttonImportLevel.Size = new System.Drawing.Size(160, 40);
             buttonImportLevel.TabIndex = 3;
-            buttonImportLevel.Text = "Import level";
+            buttonImportLevel.Text = "Levels";
             buttonImportLevel.UseVisualStyleBackColor = false;
             buttonImportLevel.Click += new System.EventHandler(this.buttonImportLevel_Click);
             // 
