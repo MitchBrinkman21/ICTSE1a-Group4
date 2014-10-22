@@ -47,5 +47,13 @@ namespace WarGame.View
                 this.Close();
             }
         }
+
+        private void axWindowsMediaPlayer1_KeyDownEvent(object sender, AxWMPLib._WMPOCXEvents_KeyDownEvent e)
+        {
+            if (e.nKeyCode == 27)
+            {
+                this.Close();
+            }
+        }
     }
 }
