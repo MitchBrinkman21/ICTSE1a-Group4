@@ -56,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(944, 502);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Enabled = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormIntro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormIntro";

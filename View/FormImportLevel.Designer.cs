@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImportLevel));
             this.Button = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.textBoxXMLFile = new System.Windows.Forms.TextBox();
@@ -142,6 +143,7 @@
             this.Controls.Add(this.labelImportHelp);
             this.Controls.Add(this.buttonBrowseXML);
             this.Controls.Add(this.panelLevelPicker);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormImportLevel";
             this.Text = "Import level";

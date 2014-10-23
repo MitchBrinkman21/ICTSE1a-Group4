@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLevelEditor));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.buttonVisable = new System.Windows.Forms.Panel();
             this.buttonNew = new System.Windows.Forms.Panel();
@@ -191,6 +192,7 @@
             this.Controls.Add(this.panelToolBox);
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLevelEditor";
             this.Text = "FormLevelEditor";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormLevelEditor_DragDrop);

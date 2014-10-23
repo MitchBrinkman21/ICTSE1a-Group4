@@ -207,6 +207,7 @@
             this.Controls.Add(buttonStart);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
@@ -222,6 +223,7 @@
 
         System.Windows.Forms.Button buttonStart;
         System.Windows.Forms.Button buttonImportLevel;
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer timerImportState;

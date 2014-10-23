@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHighScores));
             this.labelLevel = new System.Windows.Forms.Label();
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -87,7 +88,7 @@
             this.columnHeaderName,
             this.columnHeaderTime});
             this.listViewHighscores.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.listViewHighscores.Location = new System.Drawing.Point(22, 63);
             this.listViewHighscores.Margin = new System.Windows.Forms.Padding(2);
             this.listViewHighscores.Name = "listViewHighscores";
@@ -133,6 +134,7 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.comboBoxLevel);
             this.Controls.Add(this.labelLevel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormHighScores";
             this.Text = "HighScores";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImportLevelStatus));
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(310, 136);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.buttonOk);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormImportLevelStatus";
             this.Text = "FormImportLevelStatus";
             this.ResumeLayout(false);

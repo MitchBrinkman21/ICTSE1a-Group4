@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevMode));
             this.devButtonUp = new System.Windows.Forms.Button();
             this.devButtonDown = new System.Windows.Forms.Button();
             this.devButtonRight = new System.Windows.Forms.Button();
@@ -154,6 +155,7 @@
             this.Controls.Add(this.devButtonRight);
             this.Controls.Add(this.devButtonDown);
             this.Controls.Add(this.devButtonUp);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDevMode";
             this.Text = "Debug window";
             this.TopMost = true;
