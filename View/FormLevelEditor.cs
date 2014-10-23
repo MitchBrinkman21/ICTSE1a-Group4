@@ -21,7 +21,6 @@ namespace WarGame.View
         FormImportLevel importLevel = new FormImportLevel();
         GameEngine gameEngine;
         XmlDocument doc = null;
-        Player player = new Player();
         Obstacle currentMovingObject;
         Point movingPoint = Point.Empty;
         public List<Obstacle> ObstacleList { get; set; }
@@ -51,6 +50,7 @@ namespace WarGame.View
             gameEngine = GameEngine.Instance();
             panelMenu.BringToFront();
         }
+        //enable double buffered for menu
         protected override CreateParams CreateParams
         {
             get
@@ -60,7 +60,7 @@ namespace WarGame.View
                 return cp;
             }
         }
-
+        //eventhandling of the objects in the toolbox
         private void Mine_MouseDown(object sender, MouseEventArgs e)
         {
             panelMine.DoDragDrop(ObjectType.Mine, DragDropEffects.Copy | DragDropEffects.Move);
@@ -92,7 +92,7 @@ namespace WarGame.View
             panelRocketLauncher.DoDragDrop(ObjectType.Rocketlauncher, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
-
+        //event button hiding/showing the toolbox
         private void buttonVisable_Click(object sender, EventArgs e)
         {
             showToolBox = !showToolBox;
@@ -105,7 +105,7 @@ namespace WarGame.View
                 panelToolBox.Hide();
             }
         }
-
+        //place objects in gamefield
         private void FormLevelEditor_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(ObjectType)))
@@ -116,9 +116,9 @@ namespace WarGame.View
             {
                 e.Effect = DragDropEffects.None;
             }
-      
         }
 
+        //adding the chosen objects to the object list
         private void FormLevelEditor_DragDrop(object sender, DragEventArgs e)
         {
             Point p = this.PointToClient(Cursor.Position);
@@ -147,6 +147,7 @@ namespace WarGame.View
             //MessageBox.Show(string.Format("{0} gedropt at {1}, {2}", (ObjectType)e.Data.GetData(typeof(ObjectType)), p.X, p.Y));
         }
 
+        //showing placed object in the gamefield
         private void FormLevelEditor_Paint(object sender, PaintEventArgs e)
         {
             if (ObstacleList != null)
@@ -188,7 +189,6 @@ namespace WarGame.View
                     {
                         e.Graphics.DrawRectangle(Pens.Red, mud.rect);
                     }
-
                 }
                 foreach (Sandbag sandbag in sandbags)
                 {
@@ -213,7 +213,6 @@ namespace WarGame.View
                     {
                         e.Graphics.DrawRectangle(Pens.Red, mine.rect);
                     }
-                    
                 }
                 foreach (Missilelauncher missilelauncher in missilelaunchers)
                 {                    
@@ -223,13 +222,13 @@ namespace WarGame.View
                         e.Graphics.DrawRectangle(Pens.Red, missilelauncher.rect);
                     }
                 }
-
                 e.Graphics.DrawImage(finish.image, finish.x, finish.y);
                 if (gameEngine.DevMode)
                 {
                     e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
                 }
-
+                //painting player
+                Player player = new Player();
                 e.Graphics.DrawImage(player.image, (int)(player.x - (player.width * (player.scale / 200))), (int)(player.y - (player.height * (player.scale / 200))));
 
                 if (gameEngine.DevMode)
@@ -239,16 +238,17 @@ namespace WarGame.View
                 this.Invalidate();
             }
         }
-
+        //saving the gamefield with chosen objects
         private void buttonSave_Click(object sender, EventArgs e)
         {
             saveLevel(ObstacleList);
         }
 
+        //opening dialogs to save the gamefield
         private void saveLevel(List<Obstacle> obstacleList)
         {
+            //check if final has been added
             bool finAdded = false;
-
             foreach (Obstacle obstacle in obstacleList)
             {
                 if (obstacle.ToString().Equals("WarGame.Model.Finish"))
@@ -256,7 +256,6 @@ namespace WarGame.View
                     finAdded = true;
                 }
             }
-
             if (!finAdded)
             {
                 MessageBox.Show("You have to add a finish to the level.");
@@ -282,7 +281,7 @@ namespace WarGame.View
                 }
             }
         }
-
+        //making a image for the levelpreview in levels form
         private void screenshotLevel(string location)
         {
             var frm = Form.ActiveForm;
@@ -354,9 +353,7 @@ namespace WarGame.View
 
                 writer.WriteEndElement();
             }
-
             writer.WriteEndElement();
-
             writer.WriteEndElement();
 
             //End of XmlFile and save
@@ -364,11 +361,13 @@ namespace WarGame.View
             writer.Close();
         }
 
+        //button event for loading existing level
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             loadLevel();
         }
 
+        //opening the dialogs for choosing an existing level
         private void loadLevel()
         {
             OpenFileDialog BrowseFile = new OpenFileDialog();
@@ -378,7 +377,6 @@ namespace WarGame.View
             if (BrowseFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 ObstacleList.Clear();
-
                 doc = new XmlDocument();
                 try
                 {
@@ -396,6 +394,7 @@ namespace WarGame.View
                     int xaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(1).InnerText);
                     int yaxis = Convert.ToInt32(xmlnode[i].ChildNodes.Item(2).InnerText);
                     string speed = xmlnode[i].ChildNodes.Item(3).InnerText;
+                    //adding the objects to the object list
                     switch (name)
                     {
                         case "tree":
@@ -433,7 +432,7 @@ namespace WarGame.View
                 }
             }
         }
-
+        //button event for deleting all object from gamefield
         private void buttonNew_MouseClick(object sender, MouseEventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete all objects?", "Delete objects", MessageBoxButtons.YesNo);
@@ -442,7 +441,7 @@ namespace WarGame.View
                ObstacleList.Clear();
             }
         }
-
+        //managing already placed objects on the gamefield
         private void FormLevelEditor_MouseClick(object sender, MouseEventArgs e)
         {
             Point p = this.PointToClient(Cursor.Position);
@@ -466,6 +465,7 @@ namespace WarGame.View
             }
         }
 
+        //moving already placed objects on the gamefield
         private void FormLevelEditor_MouseMove(object sender, MouseEventArgs e)
         {
             if (this.currentMovingObject != null)
@@ -476,9 +476,8 @@ namespace WarGame.View
                 this.currentMovingObject.rect.Location = new Point(p.X - this.movingPoint.X, p.Y - this.movingPoint.Y);
                 this.Invalidate();
             }
-
         }
-
+        //hiding the toolbox while moving already placed objects on the gamefield
         private void FormLevelEditor_MouseUp(object sender, MouseEventArgs e)
         {
             if (this.currentMovingObject != null)
@@ -489,7 +488,7 @@ namespace WarGame.View
                     panelToolBox.Show();
             }
         }
-
+        //closing the editor when pressed esc
         private void FormLevelEditor_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

@@ -17,6 +17,7 @@ namespace WarGame.View
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
+       
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

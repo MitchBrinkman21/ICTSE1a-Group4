@@ -25,7 +25,6 @@ namespace WarGame.View
         public static Boolean gameState;
        
         public FormGameField()
-            
         {
             InitializeComponent();
             Color color = System.Drawing.ColorTranslator.FromHtml("#66000000");
@@ -42,7 +41,7 @@ namespace WarGame.View
             stopWatch.Start();
         }
 
-
+        //gamestate buttons
         private void buttonStartPause_Click(object sender, EventArgs e)
         {
             Bitmap imagePause = new Bitmap(WarGame.Properties.Resources.pause);
@@ -64,6 +63,7 @@ namespace WarGame.View
             }
         }
 
+        //enable double buffered for menubar
         protected override CreateParams CreateParams
         {
             get
@@ -73,6 +73,7 @@ namespace WarGame.View
                 return cp;
             }
         } 
+        //gamestate buttons
         private void buttonStop_Click(object sender, EventArgs e)
         {
             Bitmap imagePlay = new Bitmap(WarGame.Properties.Resources.start);
@@ -98,10 +99,9 @@ namespace WarGame.View
             buttonStartPause.Image = imagePause;
             buttonStartPause.Tag = "pause";
             stopWatch.Start();
-
-
         }
 
+        //gamestate buttons
         private void buttonReset_Click(object sender, EventArgs e)
         {
             gameEngine.ResetGame(true);
@@ -111,6 +111,7 @@ namespace WarGame.View
             label1.Text = stopWatch.Elapsed.Minutes.ToString() + ":" + stopWatch.Elapsed.Seconds.ToString("D2");
         }
 
+        //changing icons healthkits
         public void DrawHealthKits()
         {
             Bitmap imageHealthKitON = new Bitmap(WarGame.Properties.Resources.first_aid_kit);
@@ -141,6 +142,7 @@ namespace WarGame.View
             }
         }
 
+        //painting objects
         private void FormGameField_Paint(object sender, PaintEventArgs e)
         {
             if (gameEngine.level.obstacleList != null)
@@ -248,18 +250,15 @@ namespace WarGame.View
                 {
                     e.Graphics.DrawRectangle(Pens.Blue, finish.rect);
                 }
-                
             }
-
             e.Graphics.DrawImage(Rotate(gameEngine.level.player.image, gameEngine.angle), (int)(gameEngine.level.player.x - (gameEngine.level.player.width * (gameEngine.level.player.scale / 200))), (int)(gameEngine.level.player.y - (gameEngine.level.player.height * (gameEngine.level.player.scale / 200))));
             if (gameEngine.DevMode)
             {
                 e.Graphics.DrawRectangle(Pens.Blue, gameEngine.level.player.rect);
             }
-
-
         }
 
+        //rotate object
         public static Bitmap Rotate(Bitmap img, float angle)
         {
             Bitmap rotated = new Bitmap(img.Width, img.Height);            
@@ -271,6 +270,7 @@ namespace WarGame.View
             return rotated;
         }
 
+        //event for keypresses
         private void FormGameField_KeyDown(object sender, KeyEventArgs e)
         {
             gameEngine.PressKey(e);
@@ -303,7 +303,6 @@ namespace WarGame.View
                     gameState = false;
                 }
             }
-            
             if (gameState == false) { 
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
                 {

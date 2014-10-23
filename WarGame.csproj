@@ -238,6 +238,7 @@
     <None Include="Resources\backgrounddrop.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\keys.png" />
     <Content Include="WarGame logo 2.ico" />
     <None Include="Resources\backgrounddrop1.png" />
     <None Include="Resources\backgrounddrop2.png" />
