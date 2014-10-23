@@ -15,10 +15,9 @@ namespace WarGame.View
         public FormHelp()
         {
             InitializeComponent();
-            this.MaximumSize = new Size(483, 521);
-            this.MinimumSize = new Size(483, 521);
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
+            textBox1.Text = "\r\nThis Game, WarGame 2014, is a stratagy game with a race against the clock!\r\n\r\nTo move the soldier, use your arrow keys on your keyboard.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nTo pause/resume the game press p and to reset the game press R. You can close the game with your ESCAPE key. \r\n\r\n\r\n\r\nFor more information, please see the user manual ";
        
         }
 
