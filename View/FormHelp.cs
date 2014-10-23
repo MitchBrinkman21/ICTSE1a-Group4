@@ -15,6 +15,8 @@ namespace WarGame.View
         public FormHelp()
         {
             InitializeComponent();
+            this.MaximumSize = new Size(483, 521);
+            this.MinimumSize = new Size(483, 521);
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
        
