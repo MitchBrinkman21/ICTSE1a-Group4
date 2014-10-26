@@ -138,6 +138,7 @@ namespace WarGame.Controller
             hs.ShowDialog();
         }
 
+        // game loop
         public void GameLoopThreadFunction()
         {
             try
@@ -180,6 +181,7 @@ namespace WarGame.Controller
             }
             else
             {
+                // check if any of the missile is hitting an object
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
                     foreach (Obstacle o in gameEngine.level.obstacleList)
@@ -246,6 +248,7 @@ namespace WarGame.Controller
                         }
                     }
 
+                    // check if player is hitting any object
                     if (obstacle.rect.IntersectsWith(playerRect))
                     {
                         switch (obstacle.ToString())
@@ -267,7 +270,6 @@ namespace WarGame.Controller
                                 mine.rect.Location = new Point(-mine.width, -mine.length);
                                 player.DecreaseLive();
                                 formGameField.DrawHealthKits();
-                                //player.MovePlayer((int)player.x - 20, (int)player.y - 20, player.speed);
                                 break;
                             case "WarGame.Model.Mud":
                                 Console.WriteLine("Player walks in mud");
@@ -277,7 +279,7 @@ namespace WarGame.Controller
                                 break;
                         }
                     }
-
+                    // check if mine should become vissible
                     if (obstacle.ToString().Equals("WarGame.Model.Mine"))
                     {
                         Mine mine = obstacle as Mine;
@@ -440,6 +442,8 @@ namespace WarGame.Controller
             int formheight = formGameField.Height;
             int width = gameEngine.level.player.width;
             int height = gameEngine.level.player.height;
+
+            // calculate desired position if player is moving
             if (up || down || left || right)
             {
                 if (up)
@@ -508,6 +512,7 @@ namespace WarGame.Controller
                 bool xintersect = false;
                 int ysteps = 0;
                 bool yintersect = false;
+                // calculate if desired position for x and y are possible
                 while ((xsteps < speed && !xintersect) || (ysteps < speed && !yintersect))
                 {
                     if (xsteps < speed && !xintersect)
@@ -570,6 +575,7 @@ namespace WarGame.Controller
             }
         }
 
+        // calculate rotation for player image
         public void DetermineAngle()
         {
             if (up)

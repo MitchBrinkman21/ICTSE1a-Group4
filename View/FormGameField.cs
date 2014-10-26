@@ -54,7 +54,7 @@ namespace WarGame.View
                 gameState = false;
                 
             }
-            else if (buttonStartPause.Tag == "play")
+            else if (buttonStartPause.Tag.ToString().Equals("play"))
             {
                 buttonStartPause.Image = imagePause;
                 buttonStartPause.Tag = "pause";
@@ -153,6 +153,8 @@ namespace WarGame.View
                 List<Mud> muds = new List<Mud>();
                 List<Missilelauncher> missilelaunchers = new List<Missilelauncher>();
                 Finish finish = new Finish(0, 0);
+
+                // placing each obstacle in corresponding list to use for layered painting
                 foreach (Obstacle obstacle in gameEngine.level.obstacleList)
                 {
                     switch (obstacle.ToString())
